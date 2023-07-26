@@ -29,6 +29,11 @@ export default function Home() {
         <meta name="application-name" content="Invoice Dragon" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
+        <script
+          async
+          src="https://laplantedevanalytics.netlify.app/script.js"
+          data-website-id="9b5a586a-b8e5-45f0-a511-ed98c6a8fa4d"
+        ></script>
       </Head>
       <main className={styles.main}>
         <Header />
