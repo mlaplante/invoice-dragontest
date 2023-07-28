@@ -15,9 +15,6 @@ const HomePage = () => {
           </Link>
         </div>
       </div>
-      <div className={styles.footer}>
-        <p>Made by <a className={styles.link} href="https://new-portfolio-lani.vercel.app/" target="_blank">Lani</a></p>
-      </div>
     </div>
    );
 }
