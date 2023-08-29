@@ -14,7 +14,12 @@ import Header from "@/components/Header/Header";
 import logoP from "../assets/images/placeholder-image.png";
 import Previewed from "../components/Preview/Preview";
 
+import useTranslation from 'next-translate/useTranslation';
+
+
+
 const Templates = () => {
+  const {t, lang} = useTranslation('common')
   // const [service, setService] = useState('invoice');
 
   const [showPreview, setShowPreview] = useState(false);
@@ -162,72 +167,48 @@ const Templates = () => {
               template={template}
               changeTemplate={handleTemplateChange}
             />
-            {templateSelected && (
-              <div className={styles.template__section}>
-                <div className={styles.main__section}>
-                  {!showPreview && (
-                    <Form
-                      prefill={formData}
-                      rows={rows}
-                      logo={logo}
-                      updateLogo={handleLogoUpdate}
-                      logoUpdated={logoUpdated}
-                      currencySymbol={currencySymbol}
-                      onFormMod={handleFormChange}
-                      onPreviewToggle={handleToggle}
-                      onRowAdd={handleRowAdd}
-                      onRowRemove={handleRowRemove}
-                      onTableUpdate={handleTableUpdate}
-                    />
-                  )}
-
-                  {showPreview && (
-                    <Previewed
-                      {...formData}
-                      rows={rows}
-                      logo={logo}
-                      logoUpdated={logoUpdated}
-                      template={template}
-                      currencySymbol={currencySymbol}
-                      onPreviewToggle={handleToggle}
-                    />
-                  )}
-                </div>
-                <div className={styles.action__section}>
-                  <div className={styles.actions}>
-                    ACTIONS
-                    <br />
-                    <br />
-                    <button
-                      className={styles.action__btn}
-                      onClick={handleToggle}
-                    >
-                      {showPreview ? "Back to Edit" : "Preview Invoice"}
-                    </button>
-                    <br />
-                    <br />
-                    <div>
-                      <PDFDownloadLink
-                        document={pdf}
-                        fileName={`${formData.clientName}_${formData.formName}.pdf`}
-                      >
-                        {({ blob, url, loading, error }) => (
-                          <button
-                            className={styles.action__btn}
-                            disabled={!showPreview}
-                          >
-                            Download PDF
-                          </button>
-                        )}
-                      </PDFDownloadLink>
-                    </div>
-                    <br />
-                    <br />
-                    <Dropdown
-                      currencyCode={currencyCode}
-                      currencySymbol={currencySymbol}
-                      onCurrencyModify={handleCurrencyModify}
-                    />
+            {templateSelected && <div className={styles.template__section}>
+              <div className={styles.main__section}>
+                {!showPreview && <Form
+                  prefill={formData}
+                  rows={rows}
+                  logo={logo}
+                  updateLogo={handleLogoUpdate}
+                  logoUpdated={logoUpdated}
+                  currencySymbol={currencySymbol}
+                  onFormMod={handleFormChange}
+                  onPreviewToggle={handleToggle}
+                  onRowAdd={handleRowAdd}
+                  onRowRemove={handleRowRemove}
+                  onTableUpdate={handleTableUpdate}
+                  />}
+                
+                {showPreview && <Previewed 
+                  {...formData}
+                  rows={rows}
+                  logo={logo}
+                  logoUpdated={logoUpdated}
+                  template={template}
+                  currencySymbol={currencySymbol}
+                  onPreviewToggle={handleToggle}
+                />}
+              </div>
+              <div className={styles.action__section}>
+                <div className={styles.actions}>
+                  {t('actions')}
+                  <br />
+                  <br />
+                  <button className={styles.action__btn} onClick={handleToggle}>{showPreview ? `${t('back_to_edit')}` : `${t('preview_invoice')}`}</button>
+                  <br />
+                  <br />
+                  <div>
+                    <PDFDownloadLink 
+                      document={pdf}
+                      fileName={`${formData.clientName}_${formData.formName}.pdf`}>
+                      {({ blob, url, loading, error }) =>
+                        <button className={styles.action__btn} disabled={!showPreview}>{t('download_pdf')}</button> 
+                      }
+                    </PDFDownloadLink>
                   </div>
                 </div>
               </div>
