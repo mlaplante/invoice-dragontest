@@ -17,6 +17,9 @@ import Previewed from "../components/Preview/Preview";
 import useTranslation from "next-translate/useTranslation";
 import { saveCompanyInfo, loadCompanyInfo, clearCompanyInfo, saveLogo, loadLogo, clearLogo } from "../utils/storage";
 
+// Company information fields that should be persisted
+const COMPANY_FIELDS = ['businessName', 'email', 'address', 'city', 'zipcode', 'phone', 'website'];
+
 const Templates = () => {
   const { t, lang } = useTranslation("common");
   // const [service, setService] = useState('invoice');
@@ -85,22 +88,25 @@ const Templates = () => {
     });
   };
 
-  // Save company information when it changes
+  // Save company information when it changes (with debounce)
   useEffect(() => {
-    const companyFields = ['businessName', 'email', 'address', 'city', 'zipcode', 'phone', 'website'];
-    const companyInfo = {};
-    let hasData = false;
-    
-    companyFields.forEach(field => {
-      if (formData[field]) {
-        companyInfo[field] = formData[field];
-        hasData = true;
+    const timeoutId = setTimeout(() => {
+      const companyInfo = {};
+      let hasData = false;
+      
+      COMPANY_FIELDS.forEach(field => {
+        if (formData[field]) {
+          companyInfo[field] = formData[field];
+          hasData = true;
+        }
+      });
+      
+      if (hasData) {
+        saveCompanyInfo(companyInfo);
       }
-    });
-    
-    if (hasData) {
-      saveCompanyInfo(companyInfo);
-    }
+    }, 500); // Debounce for 500ms
+
+    return () => clearTimeout(timeoutId);
   }, [formData]);
 
   const handleToggle = () => {
@@ -145,11 +151,11 @@ const Templates = () => {
     if (confirm(t('clear_saved_data_confirm') || 'Are you sure you want to clear your saved company information and logo?')) {
       clearCompanyInfo();
       clearLogo();
-      // Reset company fields in formData
+      // Reset company fields in formData to empty strings
       setFormData(prevData => {
         const newData = { ...prevData };
-        ['businessName', 'email', 'address', 'city', 'zipcode', 'phone', 'website'].forEach(field => {
-          delete newData[field];
+        COMPANY_FIELDS.forEach(field => {
+          newData[field] = '';
         });
         return newData;
       });
@@ -157,6 +163,7 @@ const Templates = () => {
       setLogo(logoP);
       setLogoUpdated(false);
     }
+  };
   };
 
   function numberWithCommas(x) {
