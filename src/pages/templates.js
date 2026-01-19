@@ -15,6 +15,7 @@ import logoP from "../assets/images/placeholder-image.png";
 import Previewed from "../components/Preview/Preview";
 
 import useTranslation from "next-translate/useTranslation";
+import { saveCompanyInfo, loadCompanyInfo, clearCompanyInfo, saveLogo, loadLogo, clearLogo } from "../utils/storage";
 
 const Templates = () => {
   const { t, lang } = useTranslation("common");
@@ -35,6 +36,24 @@ const Templates = () => {
 
   const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
 
+  // Load saved company information and logo on mount
+  useEffect(() => {
+    const savedCompanyInfo = loadCompanyInfo();
+    const savedLogo = loadLogo();
+    
+    if (savedCompanyInfo) {
+      setFormData(prevData => ({
+        ...prevData,
+        ...savedCompanyInfo
+      }));
+    }
+    
+    if (savedLogo) {
+      setLogo(savedLogo);
+      setLogoUpdated(true);
+    }
+  }, []);
+
   const handleTemplateChange = (e) => {
     setTemplate(e.target.value);
     if (e.target.value) setTemplateSelected(true);
@@ -53,6 +72,7 @@ const Templates = () => {
       if (reader.readyState === 2) {
         setLogo(reader.result);
         setLogoUpdated(true);
+        saveLogo(reader.result); // Save logo to localStorage
       }
     };
     reader.readAsDataURL(e.target.files[0]);
@@ -64,6 +84,25 @@ const Templates = () => {
       [name]: value,
     });
   };
+
+  // Save company information when it changes
+  useEffect(() => {
+    const companyFields = ['businessName', 'email', 'address', 'city', 'zipcode', 'phone', 'website'];
+    const companyInfo = {};
+    let hasData = false;
+    
+    companyFields.forEach(field => {
+      if (formData[field]) {
+        companyInfo[field] = formData[field];
+        hasData = true;
+      }
+    });
+    
+    if (hasData) {
+      saveCompanyInfo(companyInfo);
+    }
+  }, [formData]);
+
   const handleToggle = () => {
     setShowPreview(!showPreview);
   };
@@ -100,6 +139,24 @@ const Templates = () => {
   const handleCurrencyModify = (curr) => {
     setCurrencyCode(curr.code);
     setCurrencySymbol(curr.symbol);
+  };
+
+  const handleClearSavedData = () => {
+    if (confirm(t('clear_saved_data_confirm') || 'Are you sure you want to clear your saved company information and logo?')) {
+      clearCompanyInfo();
+      clearLogo();
+      // Reset company fields in formData
+      setFormData(prevData => {
+        const newData = { ...prevData };
+        ['businessName', 'email', 'address', 'city', 'zipcode', 'phone', 'website'].forEach(field => {
+          delete newData[field];
+        });
+        return newData;
+      });
+      // Reset logo
+      setLogo(logoP);
+      setLogoUpdated(false);
+    }
   };
 
   function numberWithCommas(x) {
@@ -238,6 +295,14 @@ const Templates = () => {
                       currencySymbol={currencySymbol}
                       onCurrencyModify={handleCurrencyModify}
                     />
+                    <br />
+                    <br />
+                    <button
+                      className={styles.action__btn}
+                      onClick={handleClearSavedData}
+                    >
+                      {t("clear_saved_data") || "Clear Saved Data"}
+                    </button>
                   </div>
                 </div>
               </div>

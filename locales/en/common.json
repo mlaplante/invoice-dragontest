@@ -54,5 +54,7 @@
     "unit_price": "Unit Price",
     "update_logo": "Update logo",
     "website": "Website",
-    "website_placeholder": "https://example-website.com"
+    "website_placeholder": "https://example-website.com",
+    "clear_saved_data": "Clear Saved Data",
+    "clear_saved_data_confirm": "Are you sure you want to clear your saved company information and logo?"
 }
