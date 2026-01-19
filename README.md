@@ -5,7 +5,7 @@
 Invoice Dragon is a lightning-fast application that simplifies the process of generating professional Invoices and Receipts for your business needs. 
 
 Simply fill a form, select a template and generate your document!
-Visit the website at https://invoicedragon.com
+Visit the website at https://invoice-dragontest.netlify.app
 
 ### Features
 
@@ -19,7 +19,7 @@ Visit the website at https://invoicedragon.com
 
 ### Getting Started
 
-To start using Invoice Dragon, simply visit [Invoice Dragon.com](https://www.invoicedragon.com) . You can begin generating invoices immediately. 
+To start using Invoice Dragon, simply visit [Invoice Dragon](https://invoice-dragontest.netlify.app) . You can begin generating invoices immediately. 
 
 ### Why did I build this?
 Over the years I've run a couple of businesses where I'd typically have to make invoices and receipts. 
