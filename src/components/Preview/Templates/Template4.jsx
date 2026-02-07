@@ -185,7 +185,7 @@ const Template4 = ({
           <View>
             {logo && (
               <View>
-                <Image src={logo} style={styles.logo} />
+                <Image src={logo} style={styles.logo} alt="Company Logo" />
               </View>
             )}
           </View>

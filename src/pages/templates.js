@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Script from 'next/script'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useMediaQuery } from 'react-responsive'
 
 import { PDFDownloadLink } from '@react-pdf/renderer'
@@ -30,7 +30,7 @@ import {
 const COMPANY_FIELDS = ['businessName', 'email', 'address', 'city', 'zipcode', 'phone', 'website']
 
 const Templates = () => {
-  const { t, lang } = useTranslation('common')
+  const { t } = useTranslation('common')
   // const [service, setService] = useState('invoice');
 
   const [showPreview, setShowPreview] = useState(false)
@@ -47,9 +47,9 @@ const Templates = () => {
 
   const isMobile = useMediaQuery({ query: `(max-width: 760px)` })
 
-  const showToast = (message, type = 'success') => {
+  const showToast = useCallback((message, type = 'success') => {
     setToast({ message, type })
-  }
+  }, [])
 
   // Load saved company information and logo on mount
   useEffect(() => {
@@ -187,7 +187,7 @@ const Templates = () => {
     }, 1000) // Debounce for 1000ms
 
     return () => clearTimeout(timeoutId)
-  }, [formData])
+  }, [formData, templateSelected, showToast, t])
 
   const handleToggle = () => {
     if (!showPreview) {
@@ -259,17 +259,17 @@ const Templates = () => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
   }
 
-  const calculateTotal = () => {
+  const calculateTotal = useCallback(() => {
     let sum = 0
     rows.forEach((row) => {
       sum += parseFloat(row.amount)
     })
     setTotal(numberWithCommas(sum.toFixed(2)))
-  }
+  }, [rows])
 
   useEffect(() => {
     calculateTotal()
-  }, [rows])
+  }, [calculateTotal])
 
   const pdf = (
     <PDF

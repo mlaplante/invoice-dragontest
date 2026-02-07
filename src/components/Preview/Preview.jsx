@@ -181,21 +181,21 @@ const PDFView = ({
 
   const [totalAmount, setTotalAmount] = useState(null)
 
-  const handleTotalCalculation = () => {
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+  }
+
+  const handleTotalCalculation = useCallback(() => {
     let sum = 0
     rows.forEach((row) => {
       sum += parseFloat(row.amount)
     })
     setTotalAmount(numberWithCommas(sum.toFixed(2)))
-  }
-
-  function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-  }
+  }, [rows])
 
   useEffect(() => {
     handleTotalCalculation()
-  }, [])
+  }, [handleTotalCalculation])
 
   const pdf = (
     <PDF

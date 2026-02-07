@@ -221,7 +221,7 @@ const Template3 = ({
             {businessName && <Text style={styles.bizName}>{businessName} </Text>}
             {logoUpdated && logo && (
               <View>
-                <Image src={logo} style={styles.logo} />
+                <Image src={logo} style={styles.logo} alt="Company Logo" />
               </View>
             )}
           </View>

@@ -1,11 +1,9 @@
-import { useState } from 'react'
+import { useState, useCallback, useEffect, useRef } from 'react'
 import styles from './form.module.scss'
 import Table from '../Table/Table'
 import Image from 'next/image'
 
 import useTranslation from 'next-translate/useTranslation'
-
-import { useEffect, useRef } from 'react'
 
 const Form = ({
   logo,
@@ -61,17 +59,17 @@ const Form = ({
     }
   }
 
-  useEffect(() => {
-    setTotal(calculateTotal())
-  }, [rows])
-
-  const calculateTotal = () => {
+  const calculateTotal = useCallback(() => {
     let sum = 0
     rows.forEach((row) => {
       sum += parseFloat(row.amount)
     })
     return sum
-  }
+  }, [rows])
+
+  useEffect(() => {
+    setTotal(calculateTotal())
+  }, [calculateTotal])
 
   const { t } = useTranslation('common')
 

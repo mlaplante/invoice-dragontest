@@ -210,7 +210,7 @@ const Template2 = ({
         <View style={styles.header__section}>
           {logo && (
             <View style={styles.logo_wrapper}>
-              <Image src={logo} style={styles.logo} />
+              <Image src={logo} style={styles.logo} alt="Company Logo" />
             </View>
           )}
           <View style={styles.header__text}>
