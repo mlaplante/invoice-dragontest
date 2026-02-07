@@ -30,7 +30,11 @@ import {
   clearLogo,
 } from '../utils/storage'
 import { numberWithCommas } from '../utils/formatting'
-import { validateRequiredFields, validateLineItems } from '../utils/validation'
+import {
+  validateRequiredFields,
+  validateLineItems,
+  validateBeforeDownload,
+} from '../utils/validation'
 
 // Company information fields that should be persisted
 const COMPANY_FIELDS = ['businessName', 'email', 'address', 'city', 'zipcode', 'phone', 'website']
@@ -383,11 +387,30 @@ const Templates = () => {
                       fileName={`${formData.clientName}_${formData.formName}.pdf`}
                       style={{ width: '100%', flex: isMobile ? 1 : 'unset' }}
                     >
-                      {({ blob, url, loading, error }) => (
-                        <button className={styles.action__btn} disabled={!showPreview}>
-                          {t('download_pdf')}
-                        </button>
-                      )}
+                      {({ blob, url, loading, error }) => {
+                        const handleDownloadClick = () => {
+                          const downloadValidation = validateBeforeDownload(formData, rows)
+
+                          if (!downloadValidation.valid) {
+                            const errors = downloadValidation.errors
+                            showToast(errors.join(' • '), 'error')
+                            return
+                          }
+
+                          // Validation passed, allow download to proceed
+                          // PDFDownloadLink will handle the rest
+                        }
+
+                        return (
+                          <button
+                            className={`${styles.action__btn} ${loading ? styles.loading : ''}`}
+                            onClick={handleDownloadClick}
+                            disabled={loading}
+                          >
+                            {loading ? t('downloading') || 'Downloading...' : t('download_pdf')}
+                          </button>
+                        )
+                      }}
                     </PDFDownloadLink>
                     {!isMobile && (
                       <CurrencySelector

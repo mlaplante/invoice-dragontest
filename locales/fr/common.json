@@ -63,5 +63,16 @@
   "unit_price": "Prix unitaire",
   "update_logo": "Changer le logo",
   "website": "Site web",
-  "website_placeholder": "https://exemple.com"
+  "website_placeholder": "https://exemple.com",
+  "clear_saved_data": "Effacer les données enregistrées",
+  "load_example_data": "Charger les données d'exemple",
+  "all_data_cleared": "✓ Toutes les données effacées",
+  "clear_saved_data_confirm": "Êtes-vous sûr de vouloir effacer vos informations d'entreprise et votre logo enregistrés?",
+  "logo_saved": "Logo enregistré avec succès",
+  "logo_removed": "Logo supprimé",
+  "example_data_loaded": "Données d'exemple chargées",
+  "info_saved": "Informations de l'entreprise enregistrées automatiquement",
+  "generating_preview": "Génération de l'aperçu PDF...",
+  "downloading": "Téléchargement...",
+  "settings": "Paramètres"
 }

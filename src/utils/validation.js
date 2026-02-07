@@ -32,3 +32,28 @@ export function validateLineItems(rows) {
 
   return { valid: errors.length === 0, errors }
 }
+
+/**
+ * Validates download requirements (same as preview)
+ * @param {Object} formData - Form data object
+ * @param {Array} rows - Array of line item rows
+ * @returns {Object} Validation result { valid: boolean, errors: [] }
+ */
+export function validateBeforeDownload(formData, rows) {
+  const errors = []
+  const requiredFields = ['businessName', 'clientName']
+
+  const missingFields = validateRequiredFields(formData, requiredFields)
+  if (missingFields.length > 0) {
+    missingFields.forEach((field) => {
+      errors.push(`${field} is required`)
+    })
+  }
+
+  const lineItemsValidation = validateLineItems(rows)
+  if (!lineItemsValidation.valid) {
+    errors.push(...lineItemsValidation.errors)
+  }
+
+  return { valid: errors.length === 0, errors }
+}

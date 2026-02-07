@@ -62,5 +62,17 @@
   "unit_price": "Stückpreis",
   "update_logo": "Logo ändern",
   "website": "Webseite",
-  "website_placeholder": "https://beispiel.de"
+  "website_placeholder": "https://beispiel.de",
+  "clear_saved_data": "Gespeicherte Daten löschen",
+  "load_example_data": "Beispieldaten laden",
+  "all_data_cleared": "✓ Alle Daten gelöscht",
+  "clear_saved_data_confirm": "Sind Sie sicher, dass Sie Ihre gespeicherten Unternehmensgegevnisse und das Logo löschen möchten?",
+  "logo_saved": "Logo erfolgreich gespeichert",
+  "logo_removed": "Logo entfernt",
+  "example_data_loaded": "Beispieldaten geladen",
+  "info_saved": "Unternehmensgegevnisse automatisch gespeichert",
+  "generating_preview": "PDF-Vorschau wird generiert...",
+  "downloading": "Wird heruntergeladen...",
+  "settings": "Einstellungen",
+  "invoice_details": "Rechnungsdetails"
 }

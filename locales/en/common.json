@@ -72,5 +72,6 @@
   "example_data_loaded": "Example data loaded",
   "info_saved": "Company info saved automatically",
   "generating_preview": "Generating PDF preview...",
+  "downloading": "Downloading...",
   "settings": "Settings"
 }

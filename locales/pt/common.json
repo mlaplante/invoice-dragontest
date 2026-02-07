@@ -61,5 +61,18 @@
   "unit_price": "Preço Unitário",
   "update_logo": "Alterar Logotipo",
   "website": "Website",
-  "website_placeholder": "https://exemplo.com"
+  "website_placeholder": "https://exemplo.com",
+  "add_item": "Adicionar Item",
+  "clear_saved_data": "Limpar Dados Salvos",
+  "load_example_data": "Carregar Dados de Exemplo",
+  "all_data_cleared": "✓ Todos os dados apagados",
+  "clear_saved_data_confirm": "Você tem certeza de que deseja apagar suas informações de empresa e logotipo salvos?",
+  "logo_saved": "Logotipo salvo com sucesso",
+  "logo_removed": "Logotipo removido",
+  "example_data_loaded": "Dados de exemplo carregados",
+  "info_saved": "Informações da empresa salvas automaticamente",
+  "generating_preview": "Gerando visualização em PDF...",
+  "downloading": "Baixando...",
+  "settings": "Configurações",
+  "invoice_details": "Detalhes da Fatura"
 }

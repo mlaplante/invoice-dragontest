@@ -62,5 +62,17 @@
   "unit_price": "Eenheidsprijs",
   "update_logo": "Wijzig Logo",
   "website": "Website",
-  "website_placeholder": "https://voorbeeld.com"
+  "website_placeholder": "https://voorbeeld.com",
+  "add_item": "Item toevoegen",
+  "clear_saved_data": "Opgeslagen gegevens wissen",
+  "load_example_data": "Voorbeeldgegevens laden",
+  "all_data_cleared": "✓ Alle gegevens gewist",
+  "clear_saved_data_confirm": "Weet u zeker dat u uw opgeslagen bedrijfsgegevens en logo wilt wissen?",
+  "logo_saved": "Logo succesvol opgeslagen",
+  "logo_removed": "Logo verwijderd",
+  "example_data_loaded": "Voorbeeldgegevens geladen",
+  "info_saved": "Bedrijfsgegevens automatisch opgeslagen",
+  "generating_preview": "PDF-voorbeeld genereren...",
+  "downloading": "Downloaden...",
+  "settings": "Instellingen"
 }

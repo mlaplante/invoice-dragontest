@@ -153,6 +153,12 @@
     opacity: 0.7;
   }
 
+  &.loading {
+    opacity: 0.7;
+    cursor: wait;
+    pointer-events: none;
+  }
+
   @media screen and (max-width: 768px) {
     flex: 1;
   }
