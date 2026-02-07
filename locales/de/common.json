@@ -85,5 +85,11 @@
   "export_hint": "Download einer Sicherung Ihrer Einstellungen und Unternehmensgegevnisse",
   "clear_all_data": "Alle Daten Löschen",
   "clear_all_hint": "Alle gespeicherten Daten dauerhaft löschen (kann nicht rückgängig gemacht werden)",
-  "clear_all_confirm": "Dies löscht alle Ihre Daten. Sind Sie sicher?"
+  "clear_all_confirm": "Dies löscht alle Ihre Daten. Sind Sie sicher?",
+  "keyboard_shortcuts": "Tastaturbefehle",
+  "shortcut_preview": "Vorschau umschalten",
+  "shortcut_download": "PDF herunterladen",
+  "shortcut_close": "Dialoge schließen",
+  "shortcut_help": "Hilfe anzeigen",
+  "keyboard_hints": "Drücken Sie Esc zum Schließen"
 }

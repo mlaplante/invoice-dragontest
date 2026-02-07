@@ -85,5 +85,11 @@
   "export_hint": "Download een back-up van uw instellingen en bedrijfsgegevens",
   "clear_all_data": "Alle Gegevens Wissen",
   "clear_all_hint": "Alle opgeslagen gegevens permanent verwijderen (kan niet ongedaan gemaakt worden)",
-  "clear_all_confirm": "Dit verwijdert al uw gegevens. Weet u het zeker?"
+  "clear_all_confirm": "Dit verwijdert al uw gegevens. Weet u het zeker?",
+  "keyboard_shortcuts": "Sneltoetsen",
+  "shortcut_preview": "Voorvertoning in-/uitschakelen",
+  "shortcut_download": "PDF downloaden",
+  "shortcut_close": "Dialogen sluiten",
+  "shortcut_help": "Help weergeven",
+  "keyboard_hints": "Druk op Esc om te sluiten"
 }

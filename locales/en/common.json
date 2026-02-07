@@ -84,5 +84,11 @@
   "export_hint": "Download a backup of your settings and company info",
   "clear_all_data": "Clear All Data",
   "clear_all_hint": "Permanently delete all saved data (cannot be undone)",
-  "clear_all_confirm": "This will delete all your data. Are you sure?"
+  "clear_all_confirm": "This will delete all your data. Are you sure?",
+  "keyboard_shortcuts": "Keyboard Shortcuts",
+  "shortcut_preview": "Toggle Preview",
+  "shortcut_download": "Download PDF",
+  "shortcut_close": "Close Dialogs",
+  "shortcut_help": "Show Help",
+  "keyboard_hints": "Press Esc to close"
 }

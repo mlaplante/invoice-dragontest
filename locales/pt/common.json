@@ -85,5 +85,11 @@
   "export_hint": "Baixe um backup de suas configurações e informações de empresa",
   "clear_all_data": "Limpar Todos os Dados",
   "clear_all_hint": "Excluir permanentemente todos os dados salvos (não pode ser desfeito)",
-  "clear_all_confirm": "Isso excluirá todos os seus dados. Tem certeza?"
+  "clear_all_confirm": "Isso excluirá todos os seus dados. Tem certeza?",
+  "keyboard_shortcuts": "Atalhos de Teclado",
+  "shortcut_preview": "Alternar Visualização Prévia",
+  "shortcut_download": "Baixar PDF",
+  "shortcut_close": "Fechar Diálogos",
+  "shortcut_help": "Mostrar Ajuda",
+  "keyboard_hints": "Pressione Esc para fechar"
 }

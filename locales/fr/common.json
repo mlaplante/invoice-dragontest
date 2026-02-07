@@ -85,5 +85,11 @@
   "export_hint": "Télécharger une sauvegarde de vos paramètres et informations d'entreprise",
   "clear_all_data": "Effacer toutes les données",
   "clear_all_hint": "Supprimer définitivement toutes les données enregistrées (impossible à annuler)",
-  "clear_all_confirm": "Cela supprimera toutes vos données. Êtes-vous sûr?"
+  "clear_all_confirm": "Cela supprimera toutes vos données. Êtes-vous sûr?",
+  "keyboard_shortcuts": "Raccourcis clavier",
+  "shortcut_preview": "Basculer l'aperçu",
+  "shortcut_download": "Télécharger le PDF",
+  "shortcut_close": "Fermer les dialogues",
+  "shortcut_help": "Afficher l'aide",
+  "keyboard_hints": "Appuyez sur Esc pour fermer"
 }

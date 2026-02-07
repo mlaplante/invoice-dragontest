@@ -85,5 +85,11 @@
   "export_hint": "Descargar una copia de seguridad de su configuración e información de empresa",
   "clear_all_data": "Borrar Todos los Datos",
   "clear_all_hint": "Eliminar permanentemente todos los datos guardados (no se puede deshacer)",
-  "clear_all_confirm": "Esto borrará todos sus datos. ¿Está seguro?"
+  "clear_all_confirm": "Esto borrará todos sus datos. ¿Está seguro?",
+  "keyboard_shortcuts": "Atajos de teclado",
+  "shortcut_preview": "Alternar vista previa",
+  "shortcut_download": "Descargar PDF",
+  "shortcut_close": "Cerrar diálogos",
+  "shortcut_help": "Mostrar ayuda",
+  "keyboard_hints": "Presione Esc para cerrar"
 }

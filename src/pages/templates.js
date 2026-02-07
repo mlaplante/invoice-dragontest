@@ -5,6 +5,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { useMediaQuery } from 'react-responsive'
 
 import { PDFDownloadLink } from '@react-pdf/renderer'
+import { useKeyboardShortcuts } from '../hooks/useKeyboardShortcuts'
 import { PDF } from '../components/Preview/Preview'
 import InvoiceTemplate from '../components/InvoiceTemplate/InvoiceTemplate'
 import CurrencySelector from '../components/Dropdown/CurrencySelector'
@@ -14,6 +15,7 @@ import Form from '../components/Form/Form'
 import Header from '@/components/Header/Header'
 import Toast from '../components/Toast/Toast'
 import ConfirmDialog from '../components/ConfirmDialog/ConfirmDialog'
+import KeyboardShortcutsModal from '../components/KeyboardShortcutsModal/KeyboardShortcutsModal'
 import dynamic from 'next/dynamic'
 
 const Previewed = dynamic(() => import('../components/Preview/Preview'), {
@@ -54,6 +56,7 @@ const Templates = () => {
   const [total, setTotal] = useState(0)
   const [toast, setToast] = useState(null)
   const [showClearDialog, setShowClearDialog] = useState(false)
+  const [showShortcuts, setShowShortcuts] = useState(false)
 
   const isMobile = useMediaQuery({ query: `(max-width: 760px)` })
 
@@ -293,6 +296,66 @@ const Templates = () => {
     }
   }
 
+  // Keyboard shortcut handlers
+  const handlePreviewToggleShortcut = useCallback(() => {
+    if (!showPreview) {
+      // Validate required fields
+      const requiredFields = ['businessName', 'clientName']
+      const missingFields = validateRequiredFields(formData, requiredFields)
+
+      // Validate line items
+      const lineItemsValidation = validateLineItems(rows)
+
+      if (missingFields.length > 0 || !lineItemsValidation.valid) {
+        const errors = [
+          ...missingFields.map((field) => `${field} is required`),
+          ...lineItemsValidation.errors,
+        ]
+        showToast(errors.join(' • '), 'error')
+        return
+      }
+
+      showToast(t('generating_preview') || 'Generating PDF preview...', 'loading')
+      setTimeout(() => {
+        setShowPreview(true)
+      }, 1000)
+    } else {
+      setShowPreview(false)
+    }
+  }, [showPreview, formData, rows, showToast, t])
+
+  const handleDownloadShortcut = useCallback(() => {
+    const downloadValidation = validateBeforeDownload(formData, rows)
+    if (!downloadValidation.valid) {
+      const errors = downloadValidation.errors
+      showToast(errors.join(' • '), 'error')
+      return
+    }
+    // Find and click the download button
+    const downloadButton = document.querySelector('a[download]')
+    if (downloadButton) {
+      downloadButton.click()
+    }
+  }, [formData, rows, showToast])
+
+  const handleCloseModals = useCallback(() => {
+    setShowPreview(false)
+    setShowClearDialog(false)
+    setShowShortcuts(false)
+  }, [])
+
+  const handleShowHelp = useCallback(() => {
+    setShowShortcuts(true)
+  }, [])
+
+  // Initialize keyboard shortcuts
+  useKeyboardShortcuts({
+    onPreviewToggle: handlePreviewToggleShortcut,
+    onDownload: handleDownloadShortcut,
+    onCloseModals: handleCloseModals,
+    onShowHelp: handleShowHelp,
+  })
+
   const calculateTotal = useCallback(() => {
     let sum = 0
     rows.forEach((row) => {
@@ -462,6 +525,7 @@ const Templates = () => {
           onConfirm={handleConfirmClear}
           onCancel={handleCancelClear}
         />
+        <KeyboardShortcutsModal isOpen={showShortcuts} onClose={() => setShowShortcuts(false)} />
       </main>
     </>
   )
