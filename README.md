@@ -5,7 +5,7 @@
 [![Build Status](https://github.com/mlaplante/invoice-dragontest/actions/workflows/test.yml/badge.svg)](https://github.com/mlaplante/invoice-dragontest/actions/workflows/test.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-**Live App:** [invoicedragon.com](https://invoicedragon.com)
+**Live App:** [laplantedevinvoices.netlify.app](https://laplantedevinvoices.netlify.app)
 
 ---
 
@@ -38,7 +38,7 @@ The result: fill a form, select a template, download PDF. Done.
 
 ### For Users
 
-Visit **[invoicedragon.com](https://invoicedragon.com)** to start creating invoices immediately. No installation required.
+Visit **[laplantedevinvoices.netlify.app](https://laplantedevinvoices.netlify.app)** to start creating invoices immediately. No installation required.
 
 ### For Developers
 
@@ -283,7 +283,7 @@ Just include the original copyright notice.
 ## 📞 Support
 
 ### For Users
-- Visit [invoicedragon.com](https://invoicedragon.com)
+- Visit [laplantedevinvoices.netlify.app](https://laplantedevinvoices.netlify.app)
 - Check the in-app help or contact page
 
 ### For Developers
