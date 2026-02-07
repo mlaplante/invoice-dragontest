@@ -1,6 +1,6 @@
 import styles from './preview.module.scss'
 import { Document, PDFViewer } from '@react-pdf/renderer'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import Template1 from './Templates/Template1'
 import Template2 from './Templates/Template2'
 import Template3 from './Templates/Template3'
