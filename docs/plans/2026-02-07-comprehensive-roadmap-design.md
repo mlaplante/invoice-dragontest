@@ -50,7 +50,10 @@ These were discovered during a live audit of https://laplantedevinvoices.netlify
 
 ---
 
-## Phase 1: Emergency Fixes (1-2 days)
+## Phase 1: Emergency Fixes ✅ COMPLETE (1-2 days)
+
+**Status:** Completed February 7, 2026
+**Commit:** e267253 (fix: Phase 1 Emergency Fixes - resolve production bugs)
 
 **Goal:** Make the core happy path work in production.
 
@@ -66,12 +69,19 @@ These were discovered during a live audit of https://laplantedevinvoices.netlify
 
 **Files:** `src/pages/templates.js`, `src/components/Preview/Templates/Template1-4.jsx`
 
-**Acceptance Criteria:**
+**Implementation Completed:**
 
-- [ ] Zero `/undefined` network requests in console
-- [ ] PDF renders without logo when none uploaded
-- [ ] PDF renders with logo when user uploads one
-- [ ] "Not valid image extension" warnings eliminated
+- ✅ Changed `useState(logoP)` to `useState(null)` in `src/pages/templates.js` line 43
+- ✅ Updated `handleRemoveLogo()` to reset logo to null
+- ✅ Updated `handleClearSavedData()` to reset logo to null
+- ✅ Removed unused `logoP` import (technical debt)
+
+**Acceptance Criteria - All Met:**
+
+- ✅ Zero `/undefined` network requests in console
+- ✅ PDF renders without logo when none uploaded
+- ✅ PDF renders with logo when user uploads one
+- ✅ "Not valid image extension" warnings eliminated
 
 ### 1.2 Fix PDF Preview Title ("undefined Invoice")
 
@@ -79,12 +89,14 @@ These were discovered during a live audit of https://laplantedevinvoices.netlify
 
 **Fix:** Default to empty string or a sensible fallback: `title={`${clientName || 'New'} ${formName}`}`
 
-**Files:** `src/components/Preview/Preview.jsx`
+**Implementation Completed:**
 
-**Acceptance Criteria:**
+- ✅ Updated `src/components/Preview/Preview.jsx` line 40 with: `title={`${clientName || 'New'} ${formName}`}`
 
-- [ ] Preview title shows "New Invoice" when no client name entered
-- [ ] Preview title shows "ClientName Invoice" when entered
+**Acceptance Criteria - All Met:**
+
+- ✅ Preview title shows "New Invoice" when no client name entered
+- ✅ Preview title shows "ClientName Invoice" when client name entered
 
 ### 1.3 Fix Header Logo Visibility
 
@@ -92,13 +104,16 @@ These were discovered during a live audit of https://laplantedevinvoices.netlify
 
 **Fix:** Inspect the `header.module.scss` for the `.pageLogo` class. Ensure the Image has explicit width/height and the container isn't collapsing.
 
-**Files:** `src/components/Header/Header.jsx`, `src/components/Header/header.module.scss`
+**Implementation Completed:**
 
-**Acceptance Criteria:**
+- ✅ Added `.pageLogo` CSS class to `src/components/Header/header.module.scss` with width/height sizing (40px/32px on mobile)
+- ✅ Added `width={40} height={40}` attributes to Image component in `src/components/Header/Header.jsx`
 
-- [ ] Logo visible in header on both landing page and templates page
-- [ ] Logo links to home page
-- [ ] Proper sizing on mobile and desktop
+**Acceptance Criteria - All Met:**
+
+- ✅ Logo now visible in header on landing page and templates page
+- ✅ Logo is clickable and links to home page
+- ✅ Proper sizing on mobile (32px) and desktop (40px)
 
 ### 1.4 Fix Mobile Dropdown Overlap
 
@@ -106,13 +121,16 @@ These were discovered during a live audit of https://laplantedevinvoices.netlify
 
 **Fix:** Add `position: relative` to container, use `position: absolute; right: 0; bottom: 100%` (open upward on mobile) or ensure z-index is correct.
 
-**Files:** `src/components/moreMenu.module.scss`
+**Implementation Completed:**
 
-**Acceptance Criteria:**
+- ✅ Updated `src/components/moreMenu.module.scss` mobile media query
+- ✅ Reduced width to 160px and centered with `left: 50%; transform: translateX(-50%)`
 
-- [ ] Dropdown doesn't overlap form content on mobile
-- [ ] Menu is fully visible within viewport
-- [ ] Click-outside dismissal still works
+**Acceptance Criteria - All Met:**
+
+- ✅ Dropdown no longer overlaps form content on mobile
+- ✅ Menu fully visible within viewport and centered
+- ✅ Click-outside dismissal still works correctly
 
 ### 1.5 Wire Up Help & Support Button
 
@@ -120,12 +138,16 @@ These were discovered during a live audit of https://laplantedevinvoices.netlify
 
 **Fix:** Add a simple action — either link to a help page/README, open a tooltip with keyboard shortcuts, or link to the GitHub repository.
 
-**Files:** `src/components/Header/Header.jsx`
+**Implementation Completed:**
 
-**Acceptance Criteria:**
+- ✅ Added `onClick={() => window.open('/README.md', '_blank')}` to Header button
+- ✅ Added `aria-label="Help and support documentation"` for accessibility
 
-- [ ] Button triggers a visible action (tooltip, link, or modal)
-- [ ] Action is useful to the user
+**Acceptance Criteria - All Met:**
+
+- ✅ Button now triggers visible action (opens README in new tab)
+- ✅ Action is useful to users (access documentation)
+- ✅ Accessible with aria-label
 
 ---
 
