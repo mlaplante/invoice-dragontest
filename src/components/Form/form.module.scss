@@ -14,21 +14,28 @@
 .header {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 60px;
+  align-items: flex-start;
+  margin-bottom: 40px;
+  gap: 24px;
 
   @media screen and (max-width: 768px) {
     flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 
   .invoice__title {
-    font-size: 2rem;
-  }
-  .input__default {
-    width: 48%;
-    max-height: 45px;
+    font-size: 3.2rem;
+    font-weight: 800;
+    color: #111827;
+    border: none;
+    padding: 8px 0;
+    flex: 1;
+    width: 100%;
 
-    @media screen and (max-width: 768px) {
-      width: 100%;
+    &:focus {
+      box-shadow: none;
+      border-bottom: 2px solid #3b82f6;
     }
   }
 
@@ -36,22 +43,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #fff;
-    border: 1px solid #aaa;
-    border-radius: 3px;
-    border: none;
+    justify-content: flex-start;
     cursor: pointer;
     position: relative;
 
-    &:hover {
-      .image__label {
-        display: flex;
-      }
-    }
-
     @media screen and (max-width: 768px) {
-      display: block;
-      margin-top: 15px;
+      width: 100%;
+      margin-top: 24px;
     }
   }
   .logo__input {
@@ -110,6 +108,7 @@
     line-height: 1;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: all 0.2s ease;
+    z-index: 10;
 
     &:hover {
       background: #dc2626;
@@ -147,11 +146,6 @@
     background-color: #eff6ff;
     text-decoration: underline;
   }
-}
-.logoIcon {
-  width: 20px;
-  height: 20px;
-  margin-left: 5px;
 }
 
 .invoice__details {
