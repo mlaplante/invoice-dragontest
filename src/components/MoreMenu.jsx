@@ -1,9 +1,11 @@
 import { useState, useRef, useEffect } from 'react'
 import styles from './moreMenu.module.scss'
 import useTranslation from 'next-translate/useTranslation'
+import Settings from './Settings/Settings'
 
 const MoreMenu = ({ onClearData, onLoadExampleData }) => {
   const [isActive, setIsActive] = useState(false)
+  const [showSettings, setShowSettings] = useState(false)
   const menuRef = useRef(null)
   const { t } = useTranslation('common')
 
@@ -15,6 +17,11 @@ const MoreMenu = ({ onClearData, onLoadExampleData }) => {
   const handleExampleClick = () => {
     setIsActive(false)
     onLoadExampleData()
+  }
+
+  const handleSettingsClick = () => {
+    setIsActive(false)
+    setShowSettings(true)
   }
 
   useEffect(() => {
@@ -45,7 +52,7 @@ const MoreMenu = ({ onClearData, onLoadExampleData }) => {
           <button className={styles.menuItem} onClick={handleExampleClick}>
             <span className={styles.icon}>📝</span> {t('load_example_data') || 'Load Example Data'}
           </button>
-          <button className={styles.menuItem} onClick={() => {}}>
+          <button className={styles.menuItem} onClick={handleSettingsClick}>
             <span className={styles.icon}>⚙️</span> {t('settings') || 'Settings'}
           </button>
           <div className={styles.divider}></div>
@@ -54,6 +61,8 @@ const MoreMenu = ({ onClearData, onLoadExampleData }) => {
           </button>
         </div>
       )}
+
+      <Settings isOpen={showSettings} onClose={() => setShowSettings(false)} />
     </div>
   )
 }

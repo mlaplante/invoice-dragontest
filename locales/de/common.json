@@ -75,5 +75,15 @@
   "downloading": "Wird heruntergeladen...",
   "complete_form_to_download": "Bitte füllen Sie alle erforderlichen Felder aus, um herunterzuladen",
   "settings": "Einstellungen",
-  "invoice_details": "Rechnungsdetails"
+  "invoice_details": "Rechnungsdetails",
+  "general": "Allgemein",
+  "data": "Daten",
+  "auto_increment_invoices": "Rechnungsnummern automatisch erhöhen",
+  "default_notes": "Standard Zahlungsbedingungen/Notizen",
+  "default_notes_placeholder": "z.B.: Zahlung innerhalb von 30 Tagen fällig",
+  "export_data": "Daten exportieren (JSON)",
+  "export_hint": "Download einer Sicherung Ihrer Einstellungen und Unternehmensgegevnisse",
+  "clear_all_data": "Alle Daten Löschen",
+  "clear_all_hint": "Alle gespeicherten Daten dauerhaft löschen (kann nicht rückgängig gemacht werden)",
+  "clear_all_confirm": "Dies löscht alle Ihre Daten. Sind Sie sicher?"
 }

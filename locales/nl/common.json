@@ -75,5 +75,15 @@
   "generating_preview": "PDF-voorbeeld genereren...",
   "downloading": "Downloaden...",
   "complete_form_to_download": "Vul alstublieft alle verplichte velden in om te downloaden",
-  "settings": "Instellingen"
+  "settings": "Instellingen",
+  "general": "Algemeen",
+  "data": "Gegevens",
+  "auto_increment_invoices": "Automatisch factuurnummers verhogen",
+  "default_notes": "Standaard betalingsvoorwaarden/notities",
+  "default_notes_placeholder": "bijv: Betaling verschuldigd binnen 30 dagen",
+  "export_data": "Gegevens exporteren (JSON)",
+  "export_hint": "Download een back-up van uw instellingen en bedrijfsgegevens",
+  "clear_all_data": "Alle Gegevens Wissen",
+  "clear_all_hint": "Alle opgeslagen gegevens permanent verwijderen (kan niet ongedaan gemaakt worden)",
+  "clear_all_confirm": "Dit verwijdert al uw gegevens. Weet u het zeker?"
 }

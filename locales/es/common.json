@@ -75,5 +75,15 @@
   "generating_preview": "Generando vista previa de PDF...",
   "downloading": "Descargando...",
   "complete_form_to_download": "Por favor complete todos los campos obligatorios para descargar",
-  "settings": "Configuración"
+  "settings": "Configuración",
+  "general": "General",
+  "data": "Datos",
+  "auto_increment_invoices": "Auto-incrementar números de factura",
+  "default_notes": "Términos de pago/notas por defecto",
+  "default_notes_placeholder": "ej: Pago debido en 30 días",
+  "export_data": "Exportar Datos (JSON)",
+  "export_hint": "Descargar una copia de seguridad de su configuración e información de empresa",
+  "clear_all_data": "Borrar Todos los Datos",
+  "clear_all_hint": "Eliminar permanentemente todos los datos guardados (no se puede deshacer)",
+  "clear_all_confirm": "Esto borrará todos sus datos. ¿Está seguro?"
 }

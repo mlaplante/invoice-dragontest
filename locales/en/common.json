@@ -74,5 +74,15 @@
   "generating_preview": "Generating PDF preview...",
   "downloading": "Downloading...",
   "complete_form_to_download": "Please fill in all required fields to download",
-  "settings": "Settings"
+  "settings": "Settings",
+  "general": "General",
+  "data": "Data",
+  "auto_increment_invoices": "Auto-increment invoice numbers",
+  "default_notes": "Default payment terms/notes",
+  "default_notes_placeholder": "e.g., Payment due within 30 days",
+  "export_data": "Export Data (JSON)",
+  "export_hint": "Download a backup of your settings and company info",
+  "clear_all_data": "Clear All Data",
+  "clear_all_hint": "Permanently delete all saved data (cannot be undone)",
+  "clear_all_confirm": "This will delete all your data. Are you sure?"
 }

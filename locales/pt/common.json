@@ -75,5 +75,15 @@
   "downloading": "Baixando...",
   "complete_form_to_download": "Por favor, preencha todos os campos obrigatórios para fazer download",
   "settings": "Configurações",
-  "invoice_details": "Detalhes da Fatura"
+  "invoice_details": "Detalhes da Fatura",
+  "general": "Geral",
+  "data": "Dados",
+  "auto_increment_invoices": "Auto-incrementar números de fatura",
+  "default_notes": "Condições de pagamento/notas padrão",
+  "default_notes_placeholder": "ex: Pagamento devido em 30 dias",
+  "export_data": "Exportar Dados (JSON)",
+  "export_hint": "Baixe um backup de suas configurações e informações de empresa",
+  "clear_all_data": "Limpar Todos os Dados",
+  "clear_all_hint": "Excluir permanentemente todos os dados salvos (não pode ser desfeito)",
+  "clear_all_confirm": "Isso excluirá todos os seus dados. Tem certeza?"
 }
