@@ -1,10 +1,5 @@
 import styles from './invoiceTemplate.module.scss'
 import Image from 'next/image'
-import invTemp1 from '../../assets/images/invTemp1.png'
-import invTemp2 from '../../assets/images/invTemp2.png'
-import invTemp3 from '../../assets/images/invTemp3.png'
-import invTemp4 from '../../assets/images/invTemp4.png'
-import { useState } from 'react'
 
 import useTranslation from 'next-translate/useTranslation'
 
@@ -35,8 +30,10 @@ const InvoiceTemplate = ({ template, changeTemplate }) => {
             <div className={styles.imgContainer}>
               <Image
                 className={styles.templateImg}
-                src={invTemp1}
+                src="/assets/images/invTemp1.png"
                 alt={t('template_option_1')}
+                width={300}
+                height={400}
                 priority
                 unoptimized
               />
@@ -61,8 +58,10 @@ const InvoiceTemplate = ({ template, changeTemplate }) => {
             <div className={styles.imgContainer}>
               <Image
                 className={styles.templateImg}
-                src={invTemp2}
+                src="/assets/images/invTemp2.png"
                 alt={t('template_option_2')}
+                width={300}
+                height={400}
                 priority
                 unoptimized
               />
@@ -87,8 +86,10 @@ const InvoiceTemplate = ({ template, changeTemplate }) => {
             <div className={styles.imgContainer}>
               <Image
                 className={styles.templateImg}
-                src={invTemp3}
+                src="/assets/images/invTemp3.png"
                 alt={t('template_option_3')}
+                width={300}
+                height={400}
                 priority
                 unoptimized
               />
@@ -112,8 +113,10 @@ const InvoiceTemplate = ({ template, changeTemplate }) => {
             <div className={styles.imgContainer}>
               <Image
                 className={styles.templateImg}
-                src={invTemp4}
+                src="/assets/images/invTemp4.png"
                 alt={t('template_option_4')}
+                width={300}
+                height={400}
                 priority
                 unoptimized
               />
