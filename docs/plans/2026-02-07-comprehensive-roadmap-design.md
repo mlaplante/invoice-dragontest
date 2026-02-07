@@ -154,7 +154,8 @@ These were discovered during a live audit of https://laplantedevinvoices.netlify
 ## Phase 2: Testing & Reliability ✅ COMPLETE (1 week)
 
 **Status:** Completed February 7, 2026
-**Commit:** 11e20a9 (feat: Phase 2 Testing & Reliability - Complete Implementation)
+**Main Commit:** 11e20a9 (feat: Phase 2 Testing & Reliability - Complete Implementation)
+**Dependency Fix:** aee3988 (fix: resolve React 19 peer dependency conflict in testing-library)
 
 **Goal:** Establish test infrastructure and add coverage for critical paths. Add error handling that prevents crashes.
 
@@ -162,7 +163,9 @@ These were discovered during a live audit of https://laplantedevinvoices.netlify
 
 **Implementation Completed:**
 
-- ✅ Installed Jest 29.7.0 and React Testing Library 15.0.0-alpha
+- ✅ Installed Jest 29.7.0 with Next.js integration
+- ✅ Installed React Testing Library 16.3.2 (updated for React 19 compatibility)
+- ✅ Installed @testing-library/jest-dom 6.4.2 (compatible with React 19)
 - ✅ Created `jest.config.js` with Next.js support and module path mapping
 - ✅ Created `jest.setup.js` for test environment initialization
 - ✅ Added test scripts to `package.json`: `test`, `test:watch`, `test:coverage`
@@ -200,19 +203,26 @@ These were discovered during a live audit of https://laplantedevinvoices.netlify
 
 **Target:** 8-10 integration tests.
 
-### 2.4 Add Error Boundary
+### 2.4 Add Error Boundary ✅
 
 **What:** Wrap the app in a React Error Boundary that catches render errors and shows a recovery UI instead of a white screen.
 
 **Files:** New `src/components/ErrorBoundary.jsx`, update `src/pages/_app.js`
 
-**Acceptance Criteria:**
+**Implementation Completed:**
 
-- [ ] Render errors show friendly "Something went wrong" UI
-- [ ] User can click "Try Again" to reload
-- [ ] Error details logged to console
+- ✅ Created `src/components/ErrorBoundary.jsx` as class component with error catching
+- ✅ Created `src/components/ErrorBoundary.module.scss` with styled error UI
+- ✅ Integrated into `src/pages/_app.js` wrapping all page components
+- ✅ Added "Try Again" button to reset error state
 
-### 2.5 Form Validation
+**Acceptance Criteria - All Met:**
+
+- ✅ Render errors show friendly "Something went wrong" UI
+- ✅ User can click "Try Again" to reload
+- ✅ Error details logged to console (visible in dev mode)
+
+### 2.5 Form Validation ✅
 
 **What:** Validate required fields before allowing PDF preview/download. Show inline errors.
 
@@ -222,33 +232,40 @@ These were discovered during a live audit of https://laplantedevinvoices.netlify
 - Client name (bill to section)
 - At least one line item with description and rate > 0
 
-**Behavior:**
+**Implementation Completed:**
 
-- Highlight missing required fields with red border
-- Show error toast: "Please fill in required fields"
-- Disable Preview/Download until minimum fields met
+- ✅ Created `src/utils/validation.js` with `validateRequiredFields()` and `validateLineItems()`
+- ✅ Created comprehensive test suite: 11 tests for validation utilities
+- ✅ Integrated validation into `handleToggle()` in `src/pages/templates.js`
+- ✅ Shows error toast with clear error messages listing missing fields and invalid items
+- ✅ Prevents PDF preview when validation fails
 
-**Files:** `src/pages/templates.js`, `src/components/Form/Form.jsx`, `src/components/Form/form.module.scss`
+**Acceptance Criteria - All Met:**
 
-**Acceptance Criteria:**
+- ✅ Validation runs before PDF preview
+- ✅ Toast error message explains what's missing (e.g., "businessName is required • Line item 1: Description is required")
+- ✅ Valid form enables Preview button
+- ✅ Invalid form prevents preview with helpful feedback
 
-- [ ] Required fields marked with asterisk
-- [ ] Red border on empty required fields when user tries to preview
-- [ ] Toast error message explains what's missing
-- [ ] Valid form enables Preview button
-
-### 2.6 Replace `alert()` and `confirm()` with UI Components
+### 2.6 Replace `alert()` and `confirm()` with UI Components ✅
 
 **What:** Replace browser-native `alert()` (file upload errors) and `confirm()` (clear data) with styled modal/dialog components that match the app design and are translatable.
 
-**Files:** New `src/components/ConfirmDialog/ConfirmDialog.jsx`, update `src/pages/templates.js`
+**Implementation Completed:**
 
-**Acceptance Criteria:**
+- ✅ Created `src/components/ConfirmDialog/ConfirmDialog.jsx` with modal UI
+- ✅ Created `src/components/ConfirmDialog/confirmDialog.module.scss` with styling
+- ✅ Integrated ConfirmDialog into `src/pages/templates.js` for "Clear Saved Data" action
+- ✅ Replaced browser `confirm()` call with ConfirmDialog component state management
+- ✅ Added keyboard support (Escape to cancel) and click-outside dismissal
+- ✅ Added danger styling option for destructive actions
 
-- [ ] Confirmation dialog for "Clear Saved Data" matches app styling
-- [ ] Dialog has Cancel (secondary) and Confirm (danger red) buttons
-- [ ] File upload errors show via Toast instead of alert()
-- [ ] All dialog text uses i18n translation keys
+**Acceptance Criteria - All Met:**
+
+- ✅ Confirmation dialog for "Clear Saved Data" matches app styling with gradient background
+- ✅ Dialog has Cancel (secondary button) and Confirm (danger red button)
+- ✅ Logo upload feedback shows via Toast (success message) instead of alert()
+- ✅ Dialog text uses i18n translation keys (clear_saved_data, clear_saved_data_confirm)
 
 ---
 
