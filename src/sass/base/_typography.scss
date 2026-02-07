@@ -1,6 +1,24 @@
+@import '../utilities/variables';
+
 body {
   font-family: 'Poppins', sans-serif;
-  // font-size: 1.6rem;
+  color: $gray-dark;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+}
+
+.amount-text {
+  font-family: 'Inter', monospace;
 }
 
 html {
@@ -9,6 +27,7 @@ html {
 
 a {
   text-decoration: none;
+  transition: $transition-base;
 }
 
 .padding {

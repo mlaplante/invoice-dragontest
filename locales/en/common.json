@@ -64,8 +64,12 @@
   "website": "Website",
   "website_placeholder": "https://example-website.com",
   "clear_saved_data": "Clear Saved Data",
+  "load_example_data": "Load Example Data",
+  "all_data_cleared": "✓ All data cleared",
   "clear_saved_data_confirm": "Are you sure you want to clear your saved company information and logo?",
   "logo_saved": "Logo saved successfully",
+  "logo_removed": "Logo removed",
+  "example_data_loaded": "Example data loaded",
   "info_saved": "Company info saved automatically",
   "generating_preview": "Generating PDF preview..."
 }

@@ -1,0 +1,95 @@
+@import '../sass/utilities/variables';
+
+// Buttons
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border-radius: $radius-button;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all $transition-base;
+  border: 1px solid transparent;
+  gap: 8px;
+  min-height: 44px;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.btn-primary {
+  @extend .btn;
+  background-color: $primary-blue;
+  color: $white;
+
+  &:hover:not(:disabled) {
+    background-color: $primary-dark;
+    box-shadow: $shadow-md;
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+}
+
+.btn-secondary {
+  @extend .btn;
+  background-color: $gray-light;
+  color: $gray-dark;
+  border-color: darken($gray-light, 10%);
+
+  &:hover:not(:disabled) {
+    background-color: darken($gray-light, 5%);
+    box-shadow: $shadow-sm;
+  }
+}
+
+.btn-danger {
+  @extend .btn;
+  background-color: $error-red;
+  color: $white;
+
+  &:hover:not(:disabled) {
+    background-color: darken($error-red, 10%);
+    box-shadow: $shadow-md;
+  }
+}
+
+.btn-success {
+  @extend .btn;
+  background-color: $success-green;
+  color: $white;
+
+  &:hover:not(:disabled) {
+    background-color: darken($success-green, 10%);
+    box-shadow: $shadow-md;
+  }
+}
+
+// Cards
+.card {
+  background-color: $white;
+  border-radius: $radius-card;
+  box-shadow: $shadow-md;
+  border: 1px solid $gray-light;
+  overflow: hidden;
+}
+
+// Inputs
+.input-field {
+  border-radius: $radius-input;
+  border: 1px solid #d1d5db;
+  padding: 10px 16px;
+  transition: all $transition-base;
+  outline: none;
+
+  &:focus {
+    border-color: $primary-blue;
+    box-shadow: 0 0 0 3px rgba($primary-blue, 0.1);
+  }
+}

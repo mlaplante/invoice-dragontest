@@ -82,6 +82,9 @@ const Templates = () => {
   }
 
   const handleLogoUpdate = (e) => {
+    const file = e.target.files[0]
+    if (!file) return
+
     const reader = new FileReader()
     reader.onload = () => {
       if (reader.readyState === 2) {
@@ -91,7 +94,67 @@ const Templates = () => {
         showToast(t('logo_saved') || 'Logo saved successfully')
       }
     }
-    reader.readAsDataURL(e.target.files[0])
+    reader.readAsDataURL(file)
+  }
+
+  const handleRemoveLogo = () => {
+    setLogo(logoP)
+    setLogoUpdated(false)
+    clearLogo()
+    showToast(t('logo_removed') || 'Logo removed')
+  }
+
+  const handleLoadExampleData = () => {
+    const exampleData = {
+      formName: 'Invoice',
+      businessName: 'Dragon Corp',
+      email: 'hello@dragoncorp.com',
+      address: '123 Fire Breath Way',
+      city: 'Magical City, Dreamland',
+      zipcode: '99999',
+      phone: '(555) 123-4567',
+      website: 'https://dragoncorp.com',
+      clientName: 'Future Client Inc.',
+      clientEmail: 'contact@futureclient.com',
+      clientAddress: '456 Opportunity Ave',
+      clientCity: 'Business Bay, Commerce',
+      clientZipcode: '11111',
+      clientPhone: '(555) 987-6543',
+      date: new Date().toISOString().split('T')[0],
+      InvoiceNo: 'INV-2026-001',
+      notes: 'Thank you for your business! Please pay within 30 days.',
+    }
+
+    const exampleRows = [
+      {
+        id: 0,
+        description: 'Web Design Services',
+        details: 'Professional website design and development',
+        rate: 1500,
+        quantity: 1,
+        amount: '1500.00',
+      },
+      {
+        id: 1,
+        description: 'Branding Package',
+        details: 'Logo, typography, and color palette',
+        rate: 800,
+        quantity: 1,
+        amount: '800.00',
+      },
+      {
+        id: 2,
+        description: 'Consulting',
+        details: 'Strategy sessions (per hour)',
+        rate: 100,
+        quantity: 5,
+        amount: '500.00',
+      },
+    ]
+
+    setFormData(exampleData)
+    setRows(exampleRows)
+    showToast(t('example_data_loaded') || 'Example data loaded')
   }
 
   const handleFormChange = (name, value) => {
@@ -188,6 +251,7 @@ const Templates = () => {
       // Reset logo
       setLogo(logoP)
       setLogoUpdated(false)
+      showToast(t('all_data_cleared') || '✓ All data cleared')
     }
   }
 
@@ -272,6 +336,7 @@ const Templates = () => {
                       onRowAdd={handleRowAdd}
                       onRowRemove={handleRowRemove}
                       onTableUpdate={handleTableUpdate}
+                      onRemoveLogo={handleRemoveLogo}
                     />
                   )}
 
@@ -311,7 +376,10 @@ const Templates = () => {
                         onCurrencyModify={handleCurrencyModify}
                       />
                     )}
-                    <MoreMenu onClearData={handleClearSavedData} />
+                    <MoreMenu
+                      onClearData={handleClearSavedData}
+                      onLoadExampleData={handleLoadExampleData}
+                    />
                   </div>
                 </div>
               </div>

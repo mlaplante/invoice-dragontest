@@ -18,6 +18,7 @@ const Form = ({
   onTableUpdate,
   onRowAdd,
   onRowRemove,
+  onRemoveLogo,
 }) => {
   const [total, setTotal] = useState(0)
   const imageRef = useRef(null)
@@ -40,12 +41,24 @@ const Form = ({
     onRowRemove(id)
   }
 
+  const handleRemoveLogo = (e) => {
+    e.stopPropagation()
+    onRemoveLogo()
+  }
+
   const changeImage = () => {
     imageRef.current.click()
   }
 
   const imageHandler = (e) => {
-    updateLogo(e)
+    const file = e.target.files[0]
+    if (file) {
+      if (file.size > 5 * 1024 * 1024) {
+        alert('File is too large. Please select an image smaller than 5MB.')
+        return
+      }
+      updateLogo(e)
+    }
   }
 
   useEffect(() => {
@@ -88,34 +101,50 @@ const Form = ({
             />
             <div className={styles.img__holder} onClick={changeImage}>
               {logo && (
-                <Image
-                  src={logo}
-                  className={styles.logo}
-                  alt="company logo"
-                  width={150}
-                  height={150}
-                />
+                <div className={styles.logoContainer}>
+                  <Image
+                    src={logo}
+                    className={styles.logo}
+                    alt="company logo"
+                    width={150}
+                    height={150}
+                  />
+                  <button
+                    type="button"
+                    className={styles.removeLogoBtn}
+                    onClick={handleRemoveLogo}
+                    title="Remove Logo"
+                  >
+                    ×
+                  </button>
+                </div>
+              )}
+              {!logoUpdated && (
+                <div className={styles.uploadPlaceholder}>
+                  <svg
+                    aria-hidden="true"
+                    focusable="false"
+                    data-prefix="fas"
+                    data-icon="image"
+                    role="img"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 512 512"
+                    className={styles.placeholderIcon}
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M464 448H48c-26.51 0-48-21.49-48-48V112c0-26.51 21.49-48 48-48h416c26.51 0 48 21.49 48 48v288c0 26.51-21.49 48-48 48zM112 120c-30.928 0-56 25.072-56 56s25.072 56 56 56 56-25.072 56-56-25.072-56-56-56zM64 384h384V272l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L208 320l-55.515-55.515c-4.686-4.686-12.284-4.686-16.971 0L64 336v48z"
+                    ></path>
+                  </svg>
+                  <span>{t('add_logo')}</span>
+                </div>
               )}
             </div>
-            <label htmlFor="logo" className={styles.image__label}>
-              <span>{logoUpdated ? `${t('update_logo')}` : `${t('add_logo')}`}</span>
-              <span className={styles.logoIcon}>
-                <svg
-                  aria-hidden="true"
-                  focusable="false"
-                  data-prefix="fas"
-                  data-icon="image"
-                  role="img"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 512 512"
-                >
-                  <path
-                    fill="currentColor"
-                    d="M464 448H48c-26.51 0-48-21.49-48-48V112c0-26.51 21.49-48 48-48h416c26.51 0 48 21.49 48 48v288c0 26.51-21.49 48-48 48zM112 120c-30.928 0-56 25.072-56 56s25.072 56 56 56 56-25.072 56-56-25.072-56-56-56zM64 384h384V272l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L208 320l-55.515-55.515c-4.686-4.686-12.284-4.686-16.971 0L64 336v48z"
-                  ></path>
-                </svg>
-              </span>
-            </label>
+            {logoUpdated && (
+              <label htmlFor="logo" className={styles.image__label}>
+                <span>{t('update_logo')}</span>
+              </label>
+            )}
           </div>
         </div>
         <div className={styles.invoice__details}>

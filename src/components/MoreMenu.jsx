@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import styles from './moreMenu.module.scss'
 import useTranslation from 'next-translate/useTranslation'
 
-const MoreMenu = ({ onClearData }) => {
+const MoreMenu = ({ onClearData, onLoadExampleData }) => {
   const [isActive, setIsActive] = useState(false)
   const menuRef = useRef(null)
   const { t } = useTranslation('common')
@@ -10,6 +10,11 @@ const MoreMenu = ({ onClearData }) => {
   const handleClearClick = () => {
     setIsActive(false)
     onClearData()
+  }
+
+  const handleExampleClick = () => {
+    setIsActive(false)
+    onLoadExampleData()
   }
 
   useEffect(() => {
@@ -37,6 +42,9 @@ const MoreMenu = ({ onClearData }) => {
 
       {isActive && (
         <div className={styles.dropdown}>
+          <button className={styles.menuItem} onClick={handleExampleClick}>
+            <span className={styles.icon}>📝</span> {t('load_example_data') || 'Load Example Data'}
+          </button>
           <button className={styles.menuItem} onClick={() => {}}>
             <span className={styles.icon}>⚙️</span> Settings
           </button>
@@ -49,5 +57,4 @@ const MoreMenu = ({ onClearData }) => {
     </div>
   )
 }
-
 export default MoreMenu
