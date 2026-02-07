@@ -74,5 +74,6 @@
   "info_saved": "Información de la empresa guardada automáticamente",
   "generating_preview": "Generando vista previa de PDF...",
   "downloading": "Descargando...",
+  "complete_form_to_download": "Por favor complete todos los campos obligatorios para descargar",
   "settings": "Configuración"
 }

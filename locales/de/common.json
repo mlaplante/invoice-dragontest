@@ -73,6 +73,7 @@
   "info_saved": "Unternehmensgegevnisse automatisch gespeichert",
   "generating_preview": "PDF-Vorschau wird generiert...",
   "downloading": "Wird heruntergeladen...",
+  "complete_form_to_download": "Bitte füllen Sie alle erforderlichen Felder aus, um herunterzuladen",
   "settings": "Einstellungen",
   "invoice_details": "Rechnungsdetails"
 }

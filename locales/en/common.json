@@ -73,5 +73,6 @@
   "info_saved": "Company info saved automatically",
   "generating_preview": "Generating PDF preview...",
   "downloading": "Downloading...",
+  "complete_form_to_download": "Please fill in all required fields to download",
   "settings": "Settings"
 }

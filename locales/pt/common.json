@@ -73,6 +73,7 @@
   "info_saved": "Informações da empresa salvas automaticamente",
   "generating_preview": "Gerando visualização em PDF...",
   "downloading": "Baixando...",
+  "complete_form_to_download": "Por favor, preencha todos os campos obrigatórios para fazer download",
   "settings": "Configurações",
   "invoice_details": "Detalhes da Fatura"
 }

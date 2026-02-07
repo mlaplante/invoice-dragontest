@@ -382,36 +382,42 @@ const Templates = () => {
                     <button className={styles.action__btn} onClick={handleToggle}>
                       {showPreview ? `${t('back_to_edit')}` : `${t('preview_invoice')}`}
                     </button>
-                    <PDFDownloadLink
-                      document={pdf}
-                      fileName={`${formData.clientName}_${formData.formName}.pdf`}
-                      style={{ width: '100%', flex: isMobile ? 1 : 'unset' }}
-                    >
-                      {({ blob, url, loading, error }) => {
-                        const handleDownloadClick = () => {
-                          const downloadValidation = validateBeforeDownload(formData, rows)
+                    {(() => {
+                      const downloadValidation = validateBeforeDownload(formData, rows)
+                      const isFormValid = downloadValidation.valid
 
-                          if (!downloadValidation.valid) {
+                      return isFormValid ? (
+                        <PDFDownloadLink
+                          document={pdf}
+                          fileName={`${formData.clientName}_${formData.formName}.pdf`}
+                          style={{ width: '100%', flex: isMobile ? 1 : 'unset' }}
+                        >
+                          {({ blob, url, loading, error }) => (
+                            <button
+                              className={`${styles.action__btn} ${loading ? styles.loading : ''}`}
+                              disabled={loading}
+                            >
+                              {loading ? t('downloading') || 'Downloading...' : t('download_pdf')}
+                            </button>
+                          )}
+                        </PDFDownloadLink>
+                      ) : (
+                        <button
+                          className={styles.action__btn}
+                          disabled={true}
+                          onClick={() => {
                             const errors = downloadValidation.errors
                             showToast(errors.join(' • '), 'error')
-                            return
+                          }}
+                          title={
+                            t('complete_form_to_download') ||
+                            'Please fill in all required fields to download'
                           }
-
-                          // Validation passed, allow download to proceed
-                          // PDFDownloadLink will handle the rest
-                        }
-
-                        return (
-                          <button
-                            className={`${styles.action__btn} ${loading ? styles.loading : ''}`}
-                            onClick={handleDownloadClick}
-                            disabled={loading}
-                          >
-                            {loading ? t('downloading') || 'Downloading...' : t('download_pdf')}
-                          </button>
-                        )
-                      }}
-                    </PDFDownloadLink>
+                        >
+                          {t('download_pdf')}
+                        </button>
+                      )
+                    })()}
                     {!isMobile && (
                       <CurrencySelector
                         currencyCode={currencyCode}
