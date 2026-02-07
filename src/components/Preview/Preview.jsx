@@ -37,7 +37,7 @@ const PDF = ({
       author={owner}
       keywords="invoice, receipt"
       subject={`${businessName} Invoice`}
-      title={`${clientName} ${formName} `}
+      title={`${clientName || 'New'} ${formName}`}
     >
       {template === 'template1' && (
         <Template1

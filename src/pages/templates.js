@@ -12,7 +12,6 @@ import MoreMenu from '../components/MoreMenu'
 import styles from '@/styles/Home.module.scss'
 import Form from '../components/Form/Form'
 import Header from '@/components/Header/Header'
-import logoP from '../assets/images/placeholder-image.png'
 import Toast from '../components/Toast/Toast'
 import dynamic from 'next/dynamic'
 
@@ -35,12 +34,11 @@ const COMPANY_FIELDS = ['businessName', 'email', 'address', 'city', 'zipcode', '
 
 const Templates = () => {
   const { t } = useTranslation('common')
-  // const [service, setService] = useState('invoice');
 
   const [showPreview, setShowPreview] = useState(false)
   const [formData, setFormData] = useState({ formName: 'Invoice' })
   const [rows, setRows] = useState(Array(1).fill({ id: 0, quantity: 1, amount: '0.00' }))
-  const [logo, setLogo] = useState(logoP)
+  const [logo, setLogo] = useState(null)
   const [logoUpdated, setLogoUpdated] = useState(false)
   const [currencySymbol, setCurrencySymbol] = useState('$')
   const [currencyCode, setCurrencyCode] = useState('USD')
@@ -102,7 +100,7 @@ const Templates = () => {
   }
 
   const handleRemoveLogo = () => {
-    setLogo(logoP)
+    setLogo(null)
     setLogoUpdated(false)
     clearLogo()
     showToast(t('logo_removed') || 'Logo removed')
@@ -253,7 +251,7 @@ const Templates = () => {
         return newData
       })
       // Reset logo
-      setLogo(logoP)
+      setLogo(null)
       setLogoUpdated(false)
       showToast(t('all_data_cleared') || '✓ All data cleared')
     }

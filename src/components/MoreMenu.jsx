@@ -46,7 +46,7 @@ const MoreMenu = ({ onClearData, onLoadExampleData }) => {
             <span className={styles.icon}>📝</span> {t('load_example_data') || 'Load Example Data'}
           </button>
           <button className={styles.menuItem} onClick={() => {}}>
-            <span className={styles.icon}>⚙️</span> Settings
+            <span className={styles.icon}>⚙️</span> {t('settings') || 'Settings'}
           </button>
           <div className={styles.divider}></div>
           <button className={`${styles.menuItem} ${styles.danger}`} onClick={handleClearClick}>

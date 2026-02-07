@@ -52,6 +52,10 @@
   @media screen and (max-width: 768px) {
     bottom: calc(100% + 4px);
     top: auto;
+    width: 160px;
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 

@@ -12,7 +12,7 @@ const Header = () => {
     <div className={styles.header}>
       <div className={styles.logoSection}>
         <Link className={styles.pageLogo} href="/" passHref={true}>
-          <Image src={logo} alt="Page Logo" priority />
+          <Image src={logo} alt="Page Logo" width={40} height={40} priority />
         </Link>
         <div className={styles.breadcrumbs}>
           <Link href="/">{t('home') || 'Home'}</Link>
@@ -22,7 +22,12 @@ const Header = () => {
       </div>
       <div className={styles.aside}>
         <div className={styles.help}>
-          <button title="Help & Support" className={styles.helpBtn}>
+          <button
+            title="Help & Support"
+            className={styles.helpBtn}
+            onClick={() => window.open('/README.md', '_blank')}
+            aria-label="Help and support documentation"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"

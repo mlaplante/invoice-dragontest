@@ -71,5 +71,6 @@
   "logo_removed": "Logo removed",
   "example_data_loaded": "Example data loaded",
   "info_saved": "Company info saved automatically",
-  "generating_preview": "Generating PDF preview..."
+  "generating_preview": "Generating PDF preview...",
+  "settings": "Settings"
 }
