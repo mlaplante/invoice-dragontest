@@ -1,7 +1,7 @@
 // Utility functions for localStorage operations
 
-const COMPANY_INFO_KEY = 'invoiceDragonCompanyInfo';
-const LOGO_KEY = 'invoiceDragonLogo';
+const COMPANY_INFO_KEY = 'invoiceDragonCompanyInfo'
+const LOGO_KEY = 'invoiceDragonLogo'
 
 /**
  * Save company information to localStorage
@@ -10,12 +10,12 @@ const LOGO_KEY = 'invoiceDragonLogo';
 export const saveCompanyInfo = (companyInfo) => {
   if (typeof window !== 'undefined') {
     try {
-      localStorage.setItem(COMPANY_INFO_KEY, JSON.stringify(companyInfo));
+      localStorage.setItem(COMPANY_INFO_KEY, JSON.stringify(companyInfo))
     } catch (error) {
-      console.error('Error saving company info:', error);
+      console.error('Error saving company info:', error)
     }
   }
-};
+}
 
 /**
  * Load company information from localStorage
@@ -24,15 +24,15 @@ export const saveCompanyInfo = (companyInfo) => {
 export const loadCompanyInfo = () => {
   if (typeof window !== 'undefined') {
     try {
-      const saved = localStorage.getItem(COMPANY_INFO_KEY);
-      return saved ? JSON.parse(saved) : null;
+      const saved = localStorage.getItem(COMPANY_INFO_KEY)
+      return saved ? JSON.parse(saved) : null
     } catch (error) {
-      console.error('Error loading company info:', error);
-      return null;
+      console.error('Error loading company info:', error)
+      return null
     }
   }
-  return null;
-};
+  return null
+}
 
 /**
  * Clear company information from localStorage
@@ -40,12 +40,12 @@ export const loadCompanyInfo = () => {
 export const clearCompanyInfo = () => {
   if (typeof window !== 'undefined') {
     try {
-      localStorage.removeItem(COMPANY_INFO_KEY);
+      localStorage.removeItem(COMPANY_INFO_KEY)
     } catch (error) {
-      console.error('Error clearing company info:', error);
+      console.error('Error clearing company info:', error)
     }
   }
-};
+}
 
 /**
  * Save logo to localStorage
@@ -54,12 +54,12 @@ export const clearCompanyInfo = () => {
 export const saveLogo = (logoData) => {
   if (typeof window !== 'undefined') {
     try {
-      localStorage.setItem(LOGO_KEY, logoData);
+      localStorage.setItem(LOGO_KEY, logoData)
     } catch (error) {
-      console.error('Error saving logo:', error);
+      console.error('Error saving logo:', error)
     }
   }
-};
+}
 
 /**
  * Load logo from localStorage
@@ -68,14 +68,14 @@ export const saveLogo = (logoData) => {
 export const loadLogo = () => {
   if (typeof window !== 'undefined') {
     try {
-      return localStorage.getItem(LOGO_KEY);
+      return localStorage.getItem(LOGO_KEY)
     } catch (error) {
-      console.error('Error loading logo:', error);
-      return null;
+      console.error('Error loading logo:', error)
+      return null
     }
   }
-  return null;
-};
+  return null
+}
 
 /**
  * Clear logo from localStorage
@@ -83,9 +83,9 @@ export const loadLogo = () => {
 export const clearLogo = () => {
   if (typeof window !== 'undefined') {
     try {
-      localStorage.removeItem(LOGO_KEY);
+      localStorage.removeItem(LOGO_KEY)
     } catch (error) {
-      console.error('Error clearing logo:', error);
+      console.error('Error clearing logo:', error)
     }
   }
-};
+}

@@ -2,7 +2,7 @@
 
 > Generate invoices and receipts simply by filling a form.
 
-Invoice Dragon is a lightning-fast application that simplifies the process of generating professional Invoices and Receipts for your business needs. 
+Invoice Dragon is a lightning-fast application that simplifies the process of generating professional Invoices and Receipts for your business needs.
 
 Simply fill a form, select a template and generate your document!
 Visit the website at https://invoicedragon.com
@@ -19,18 +19,21 @@ Visit the website at https://invoicedragon.com
 
 ### Getting Started
 
-To start using Invoice Dragon, simply visit [Invoice Dragon.com](https://www.invoicedragon.com) . You can begin generating invoices immediately. 
+To start using Invoice Dragon, simply visit [Invoice Dragon.com](https://www.invoicedragon.com) . You can begin generating invoices immediately.
 
 ### Why did I build this?
-Over the years I've run a couple of businesses where I'd typically have to make invoices and receipts. 
-I've recently found the process of creating and editing invoice templates to be quite cumbersome, particularly when I have to make invoices for a good number of clients. The process of editing and ensuring everything is as I want it to be usually takes up too much time. 
+
+Over the years I've run a couple of businesses where I'd typically have to make invoices and receipts.
+I've recently found the process of creating and editing invoice templates to be quite cumbersome, particularly when I have to make invoices for a good number of clients. The process of editing and ensuring everything is as I want it to be usually takes up too much time.
 So I decided to build this app to ensure invoices and receipts can be built, reviewed and saved as PDF... all at lighting-fast speed.
 
 ### Contributions
+
 Yes please! Contributions are welcome! If you have any ideas, bug fixes, or enhancements, feel free to submit a PR :)
 
 ### License
-Invoice Dragon is a free software application released under the MIT License. 
+
+Invoice Dragon is a free software application released under the MIT License.
 
 ---
 

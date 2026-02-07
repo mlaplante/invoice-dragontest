@@ -1,9 +1,9 @@
 .wrapper {
-  color: #FFFFFF;
+  color: #ffffff;
 
   .main {
     min-height: calc((100vh - 80px) - 100px);
-    padding: 40px 40PX;
+    padding: 40px 40px;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -16,7 +16,7 @@
     color: #222;
     font-weight: 400;
     margin: 40px 0;
-    color: #FFFFFF;
+    color: #ffffff;
   }
   .text__sub {
     font-size: 24px;
@@ -35,12 +35,12 @@
     outline: none;
     border: 1px solid transparent;
     line-height: 48px;
-    transition: .1s ease-in-out;
-    transition-property: color,background-color,border-color;
+    transition: 0.1s ease-in-out;
+    transition-property: color, background-color, border-color;
   }
 
   .btn__primary {
-    background: #FFFFFF;
+    background: #ffffff;
     color: #1e87f0;
 
     &:hover {
@@ -50,28 +50,27 @@
 
   .btn__secondary {
     background-color: transparent;
-    color: rgba(255,255,255,.8);
+    color: rgba(255, 255, 255, 0.8);
     border: 1px solid #e5e5e5;
-    border-color: rgba(255,255,255,.6);
+    border-color: rgba(255, 255, 255, 0.6);
 
     &:hover {
-      border-color: #FFFFFF;
-      color: #FFFFFF;
+      border-color: #ffffff;
+      color: #ffffff;
     }
   }
-
 }
 
 .footer {
   padding: 40px 0;
-  color: rgba(255,255,255,.8);
+  color: rgba(255, 255, 255, 0.8);
   text-align: center;
 
   .link {
     cursor: pointer;
 
     &:hover {
-      color: rgba(255,255,255);
+      color: rgba(255, 255, 255);
     }
   }
 }

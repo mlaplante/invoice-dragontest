@@ -1,17 +1,15 @@
-import Script from "next/script";
-import Head from "next/head";
-import styles from "@/styles/Home.module.scss";
-import HomePage from "../components/Home/HomePage";
-import Header from "../components/Header/Header";
+import Script from 'next/script'
+import Head from 'next/head'
+import styles from '@/styles/Home.module.scss'
+import HomePage from '../components/Home/HomePage'
+import Header from '../components/Header/Header'
 
 export default function Home() {
   return (
     <>
       <Head>
         <title>Invoice Dragon</title>
-        <title>
-          Invoice Dragon - Create PDF Invoices and Receipts for Free
-        </title>
+        <title>Invoice Dragon - Create PDF Invoices and Receipts for Free</title>
         <meta
           property="og:title"
           content="Invoice Dragon - Create PDF Invoices and Receipts for Free"
@@ -40,5 +38,5 @@ export default function Home() {
         <HomePage />
       </main>
     </>
-  );
+  )
 }

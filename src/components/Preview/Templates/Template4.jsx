@@ -1,26 +1,47 @@
-import { Page, Text, Image, View, StyleSheet, Font } from '@react-pdf/renderer';
+import { Page, Text, Image, View, StyleSheet, Font } from '@react-pdf/renderer'
 
-const Template4 = ({totalAmount, rows, phone, email, logo, notes, currencySymbol, formName, businessName, InvoiceNo, date, clientName, clientAddress, clientCity, clientZipcode, clientPhone, clientEmail, address, city, zipcode, website}) => {
-
+const Template4 = ({
+  totalAmount,
+  rows,
+  phone,
+  email,
+  logo,
+  notes,
+  currencySymbol,
+  formName,
+  businessName,
+  InvoiceNo,
+  date,
+  clientName,
+  clientAddress,
+  clientCity,
+  clientZipcode,
+  clientPhone,
+  clientEmail,
+  address,
+  city,
+  zipcode,
+  website,
+}) => {
   Font.register({
     family: 'Garet',
-    src: "/assets/Garet-Book.ttf",
-  });
+    src: '/assets/Garet-Book.ttf',
+  })
 
   Font.register({
     family: 'Garet-Heavy',
-    src: "/assets/Garet-Heavy.ttf",
-  });
+    src: '/assets/Garet-Heavy.ttf',
+  })
 
   Font.register({
     family: 'Quicksand-Light',
-    src: "/assets/Quicksand-Light.ttf",
-  });
+    src: '/assets/Quicksand-Light.ttf',
+  })
 
   Font.register({
     family: 'Quicksand-Bold',
-    src: "/assets/Quicksand-Bold.ttf",
-  });
+    src: '/assets/Quicksand-Bold.ttf',
+  })
 
   const styles = StyleSheet.create({
     body: {
@@ -42,7 +63,7 @@ const Template4 = ({totalAmount, rows, phone, email, logo, notes, currencySymbol
     company__info: {
       display: 'flex',
       flexDirection: 'column',
-      fontSize: 11
+      fontSize: 11,
     },
     logo: {
       height: '70',
@@ -61,13 +82,13 @@ const Template4 = ({totalAmount, rows, phone, email, logo, notes, currencySymbol
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'space-between',
-      marginBottom: 15
+      marginBottom: 15,
     },
     section__tag: {
       fontFamily: 'Garet-Heavy',
       textTransform: 'uppercase',
       fontSize: 11,
-      marginBottom: 8
+      marginBottom: 8,
     },
     header__text: {
       fontFamily: 'Garet-Heavy',
@@ -130,7 +151,7 @@ const Template4 = ({totalAmount, rows, phone, email, logo, notes, currencySymbol
     // notes
     note__section: {
       fontSize: '10px',
-      maxWidth: '50%'
+      maxWidth: '50%',
     },
     // footer
     footer__section: {
@@ -153,18 +174,20 @@ const Template4 = ({totalAmount, rows, phone, email, logo, notes, currencySymbol
     },
     address__group: {
       display: 'flex',
-      flexDirection: 'row'
-    }
+      flexDirection: 'row',
+    },
   })
- 
-  return (  
+
+  return (
     <Page size="A4" style={styles.body}>
       <View>
         <View style={styles.header__section}>
           <View>
-            {logo && <View>
-              <Image src={logo} style={styles.logo}/>
-            </View>}
+            {logo && (
+              <View>
+                <Image src={logo} style={styles.logo} />
+              </View>
+            )}
           </View>
           <View>
             <View style={styles.header__text}>
@@ -174,10 +197,12 @@ const Template4 = ({totalAmount, rows, phone, email, logo, notes, currencySymbol
               {address && <Text>{address}</Text>}
               <View style={styles.address__group}>
                 {city && <Text>{city}</Text>}
-                {zipcode && <Text>
-                  {city && <Text>, </Text>}
-                  <Text>{zipcode}</Text>
-                </Text>}
+                {zipcode && (
+                  <Text>
+                    {city && <Text>, </Text>}
+                    <Text>{zipcode}</Text>
+                  </Text>
+                )}
               </View>
               {phone && <Text>{phone}</Text>}
               <Text>{email}</Text>
@@ -193,15 +218,18 @@ const Template4 = ({totalAmount, rows, phone, email, logo, notes, currencySymbol
             {clientEmail && <Text style={styles.text}>{clientEmail}</Text>}
             <View style={styles.address__group}>
               {clientAddress && <Text>{clientAddress}</Text>}
-              {clientCity && <Text style={styles.font}>
-                {clientAddress && <Text>, </Text>}
-                <Text>{clientCity}</Text>
-                
-              </Text>}
-              {clientZipcode && <Text style={styles.font}>
-                {(clientAddress || clientCity )&& <Text>, </Text>}
-                <Text>{clientZipcode}</Text>
-              </Text>}
+              {clientCity && (
+                <Text style={styles.font}>
+                  {clientAddress && <Text>, </Text>}
+                  <Text>{clientCity}</Text>
+                </Text>
+              )}
+              {clientZipcode && (
+                <Text style={styles.font}>
+                  {(clientAddress || clientCity) && <Text>, </Text>}
+                  <Text>{clientZipcode}</Text>
+                </Text>
+              )}
             </View>
           </View>
           <View style={styles.invoice__details}>
@@ -212,42 +240,42 @@ const Template4 = ({totalAmount, rows, phone, email, logo, notes, currencySymbol
         </View>
         <View style={styles.invoice__details__section}>
           <View style={styles.invoice_header}>
-            <Text style={{width: '40%'}}>DESCRIPTION</Text>
-            <Text style={{width: '20%', textAlign: 'center'}}>QTY</Text>
-            <Text style={{width: '20%', textAlign: 'center'}}>PRICE</Text>
-            <Text style={{width: '20%', textAlign: 'right'}}>TOTAL</Text>
+            <Text style={{ width: '40%' }}>DESCRIPTION</Text>
+            <Text style={{ width: '20%', textAlign: 'center' }}>QTY</Text>
+            <Text style={{ width: '20%', textAlign: 'center' }}>PRICE</Text>
+            <Text style={{ width: '20%', textAlign: 'right' }}>TOTAL</Text>
           </View>
           {rows.map(({ id, description, details, rate, quantity, amount }) => (
             <View style={styles.invoice_item} key={id}>
               <View style={styles.des__group}>
                 <Text style={{ marginBottom: '10' }}>{description}</Text>
-                <Text style={{fontSize: '10', opacity: 0.8, width: '95%'}}>{details}</Text>
+                <Text style={{ fontSize: '10', opacity: 0.8, width: '95%' }}>{details}</Text>
               </View>
-              <Text style={{width: '20%', textAlign: 'center'}}>{quantity}</Text>
-              <Text style={{width: '20%', textAlign: 'center'}}>
-                <Text style={{fontFamily : 'Quicksand-Light'}}>{currencySymbol}</Text>
+              <Text style={{ width: '20%', textAlign: 'center' }}>{quantity}</Text>
+              <Text style={{ width: '20%', textAlign: 'center' }}>
+                <Text style={{ fontFamily: 'Quicksand-Light' }}>{currencySymbol}</Text>
                 <Text>{rate ? rate.toFixed(2) : '0.00'}</Text>
               </Text>
-              <Text style={{width: '20%', textAlign: 'right'}}>
-                <Text style={{fontFamily : 'Quicksand-Light'}}>{currencySymbol}</Text>
+              <Text style={{ width: '20%', textAlign: 'right' }}>
+                <Text style={{ fontFamily: 'Quicksand-Light' }}>{currencySymbol}</Text>
                 <Text>{amount}</Text>
               </Text>
             </View>
           ))}
-            <View style={styles.total__section}>
-              <Text>Total</Text>
-              <Text>
-                <Text style={{fontFamily : 'Quicksand-Bold'}}>{currencySymbol}</Text>
-                <Text>{totalAmount}</Text>
-              </Text>
-            </View>
+          <View style={styles.total__section}>
+            <Text>Total</Text>
+            <Text>
+              <Text style={{ fontFamily: 'Quicksand-Bold' }}>{currencySymbol}</Text>
+              <Text>{totalAmount}</Text>
+            </Text>
+          </View>
         </View>
         <View style={styles.note__section}>
           <Text>{notes}</Text>
         </View>
       </View>
     </Page>
-  );
+  )
 }
- 
-export default Template4;
+
+export default Template4

@@ -1,22 +1,22 @@
-import dynamic from "next/dynamic";
-import { useState, useEffect } from "react";
+import dynamic from 'next/dynamic'
+import { useState, useEffect } from 'react'
 
-const InvoicePDF = dynamic(() => import("./Preview"), {
+const InvoicePDF = dynamic(() => import('./Preview'), {
   ssr: false,
 })
 
 const View = () => {
-  const [client, setClient] = useState(false);
+  const [client, setClient] = useState(false)
 
   useEffect(() => {
-    setClient(true);
+    setClient(true)
   }, [])
 
-  return ( 
+  return (
     <div>
       <InvoicePDF />
     </div>
-  );
+  )
 }
- 
-export default View;
+
+export default View

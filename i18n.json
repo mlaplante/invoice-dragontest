@@ -1,10 +1,10 @@
 {
-    "locales": ["en", "fr", "es", "nl", "de", "pt"],
-    "defaultLocale": "en",
-    "localeDetection": false,
-    "pages": {
-      "*": ["common"],
-      "/": ["home", "example"],
-      "/about": ["about"]
-    }
+  "locales": ["en", "fr", "es", "nl", "de", "pt"],
+  "defaultLocale": "en",
+  "localeDetection": false,
+  "pages": {
+    "*": ["common"],
+    "/": ["home", "example"],
+    "/about": ["about"]
   }
+}

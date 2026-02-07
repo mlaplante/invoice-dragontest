@@ -1,18 +1,17 @@
-import styles from "./invoiceTemplate.module.scss";
-import Image from 'next/image';
-import invTemp1 from '../../assets/images/invTemp1.png';
-import invTemp2 from '../../assets/images/invTemp2.png';
-import invTemp3 from '../../assets/images/invTemp3.png';
-import invTemp4 from '../../assets/images/invTemp4.png';
+import styles from './invoiceTemplate.module.scss'
+import Image from 'next/image'
+import invTemp1 from '../../assets/images/invTemp1.png'
+import invTemp2 from '../../assets/images/invTemp2.png'
+import invTemp3 from '../../assets/images/invTemp3.png'
+import invTemp4 from '../../assets/images/invTemp4.png'
 
-import useTranslation from "next-translate/useTranslation";
-
+import useTranslation from 'next-translate/useTranslation'
 
 const InvoiceTemplate = ({ template, changeTemplate }) => {
-  const { t } = useTranslation('common');
+  const { t } = useTranslation('common')
 
   const handleChange = (e) => {
-    changeTemplate(e);
+    changeTemplate(e)
   }
 
   return (
@@ -32,12 +31,7 @@ const InvoiceTemplate = ({ template, changeTemplate }) => {
               checked={template === 'template1'}
               onChange={handleChange}
             />
-            <Image
-              className={styles.templateImg}
-              src={invTemp1}
-              alt="Template Option 1"
-              priority
-            />
+            <Image className={styles.templateImg} src={invTemp1} alt="Template Option 1" priority />
           </label>
         </div>
 
@@ -53,12 +47,7 @@ const InvoiceTemplate = ({ template, changeTemplate }) => {
               checked={template === 'template2'}
               onChange={handleChange}
             />
-            <Image
-              className={styles.templateImg}
-              src={invTemp2}
-              alt="Template Option 2"
-              priority
-            />
+            <Image className={styles.templateImg} src={invTemp2} alt="Template Option 2" priority />
           </label>
         </div>
 
@@ -75,12 +64,7 @@ const InvoiceTemplate = ({ template, changeTemplate }) => {
               onChange={handleChange}
             />
 
-            <Image
-              className={styles.templateImg}
-              src={invTemp3}
-              alt="Template Option 3"
-              priority
-            />
+            <Image className={styles.templateImg} src={invTemp3} alt="Template Option 3" priority />
           </label>
         </div>
         {/* option 4 */}
@@ -95,17 +79,12 @@ const InvoiceTemplate = ({ template, changeTemplate }) => {
               checked={template === 'template4'}
               onChange={handleChange}
             />
-            <Image
-              className={styles.templateImg}
-              src={invTemp4}
-              alt="Template Option 4"
-              priority
-            />
+            <Image className={styles.templateImg} src={invTemp4} alt="Template Option 4" priority />
           </label>
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default InvoiceTemplate;
+export default InvoiceTemplate

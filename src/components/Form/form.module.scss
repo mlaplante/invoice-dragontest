@@ -1,9 +1,11 @@
 .form {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   padding: 40px;
   max-width: 810px;
   border-radius: 8px;
-  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -4px rgb(0 0 0 / 10%);
+  box-shadow:
+    0 10px 15px -3px rgb(0 0 0 / 10%),
+    0 4px 6px -4px rgb(0 0 0 / 10%);
 
   @media screen and (max-width: 768px) {
     padding: 20px;
@@ -85,7 +87,7 @@
 
 .invoice__details {
   display: grid;
-  grid-template-columns: repeat(2,minmax(0,1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 2.25rem;
 
   @media screen and (max-width: 768px) {
@@ -113,7 +115,7 @@
   width: 100%;
 }
 .label {
-  font-size: .85rem;
+  font-size: 0.85rem;
   min-width: 25%;
   color: #454545;
 }
@@ -128,7 +130,7 @@
 
 .row__group {
   display: grid;
-  grid-template-columns: repeat(2,minmax(0,1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 2.25rem;
 
   @media screen and (max-width: 768px) {
@@ -181,7 +183,6 @@
     padding: 0.25rem;
   }
   .invoice__items {
-
     tr {
       border-bottom: 1px dashed #ddd;
     }
@@ -194,8 +195,10 @@
   }
   .item__row {
     cursor: pointer;
-    transition: transform .5s ease-out, -webkit-transform .5s ease-out;
-    
+    transition:
+      transform 0.5s ease-out,
+      -webkit-transform 0.5s ease-out;
+
     &__actions {
       color: aquamarine;
 
@@ -228,7 +231,7 @@
         min-height: 63px;
         max-height: 150px;
         font-family: 'Arial';
-        
+
         @media screen and (max-width: 768px) {
           min-height: 125px;
         }
@@ -238,7 +241,7 @@
     .rate,
     .qty,
     .amount {
-      min-width: 120px
+      min-width: 120px;
     }
 
     .amount {
@@ -280,10 +283,10 @@
 .svg__close__icon {
   width: 0.6875em;
   display: inline-block;
-    font-size: inherit;
-    height: 1em;
-    overflow: visible;
-    vertical-align: -0.125em;
+  font-size: inherit;
+  height: 1em;
+  overflow: visible;
+  vertical-align: -0.125em;
 }
 
 .total__section {
@@ -294,7 +297,6 @@
     margin-bottom: 20px;
     margin-top: 20px;
   }
-
 
   .total {
     padding-left: 90px;
@@ -315,12 +317,12 @@
 
   .input__default {
     width: 90%;
-    }
+  }
 
-    .qty {
-      justify-content: flex-end;
-      display: flex;
-    }
+  .qty {
+    justify-content: flex-end;
+    display: flex;
+  }
 }
 
 .mobile__details {
@@ -334,10 +336,11 @@
 
 .item__row {
   cursor: pointer;
-  transition: transform .5s ease-out, -webkit-transform .5s ease-out;
-  
-  &__actions {
+  transition:
+    transform 0.5s ease-out,
+    -webkit-transform 0.5s ease-out;
 
+  &__actions {
     &__mobile {
       display: flex;
       justify-content: space-between;

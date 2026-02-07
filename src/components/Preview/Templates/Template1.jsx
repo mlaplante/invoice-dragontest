@@ -1,30 +1,51 @@
-import { Page, Text, Image, View, StyleSheet, Font } from '@react-pdf/renderer';
+import { Page, Text, Image, View, StyleSheet, Font } from '@react-pdf/renderer'
 
-const Template1 = ({ totalAmount, rows, logo, notes, currencySymbol, formName, businessName, InvoiceNo, date, clientName, clientAddress, clientCity, clientZipcode, clientEmail, clientPhone, address, phone, email, city, zipcode, website }) => {
-
+const Template1 = ({
+  totalAmount,
+  rows,
+  logo,
+  notes,
+  currencySymbol,
+  formName,
+  businessName,
+  InvoiceNo,
+  date,
+  clientName,
+  clientAddress,
+  clientCity,
+  clientZipcode,
+  clientEmail,
+  clientPhone,
+  address,
+  phone,
+  email,
+  city,
+  zipcode,
+  website,
+}) => {
   Font.register({
     family: 'League',
-    src: "/assets/LeagueSpartan-Bold.ttf",
-  });
+    src: '/assets/LeagueSpartan-Bold.ttf',
+  })
 
   Font.register({
     family: 'Garet',
-    src: "/assets/Garet-Book.ttf",
-  });
+    src: '/assets/Garet-Book.ttf',
+  })
 
   Font.register({
     family: 'Garet-Heavy',
-    src: "/assets/Garet-Heavy.ttf",
-  });
+    src: '/assets/Garet-Heavy.ttf',
+  })
 
   Font.register({
     family: 'Quicksand',
-    src: "/assets/Quicksand-Medium.ttf",
-  });
+    src: '/assets/Quicksand-Medium.ttf',
+  })
   Font.register({
     family: 'Quicksand-Light',
-    src: "/assets/Quicksand-Light.ttf",
-  });
+    src: '/assets/Quicksand-Light.ttf',
+  })
 
   const styles = StyleSheet.create({
     body: {
@@ -35,7 +56,7 @@ const Template1 = ({ totalAmount, rows, logo, notes, currencySymbol, formName, b
       fontFamily: 'Garet',
     },
     invoice_group: {
-      flexGrow: 1
+      flexGrow: 1,
     },
     section: {
       display: 'flex',
@@ -45,7 +66,6 @@ const Template1 = ({ totalAmount, rows, logo, notes, currencySymbol, formName, b
       padding: 10,
       flexGrow: 1,
       borderBottom: '0.5px solid #000000',
-
     },
     logo_wrapper: {
       marginTop: 30,
@@ -54,7 +74,7 @@ const Template1 = ({ totalAmount, rows, logo, notes, currencySymbol, formName, b
       height: '100',
     },
     header_details: {
-      paddingRight: '20'
+      paddingRight: '20',
     },
     bizName1: {
       fontSize: '40px',
@@ -63,19 +83,19 @@ const Template1 = ({ totalAmount, rows, logo, notes, currencySymbol, formName, b
     bizName: {
       fontSize: '20px',
       fontFamily: 'League',
-      marginBottom: 5
+      marginBottom: 5,
     },
     invoice_body: {
-      marginBottom: 20
+      marginBottom: 20,
     },
     font: {
       fontSize: '10px',
       textTransform: 'uppercase',
-      letterSpacing: 1
+      letterSpacing: 1,
     },
     invoice__details: {
       margin: '20px 0',
-      fontFamily: 'Garet-Heavy'
+      fontFamily: 'Garet-Heavy',
     },
     invoice_header: {
       flexGrow: 1,
@@ -90,7 +110,7 @@ const Template1 = ({ totalAmount, rows, logo, notes, currencySymbol, formName, b
       textTransform: 'uppercase',
     },
     item: {
-      fontSize: '12px'
+      fontSize: '12px',
     },
     invoice_items: {
       flexGrow: 1,
@@ -116,7 +136,7 @@ const Template1 = ({ totalAmount, rows, logo, notes, currencySymbol, formName, b
       flexDirection: 'row',
     },
     sub_section: {
-      marginRight: '30'
+      marginRight: '30',
     },
     des__group: {
       width: '40%',
@@ -126,7 +146,7 @@ const Template1 = ({ totalAmount, rows, logo, notes, currencySymbol, formName, b
       marginTop: 10,
       marginBottom: 30,
       fontSize: '10px',
-      color: '#4C3D3D'
+      color: '#4C3D3D',
     },
     footer: {
       flexGrow: 1,
@@ -136,8 +156,8 @@ const Template1 = ({ totalAmount, rows, logo, notes, currencySymbol, formName, b
     },
     address__group: {
       display: 'flex',
-      flexDirection: 'row'
-    }
+      flexDirection: 'row',
+    },
   })
 
   return (
@@ -148,7 +168,11 @@ const Template1 = ({ totalAmount, rows, logo, notes, currencySymbol, formName, b
             {businessName && <Text style={styles.bizName1}>{businessName}</Text>}
 
             <View style={styles.invoice__details}>
-              {(formName && InvoiceNo) && <Text style={styles.font}>{formName} No. {InvoiceNo}</Text>}
+              {formName && InvoiceNo && (
+                <Text style={styles.font}>
+                  {formName} No. {InvoiceNo}
+                </Text>
+              )}
               <Text style={styles.font}>{date}</Text>
             </View>
 
@@ -158,32 +182,45 @@ const Template1 = ({ totalAmount, rows, logo, notes, currencySymbol, formName, b
             {clientEmail && <Text style={styles.font}>{clientEmail}</Text>}
             <View style={styles.address__group}>
               {clientAddress && <Text style={styles.font}>{clientAddress}</Text>}
-              {clientCity && <Text style={styles.font}>
-                {clientAddress && <Text>, </Text>}<Text>{clientCity}</Text>
-              </Text>}
-              {clientZipcode && <Text style={styles.font}>
-                {(clientAddress || clientCity) && <Text>, </Text>}
-                <Text>{clientZipcode}</Text>
-              </Text>}
+              {clientCity && (
+                <Text style={styles.font}>
+                  {clientAddress && <Text>, </Text>}
+                  <Text>{clientCity}</Text>
+                </Text>
+              )}
+              {clientZipcode && (
+                <Text style={styles.font}>
+                  {(clientAddress || clientCity) && <Text>, </Text>}
+                  <Text>{clientZipcode}</Text>
+                </Text>
+              )}
             </View>
           </View>
-          {logo && <View style={styles.logo_wrapper}>
-            <Image src={logo} style={styles.logo} />
-          </View>}
+          {logo && (
+            <View style={styles.logo_wrapper}>
+              <Image src={logo} style={styles.logo} />
+            </View>
+          )}
         </View>
         <View style={styles.invoice_group}>
           <View style={styles.invoice_body}>
             <View style={styles.invoice_header}>
               <Text style={[styles.table_header, { width: '40%' }]}>DESCRIPTION</Text>
-              <Text style={[styles.table_header, { width: '20%', textAlign: 'center' }]}>PRICE</Text>
+              <Text style={[styles.table_header, { width: '20%', textAlign: 'center' }]}>
+                PRICE
+              </Text>
               <Text style={[styles.table_header, { width: '20%', textAlign: 'center' }]}>QTY</Text>
-              <Text style={[styles.table_header, { width: '20%', textAlign: 'right' }]}>AMOUNT</Text>
+              <Text style={[styles.table_header, { width: '20%', textAlign: 'right' }]}>
+                AMOUNT
+              </Text>
             </View>
 
             {rows.map(({ id, description, details, rate, quantity, amount }) => (
               <View style={styles.invoice_items} key={id}>
                 <View style={styles.des__group}>
-                  <Text style={[styles.item, { marginBottom: '10', fontSize: '14' }]}>{description}</Text>
+                  <Text style={[styles.item, { marginBottom: '10', fontSize: '14' }]}>
+                    {description}
+                  </Text>
                   <Text style={{ fontSize: '10', opacity: 0.8, width: '95%' }}>{details}</Text>
                 </View>
                 <Text style={[styles.item, { width: '20%', textAlign: 'center' }]}>
@@ -211,11 +248,18 @@ const Template1 = ({ totalAmount, rows, logo, notes, currencySymbol, formName, b
               <Text style={styles.bizName}>{businessName}</Text>
               <View style={styles.address__group}>
                 {address && <Text style={styles.item}>{address}</Text>}
-                {city && <Text style={styles.item}>{address && <Text>, </Text>}<Text>{city}</Text></Text>}
-                {zipcode && <Text style={styles.item}>
-                  {(address || city) && <Text>, </Text>}
-                  <Text>{zipcode}</Text>
-                </Text>}
+                {city && (
+                  <Text style={styles.item}>
+                    {address && <Text>, </Text>}
+                    <Text>{city}</Text>
+                  </Text>
+                )}
+                {zipcode && (
+                  <Text style={styles.item}>
+                    {(address || city) && <Text>, </Text>}
+                    <Text>{zipcode}</Text>
+                  </Text>
+                )}
               </View>
               <Text style={styles.item}>{website}</Text>
               <Text style={styles.item}>{email}</Text>
@@ -225,7 +269,7 @@ const Template1 = ({ totalAmount, rows, logo, notes, currencySymbol, formName, b
         </View>
       </View>
     </Page>
-  );
+  )
 }
 
-export default Template1;
+export default Template1

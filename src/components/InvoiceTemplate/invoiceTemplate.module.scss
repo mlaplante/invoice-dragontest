@@ -20,7 +20,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
   }
 }
 
@@ -33,7 +32,7 @@
 
   @media screen and (max-width: 915px) {
     grid-template-columns: 1fr 1fr 1fr;
-   }
+  }
 
   @media screen and (max-width: 768px) {
     display: flex;
@@ -65,7 +64,7 @@
 }
 
 /* HIDE RADIO */
-.radio { 
+.radio {
   position: absolute;
   opacity: 0;
   width: 0;
@@ -77,13 +76,13 @@
   .img {
     cursor: pointer;
   }
-} 
+}
 
 /* CHECKED STYLES */
 .radio:checked + img {
-  outline: 2px solid #E76161;
+  outline: 2px solid #e76161;
 
   &.templateImg {
-    border: 2px solid #E76161;
+    border: 2px solid #e76161;
   }
 }

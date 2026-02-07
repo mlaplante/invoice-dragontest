@@ -1,30 +1,51 @@
-import { Page, Text, Image, View, StyleSheet, Font } from '@react-pdf/renderer';
+import { Page, Text, Image, View, StyleSheet, Font } from '@react-pdf/renderer'
 
-const Template2 = ({totalAmount, rows, logo, notes, currencySymbol, formName, businessName, InvoiceNo, date, clientName, clientAddress, clientCity, clientZipcode, clientEmail, clientPhone, address, city, zipcode, phone, email, website}) => {
-
+const Template2 = ({
+  totalAmount,
+  rows,
+  logo,
+  notes,
+  currencySymbol,
+  formName,
+  businessName,
+  InvoiceNo,
+  date,
+  clientName,
+  clientAddress,
+  clientCity,
+  clientZipcode,
+  clientEmail,
+  clientPhone,
+  address,
+  city,
+  zipcode,
+  phone,
+  email,
+  website,
+}) => {
   Font.register({
     family: 'Inter-Regular',
-    src: "/assets/Inter-Regular.ttf",
-  });
+    src: '/assets/Inter-Regular.ttf',
+  })
   Font.register({
     family: 'Inter-Bold',
-    src: "/assets/Inter-Bold.ttf",
-  });
+    src: '/assets/Inter-Bold.ttf',
+  })
 
   Font.register({
     family: 'Roxborough',
-    src: "/assets/Roxborough-CF.ttf",
-  });
-  
+    src: '/assets/Roxborough-CF.ttf',
+  })
+
   Font.register({
     family: 'Quicksand',
-    src: "/assets/Quicksand-Medium.ttf",
-  });
+    src: '/assets/Quicksand-Medium.ttf',
+  })
 
   Font.register({
     family: 'Quicksand-Bold',
-    src: "/assets/Quicksand-Bold.ttf",
-  });
+    src: '/assets/Quicksand-Bold.ttf',
+  })
 
   const styles = StyleSheet.create({
     body: {
@@ -32,7 +53,7 @@ const Template2 = ({totalAmount, rows, logo, notes, currencySymbol, formName, bu
       padding: 40,
       color: '#000000',
       backgroundColor: '#F5F5EF',
-      height: '100%'
+      height: '100%',
     },
     header__section: {
       fontFamily: 'Roxborough',
@@ -40,7 +61,7 @@ const Template2 = ({totalAmount, rows, logo, notes, currencySymbol, formName, bu
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
-      marginBottom: 20
+      marginBottom: 20,
     },
     logo_wrapper: {
       marginTop: 30,
@@ -62,13 +83,13 @@ const Template2 = ({totalAmount, rows, logo, notes, currencySymbol, formName, bu
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'space-between',
-      marginBottom: 30
+      marginBottom: 30,
     },
     section__tag: {
       fontFamily: 'Inter-Bold',
       textTransform: 'uppercase',
       fontSize: 11,
-      marginBottom: 8
+      marginBottom: 8,
     },
     header__text: {
       display: 'flex',
@@ -134,7 +155,7 @@ const Template2 = ({totalAmount, rows, logo, notes, currencySymbol, formName, bu
       fontSize: '11px',
       fontFamily: 'Inter-Bold',
       padding: '10px 7px 10 7px',
-      marginTop: 10
+      marginTop: 10,
     },
     total: {
       display: 'flex',
@@ -147,15 +168,15 @@ const Template2 = ({totalAmount, rows, logo, notes, currencySymbol, formName, bu
       borderTop: 0.5,
       borderTopColor: '#000000',
       borderTopStyle: 'solid',
-      marginTop: 5
+      marginTop: 5,
     },
     total__text: {
-      marginRight: 15
+      marginRight: 15,
     },
     // notes
     note__section: {
       fontSize: '12px',
-      maxWidth: '60%'
+      maxWidth: '60%',
     },
     // footer
     footer__section: {
@@ -179,17 +200,19 @@ const Template2 = ({totalAmount, rows, logo, notes, currencySymbol, formName, bu
     },
     address__group: {
       display: 'flex',
-      flexDirection: 'row'
-    }
+      flexDirection: 'row',
+    },
   })
- 
-  return (  
+
+  return (
     <Page size="A4" style={styles.body}>
       <View>
         <View style={styles.header__section}>
-          {logo && <View style={styles.logo_wrapper} >
-            <Image src={logo} style={styles.logo}/>
-          </View>}
+          {logo && (
+            <View style={styles.logo_wrapper}>
+              <Image src={logo} style={styles.logo} />
+            </View>
+          )}
           <View style={styles.header__text}>
             {formName && <Text style={styles.formName}>{formName}</Text>}
           </View>
@@ -202,43 +225,54 @@ const Template2 = ({totalAmount, rows, logo, notes, currencySymbol, formName, bu
             {clientEmail && <Text style={styles.text}>{clientEmail}</Text>}
             <View style={styles.address__group}>
               {clientAddress && <Text>{clientAddress}</Text>}
-              {clientCity && <Text style={styles.font}>
-                {clientAddress && <Text>, </Text>}
-                <Text>{clientCity}</Text>
-              </Text>}
+              {clientCity && (
+                <Text style={styles.font}>
+                  {clientAddress && <Text>, </Text>}
+                  <Text>{clientCity}</Text>
+                </Text>
+              )}
 
-              {clientZipcode && <Text style={styles.font}>
-                {(clientAddress || clientCity )&& <Text>, </Text>}
-                <Text>{clientZipcode}</Text>
-              </Text>}
-
+              {clientZipcode && (
+                <Text style={styles.font}>
+                  {(clientAddress || clientCity) && <Text>, </Text>}
+                  <Text>{clientZipcode}</Text>
+                </Text>
+              )}
             </View>
           </View>
           <View style={styles.invoice__details}>
-            {InvoiceNo && <Text style={styles.text}>{formName} No. {InvoiceNo}</Text>}
+            {InvoiceNo && (
+              <Text style={styles.text}>
+                {formName} No. {InvoiceNo}
+              </Text>
+            )}
             <Text style={styles.text}>{date}</Text>
           </View>
         </View>
         <View style={styles.invoice__details__section}>
           <View style={styles.invoice_header}>
-            <Text style={[styles.table_header, {width: '40%'}]}>Item</Text>
-            <Text style={[styles.table_header, {width: '20%', textAlign: 'center'}]}>Quantity</Text>
-            <Text style={[styles.table_header, {width: '20%', textAlign: 'center'}]}>Unit Price</Text>
-            <Text style={[styles.table_header, {width: '20%', textAlign: 'right'}]}>Total</Text>
+            <Text style={[styles.table_header, { width: '40%' }]}>Item</Text>
+            <Text style={[styles.table_header, { width: '20%', textAlign: 'center' }]}>
+              Quantity
+            </Text>
+            <Text style={[styles.table_header, { width: '20%', textAlign: 'center' }]}>
+              Unit Price
+            </Text>
+            <Text style={[styles.table_header, { width: '20%', textAlign: 'right' }]}>Total</Text>
           </View>
           {rows.map(({ id, description, details, rate, quantity, amount }) => (
             <View style={styles.invoice_item} key={id}>
               <View style={styles.des__group}>
                 <Text style={[styles.item, { marginBottom: '10' }]}>{description}</Text>
-                <Text style={{fontSize: '10', opacity: 0.8, width: '95%'}}>{details}</Text>
+                <Text style={{ fontSize: '10', opacity: 0.8, width: '95%' }}>{details}</Text>
               </View>
-              <Text style={[styles.item, {width: '20%', textAlign: 'center'}]}>{quantity}</Text>
-              <Text style={[styles.item, {width: '20%', textAlign: 'center'}]}>
-                <Text style={{fontFamily : 'Quicksand'}}>{currencySymbol}</Text>
+              <Text style={[styles.item, { width: '20%', textAlign: 'center' }]}>{quantity}</Text>
+              <Text style={[styles.item, { width: '20%', textAlign: 'center' }]}>
+                <Text style={{ fontFamily: 'Quicksand' }}>{currencySymbol}</Text>
                 <Text>{rate ? rate.toFixed(2) : '0.00'}</Text>
               </Text>
-              <Text style={[styles.item, {width: '20%', textAlign: 'right'}]}>
-                <Text style={{fontFamily : 'Quicksand'}}>{currencySymbol}</Text>
+              <Text style={[styles.item, { width: '20%', textAlign: 'right' }]}>
+                <Text style={{ fontFamily: 'Quicksand' }}>{currencySymbol}</Text>
                 <Text>{amount}</Text>
               </Text>
             </View>
@@ -247,12 +281,15 @@ const Template2 = ({totalAmount, rows, logo, notes, currencySymbol, formName, bu
             <View style={styles.total__section}>
               <View style={styles.subtotal}>
                 <Text>Subtotal</Text>
-                <Text>{currencySymbol}{totalAmount}</Text>
+                <Text>
+                  {currencySymbol}
+                  {totalAmount}
+                </Text>
               </View>
               <View style={styles.total}>
                 <Text style={styles.total__text}>Total</Text>
                 <Text>
-                  <Text style={{fontFamily : 'Quicksand-Bold'}}>{currencySymbol}</Text>
+                  <Text style={{ fontFamily: 'Quicksand-Bold' }}>{currencySymbol}</Text>
                   <Text>{totalAmount}</Text>
                 </Text>
               </View>
@@ -267,15 +304,18 @@ const Template2 = ({totalAmount, rows, logo, notes, currencySymbol, formName, bu
             <Text style={styles.owner}>{businessName}</Text>
             <View style={styles.address__group}>
               {address && <Text>{address}</Text>}
-              {city && <Text>
-                {address && <Text>, </Text>}
-                <Text>{city}</Text>
-              </Text>}
-              {zipcode && <Text>
-                {(address || city ) && <Text>, </Text>}
-                <Text>{zipcode}</Text>
-              </Text>}
-
+              {city && (
+                <Text>
+                  {address && <Text>, </Text>}
+                  <Text>{city}</Text>
+                </Text>
+              )}
+              {zipcode && (
+                <Text>
+                  {(address || city) && <Text>, </Text>}
+                  <Text>{zipcode}</Text>
+                </Text>
+              )}
             </View>
             <Text>{phone}</Text>
             <Text>{email}</Text>
@@ -284,7 +324,7 @@ const Template2 = ({totalAmount, rows, logo, notes, currencySymbol, formName, bu
         </View>
       </View>
     </Page>
-  );
+  )
 }
- 
-export default Template2;
+
+export default Template2

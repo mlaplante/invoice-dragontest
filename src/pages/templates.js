@@ -1,185 +1,192 @@
-import Head from "next/head";
-import Script from "next/script";
+import Head from 'next/head'
+import Script from 'next/script'
 
-import { useState, useEffect } from "react";
-import { useMediaQuery } from "react-responsive";
+import { useState, useEffect } from 'react'
+import { useMediaQuery } from 'react-responsive'
 
-import { PDFDownloadLink } from "@react-pdf/renderer";
-import { PDF } from "../components/Preview/Preview";
-import InvoiceTemplate from "../components/InvoiceTemplate/InvoiceTemplate";
-import Dropdown from "../components/Dropdown/Dropdown";
-import styles from "@/styles/Home.module.scss";
-import Form from "../components/Form/Form";
-import Header from "@/components/Header/Header";
-import logoP from "../assets/images/placeholder-image.png";
-import Previewed from "../components/Preview/Preview";
+import { PDFDownloadLink } from '@react-pdf/renderer'
+import { PDF } from '../components/Preview/Preview'
+import InvoiceTemplate from '../components/InvoiceTemplate/InvoiceTemplate'
+import Dropdown from '../components/Dropdown/Dropdown'
+import styles from '@/styles/Home.module.scss'
+import Form from '../components/Form/Form'
+import Header from '@/components/Header/Header'
+import logoP from '../assets/images/placeholder-image.png'
+import Previewed from '../components/Preview/Preview'
 
-import useTranslation from "next-translate/useTranslation";
-import { saveCompanyInfo, loadCompanyInfo, clearCompanyInfo, saveLogo, loadLogo, clearLogo } from "../utils/storage";
+import useTranslation from 'next-translate/useTranslation'
+import {
+  saveCompanyInfo,
+  loadCompanyInfo,
+  clearCompanyInfo,
+  saveLogo,
+  loadLogo,
+  clearLogo,
+} from '../utils/storage'
 
 // Company information fields that should be persisted
-const COMPANY_FIELDS = ['businessName', 'email', 'address', 'city', 'zipcode', 'phone', 'website'];
+const COMPANY_FIELDS = ['businessName', 'email', 'address', 'city', 'zipcode', 'phone', 'website']
 
 const Templates = () => {
-  const { t, lang } = useTranslation("common");
+  const { t, lang } = useTranslation('common')
   // const [service, setService] = useState('invoice');
 
-  const [showPreview, setShowPreview] = useState(false);
-  const [formData, setFormData] = useState({ formName: "Invoice" });
-  const [rows, setRows] = useState(
-    Array(1).fill({ id: 0, quantity: 1, amount: "0.00" })
-  );
-  const [logo, setLogo] = useState(logoP);
-  const [logoUpdated, setLogoUpdated] = useState(false);
-  const [currencySymbol, setCurrencySymbol] = useState("$");
-  const [currencyCode, setCurrencyCode] = useState("USD");
-  const [template, setTemplate] = useState(null);
-  const [templateSelected, setTemplateSelected] = useState(false);
-  const [total, setTotal] = useState(0);
+  const [showPreview, setShowPreview] = useState(false)
+  const [formData, setFormData] = useState({ formName: 'Invoice' })
+  const [rows, setRows] = useState(Array(1).fill({ id: 0, quantity: 1, amount: '0.00' }))
+  const [logo, setLogo] = useState(logoP)
+  const [logoUpdated, setLogoUpdated] = useState(false)
+  const [currencySymbol, setCurrencySymbol] = useState('$')
+  const [currencyCode, setCurrencyCode] = useState('USD')
+  const [template, setTemplate] = useState(null)
+  const [templateSelected, setTemplateSelected] = useState(false)
+  const [total, setTotal] = useState(0)
 
-  const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
+  const isMobile = useMediaQuery({ query: `(max-width: 760px)` })
 
   // Load saved company information and logo on mount
   useEffect(() => {
-    const savedCompanyInfo = loadCompanyInfo();
-    const savedLogo = loadLogo();
-    
+    const savedCompanyInfo = loadCompanyInfo()
+    const savedLogo = loadLogo()
+
     if (savedCompanyInfo) {
-      setFormData(prevData => ({
+      setFormData((prevData) => ({
         ...prevData,
-        ...savedCompanyInfo
-      }));
+        ...savedCompanyInfo,
+      }))
     }
-    
+
     if (savedLogo) {
-      setLogo(savedLogo);
-      setLogoUpdated(true);
+      setLogo(savedLogo)
+      setLogoUpdated(true)
     }
-  }, []);
+  }, [])
 
   const handleTemplateChange = (e) => {
-    setTemplate(e.target.value);
-    if (e.target.value) setTemplateSelected(true);
+    setTemplate(e.target.value)
+    if (e.target.value) setTemplateSelected(true)
 
     setTimeout(() => {
       window.scroll({
         top: isMobile ? 1800 : 500,
-        behavior: "smooth",
-      });
-    }, 400);
-  };
+        behavior: 'smooth',
+      })
+    }, 400)
+  }
 
   const handleLogoUpdate = (e) => {
-    const reader = new FileReader();
+    const reader = new FileReader()
     reader.onload = () => {
       if (reader.readyState === 2) {
-        setLogo(reader.result);
-        setLogoUpdated(true);
-        saveLogo(reader.result); // Save logo to localStorage
+        setLogo(reader.result)
+        setLogoUpdated(true)
+        saveLogo(reader.result) // Save logo to localStorage
       }
-    };
-    reader.readAsDataURL(e.target.files[0]);
-  };
+    }
+    reader.readAsDataURL(e.target.files[0])
+  }
 
   const handleFormChange = (name, value) => {
     setFormData({
       ...formData,
       [name]: value,
-    });
-  };
+    })
+  }
 
   // Save company information when it changes (with debounce)
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      const companyInfo = {};
-      let hasData = false;
-      
-      COMPANY_FIELDS.forEach(field => {
-        if (formData[field]) {
-          companyInfo[field] = formData[field];
-          hasData = true;
-        }
-      });
-      
-      if (hasData) {
-        saveCompanyInfo(companyInfo);
-      }
-    }, 500); // Debounce for 500ms
+      const companyInfo = {}
+      let hasData = false
 
-    return () => clearTimeout(timeoutId);
-  }, [formData]);
+      COMPANY_FIELDS.forEach((field) => {
+        if (formData[field]) {
+          companyInfo[field] = formData[field]
+          hasData = true
+        }
+      })
+
+      if (hasData) {
+        saveCompanyInfo(companyInfo)
+      }
+    }, 500) // Debounce for 500ms
+
+    return () => clearTimeout(timeoutId)
+  }, [formData])
 
   const handleToggle = () => {
-    setShowPreview(!showPreview);
-  };
+    setShowPreview(!showPreview)
+  }
 
   // Table Functions
   const handleTableUpdate = (e, id, amount) => {
     setRows((prevRows) => {
-      const updateTable = [...prevRows];
-      const currentRowIndex = updateTable.findIndex((row) => row.id === id);
+      const updateTable = [...prevRows]
+      const currentRowIndex = updateTable.findIndex((row) => row.id === id)
       updateTable[currentRowIndex] = {
         ...updateTable[currentRowIndex],
         [e.target.name]: e.target.value,
-      };
+      }
       if (amount !== undefined) {
-        updateTable[currentRowIndex].amount = amount;
+        updateTable[currentRowIndex].amount = amount
       }
-      if (e.target.name === "rate" || e.target.name === "quantity") {
-        updateTable[currentRowIndex][e.target.name] = Number(e.target.value);
+      if (e.target.name === 'rate' || e.target.name === 'quantity') {
+        updateTable[currentRowIndex][e.target.name] = Number(e.target.value)
       }
-      return updateTable;
-    });
-  };
+      return updateTable
+    })
+  }
   const handleRowAdd = () => {
-    const lastId = rows.length ? rows[rows.length - 1].id : 0;
-    setRows((prevRows) => [
-      ...prevRows,
-      { id: lastId + 1, quantity: 1, amount: "0.00" },
-    ]);
-  };
+    const lastId = rows.length ? rows[rows.length - 1].id : 0
+    setRows((prevRows) => [...prevRows, { id: lastId + 1, quantity: 1, amount: '0.00' }])
+  }
 
   const handleRowRemove = (id) => {
-    setRows((prevRows) => prevRows.filter((item) => item.id !== id));
-  };
+    setRows((prevRows) => prevRows.filter((item) => item.id !== id))
+  }
   const handleCurrencyModify = (curr) => {
-    setCurrencyCode(curr.code);
-    setCurrencySymbol(curr.symbol);
-  };
+    setCurrencyCode(curr.code)
+    setCurrencySymbol(curr.symbol)
+  }
 
   const handleClearSavedData = () => {
-    if (confirm(t('clear_saved_data_confirm') || 'Are you sure you want to clear your saved company information and logo?')) {
-      clearCompanyInfo();
-      clearLogo();
+    if (
+      confirm(
+        t('clear_saved_data_confirm') ||
+          'Are you sure you want to clear your saved company information and logo?'
+      )
+    ) {
+      clearCompanyInfo()
+      clearLogo()
       // Reset company fields in formData to empty strings
-      setFormData(prevData => {
-        const newData = { ...prevData };
-        COMPANY_FIELDS.forEach(field => {
-          newData[field] = '';
-        });
-        return newData;
-      });
+      setFormData((prevData) => {
+        const newData = { ...prevData }
+        COMPANY_FIELDS.forEach((field) => {
+          newData[field] = ''
+        })
+        return newData
+      })
       // Reset logo
-      setLogo(logoP);
-      setLogoUpdated(false);
+      setLogo(logoP)
+      setLogoUpdated(false)
     }
-  };
+  }
 
   function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
   }
 
   const calculateTotal = () => {
-    let sum = 0;
+    let sum = 0
     rows.forEach((row) => {
-      sum += parseFloat(row.amount);
-    });
-    setTotal(numberWithCommas(sum.toFixed(2)));
-  };
+      sum += parseFloat(row.amount)
+    })
+    setTotal(numberWithCommas(sum.toFixed(2)))
+  }
 
   useEffect(() => {
-    calculateTotal();
-  }, [rows]);
+    calculateTotal()
+  }, [rows])
 
   const pdf = (
     <PDF
@@ -208,7 +215,7 @@ const Templates = () => {
       currencySymbol={currencySymbol}
       totalAmount={total}
     />
-  );
+  )
 
   return (
     <>
@@ -229,10 +236,7 @@ const Templates = () => {
             <Header />
           </div>
           <div className={styles.container}>
-            <InvoiceTemplate
-              template={template}
-              changeTemplate={handleTemplateChange}
-            />
+            <InvoiceTemplate template={template} changeTemplate={handleTemplateChange} />
             {templateSelected && (
               <div className={styles.template__section}>
                 <div className={styles.main__section}>
@@ -266,16 +270,11 @@ const Templates = () => {
                 </div>
                 <div className={styles.action__section}>
                   <div className={styles.actions}>
-                    {t("actions")}
+                    {t('actions')}
                     <br />
                     <br />
-                    <button
-                      className={styles.action__btn}
-                      onClick={handleToggle}
-                    >
-                      {showPreview
-                        ? `${t("back_to_edit")}`
-                        : `${t("preview_invoice")}`}
+                    <button className={styles.action__btn} onClick={handleToggle}>
+                      {showPreview ? `${t('back_to_edit')}` : `${t('preview_invoice')}`}
                     </button>
                     <br />
                     <br />
@@ -285,11 +284,8 @@ const Templates = () => {
                         fileName={`${formData.clientName}_${formData.formName}.pdf`}
                       >
                         {({ blob, url, loading, error }) => (
-                          <button
-                            className={styles.action__btn}
-                            disabled={!showPreview}
-                          >
-                            {t("download_pdf")}
+                          <button className={styles.action__btn} disabled={!showPreview}>
+                            {t('download_pdf')}
                           </button>
                         )}
                       </PDFDownloadLink>
@@ -303,11 +299,8 @@ const Templates = () => {
                     />
                     <br />
                     <br />
-                    <button
-                      className={styles.action__btn}
-                      onClick={handleClearSavedData}
-                    >
-                      {t("clear_saved_data") || "Clear Saved Data"}
+                    <button className={styles.action__btn} onClick={handleClearSavedData}>
+                      {t('clear_saved_data') || 'Clear Saved Data'}
                     </button>
                   </div>
                 </div>
@@ -317,7 +310,7 @@ const Templates = () => {
         </div>
       </main>
     </>
-  );
-};
+  )
+}
 
-export default Templates;
+export default Templates

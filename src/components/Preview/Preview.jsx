@@ -1,13 +1,37 @@
-import styles from "./preview.module.scss";
-import { Document, PDFViewer } from '@react-pdf/renderer';
-import { useEffect, useState } from "react";
-import Template1 from "./Templates/Template1";
-import Template2 from "./Templates/Template2";
-import Template3 from "./Templates/Template3";
-import Template4 from "./Templates/Template4";
+import styles from './preview.module.scss'
+import { Document, PDFViewer } from '@react-pdf/renderer'
+import { useEffect, useState } from 'react'
+import Template1 from './Templates/Template1'
+import Template2 from './Templates/Template2'
+import Template3 from './Templates/Template3'
+import Template4 from './Templates/Template4'
 
-const PDF = ({ template, rows, currencySymbol, formName, logo, logoUpdated, email, businessName, address, city, zipcode, phone, owner, clientName, clientEmail, clientAddress, clientCity, clientZipcode, clientPhone, date, InvoiceNo, website, notes, totalAmount }) => {
-
+const PDF = ({
+  template,
+  rows,
+  currencySymbol,
+  formName,
+  logo,
+  logoUpdated,
+  email,
+  businessName,
+  address,
+  city,
+  zipcode,
+  phone,
+  owner,
+  clientName,
+  clientEmail,
+  clientAddress,
+  clientCity,
+  clientZipcode,
+  clientPhone,
+  date,
+  InvoiceNo,
+  website,
+  notes,
+  totalAmount,
+}) => {
   return (
     <Document
       author={owner}
@@ -15,7 +39,7 @@ const PDF = ({ template, rows, currencySymbol, formName, logo, logoUpdated, emai
       subject={`${businessName} Invoice`}
       title={`${clientName} ${formName} `}
     >
-      {template === 'template1' &&
+      {template === 'template1' && (
         <Template1
           logo={logo}
           formName={formName}
@@ -40,8 +64,8 @@ const PDF = ({ template, rows, currencySymbol, formName, logo, logoUpdated, emai
           zipcode={zipcode}
           website={website}
         />
-      }
-      {template === 'template2' &&
+      )}
+      {template === 'template2' && (
         <Template2
           logo={logo}
           formName={formName}
@@ -66,8 +90,8 @@ const PDF = ({ template, rows, currencySymbol, formName, logo, logoUpdated, emai
           zipcode={zipcode}
           website={website}
         />
-      }
-      {template === 'template3' &&
+      )}
+      {template === 'template3' && (
         <Template3
           logo={logo}
           logoUpdated={logoUpdated}
@@ -93,8 +117,8 @@ const PDF = ({ template, rows, currencySymbol, formName, logo, logoUpdated, emai
           phone={phone}
           website={website}
         />
-      }
-      {template === 'template4' &&
+      )}
+      {template === 'template4' && (
         <Template4
           logo={logo}
           formName={formName}
@@ -119,35 +143,58 @@ const PDF = ({ template, rows, currencySymbol, formName, logo, logoUpdated, emai
           email={email}
           website={website}
         />
-      }
+      )}
     </Document>
-  );
+  )
 }
 
-const PDFView = ({ template, rows, currencySymbol, formName, logo, logoUpdated, email, businessName, address, city, zipcode, phone, owner, clientName, clientAddress, clientEmail, clientCity, clientZipcode, clientPhone, date, InvoiceNo, website, notes }) => {
-
-  const [client, setClient] = useState(false);
+const PDFView = ({
+  template,
+  rows,
+  currencySymbol,
+  formName,
+  logo,
+  logoUpdated,
+  email,
+  businessName,
+  address,
+  city,
+  zipcode,
+  phone,
+  owner,
+  clientName,
+  clientAddress,
+  clientEmail,
+  clientCity,
+  clientZipcode,
+  clientPhone,
+  date,
+  InvoiceNo,
+  website,
+  notes,
+}) => {
+  const [client, setClient] = useState(false)
 
   useEffect(() => {
-    setClient(true);
-  }, []);
+    setClient(true)
+  }, [])
 
-  const [totalAmount, setTotalAmount] = useState(null);
+  const [totalAmount, setTotalAmount] = useState(null)
 
   const handleTotalCalculation = () => {
-    let sum = 0;
-    rows.forEach(row => {
-      sum += parseFloat(row.amount);
+    let sum = 0
+    rows.forEach((row) => {
+      sum += parseFloat(row.amount)
     })
     setTotalAmount(numberWithCommas(sum.toFixed(2)))
   }
 
   function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
   }
 
   useEffect(() => {
-    handleTotalCalculation();
+    handleTotalCalculation()
   }, [])
 
   const pdf = (
@@ -177,16 +224,14 @@ const PDFView = ({ template, rows, currencySymbol, formName, logo, logoUpdated, 
       currencySymbol={currencySymbol}
       totalAmount={totalAmount}
     />
-  );
+  )
 
   return (
     <>
-      <PDFViewer className={styles.full}>
-        {pdf}
-      </PDFViewer>
+      <PDFViewer className={styles.full}>{pdf}</PDFViewer>
     </>
-  );
+  )
 }
 
-export default PDFView;
-export { PDF };
+export default PDFView
+export { PDF }
