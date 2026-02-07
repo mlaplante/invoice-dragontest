@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import logo from '../../assets/icons/logo.svg'
 import LanguageSelector from '../Language/LanguageSelector'
+import useTranslation from 'next-translate/useTranslation'
 
 const Header = () => {
   const { t } = useTranslation('common')
