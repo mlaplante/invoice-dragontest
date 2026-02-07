@@ -10,14 +10,9 @@ import useTranslation from 'next-translate/useTranslation'
 
 const InvoiceTemplate = ({ template, changeTemplate }) => {
   const { t } = useTranslation('common')
-  const [imageErrors, setImageErrors] = useState({})
 
   const handleChange = (e) => {
     changeTemplate(e)
-  }
-
-  const handleImageError = (templateId) => {
-    setImageErrors((prev) => ({ ...prev, [templateId]: true }))
   }
 
   return (
@@ -38,19 +33,13 @@ const InvoiceTemplate = ({ template, changeTemplate }) => {
               onChange={handleChange}
             />
             <div className={styles.imgContainer}>
-              {imageErrors['template1'] ? (
-                <div className={styles.imageFallback}>
-                  <span>{t('template_option_1')}</span>
-                </div>
-              ) : (
-                <Image
-                  className={styles.templateImg}
-                  src={invTemp1}
-                  alt={t('template_option_1')}
-                  priority
-                  onError={() => handleImageError('template1')}
-                />
-              )}
+              <Image
+                className={styles.templateImg}
+                src={invTemp1}
+                alt={t('template_option_1')}
+                priority
+                unoptimized
+              />
             </div>
             <p className={styles.templateName}>{t('template_option_1')}</p>
             <p className={styles.templateDesc}>{t('template_desc_1')}</p>
@@ -70,19 +59,13 @@ const InvoiceTemplate = ({ template, changeTemplate }) => {
               onChange={handleChange}
             />
             <div className={styles.imgContainer}>
-              {imageErrors['template2'] ? (
-                <div className={styles.imageFallback}>
-                  <span>{t('template_option_2')}</span>
-                </div>
-              ) : (
-                <Image
-                  className={styles.templateImg}
-                  src={invTemp2}
-                  alt={t('template_option_2')}
-                  priority
-                  onError={() => handleImageError('template2')}
-                />
-              )}
+              <Image
+                className={styles.templateImg}
+                src={invTemp2}
+                alt={t('template_option_2')}
+                priority
+                unoptimized
+              />
             </div>
             <p className={styles.templateName}>{t('template_option_2')}</p>
             <p className={styles.templateDesc}>{t('template_desc_2')}</p>
@@ -102,19 +85,13 @@ const InvoiceTemplate = ({ template, changeTemplate }) => {
               onChange={handleChange}
             />
             <div className={styles.imgContainer}>
-              {imageErrors['template3'] ? (
-                <div className={styles.imageFallback}>
-                  <span>{t('template_option_3')}</span>
-                </div>
-              ) : (
-                <Image
-                  className={styles.templateImg}
-                  src={invTemp3}
-                  alt={t('template_option_3')}
-                  priority
-                  onError={() => handleImageError('template3')}
-                />
-              )}
+              <Image
+                className={styles.templateImg}
+                src={invTemp3}
+                alt={t('template_option_3')}
+                priority
+                unoptimized
+              />
             </div>
             <p className={styles.templateName}>{t('template_option_3')}</p>
             <p className={styles.templateDesc}>{t('template_desc_3')}</p>
@@ -133,19 +110,13 @@ const InvoiceTemplate = ({ template, changeTemplate }) => {
               onChange={handleChange}
             />
             <div className={styles.imgContainer}>
-              {imageErrors['template4'] ? (
-                <div className={styles.imageFallback}>
-                  <span>{t('template_option_4')}</span>
-                </div>
-              ) : (
-                <Image
-                  className={styles.templateImg}
-                  src={invTemp4}
-                  alt={t('template_option_4')}
-                  priority
-                  onError={() => handleImageError('template4')}
-                />
-              )}
+              <Image
+                className={styles.templateImg}
+                src={invTemp4}
+                alt={t('template_option_4')}
+                priority
+                unoptimized
+              />
             </div>
             <p className={styles.templateName}>{t('template_option_4')}</p>
             <p className={styles.templateDesc}>{t('template_desc_4')}</p>
