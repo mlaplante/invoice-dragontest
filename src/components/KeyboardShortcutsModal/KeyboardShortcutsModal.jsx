@@ -52,9 +52,16 @@ export default function KeyboardShortcutsModal({ isOpen, onClose }) {
   return (
     <>
       <div className={styles.overlay} onClick={onClose} />
-      <div className={styles.modal}>
+      <div
+        className={styles.modal}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="shortcuts-title"
+      >
         <div className={styles.header}>
-          <h2 className={styles.title}>{t('keyboard_shortcuts') || 'Keyboard Shortcuts'}</h2>
+          <h2 id="shortcuts-title" className={styles.title}>
+            {t('keyboard_shortcuts') || 'Keyboard Shortcuts'}
+          </h2>
           <button
             className={styles.closeButton}
             onClick={onClose}
@@ -74,8 +81,8 @@ export default function KeyboardShortcutsModal({ isOpen, onClose }) {
         </div>
 
         <div className={styles.shortcutsList}>
-          {shortcuts.map((shortcut, index) => (
-            <div key={index} className={styles.shortcutItem}>
+          {shortcuts.map((shortcut) => (
+            <div key={shortcut.key} className={styles.shortcutItem}>
               <kbd className={styles.key}>{shortcut.key}</kbd>
               <span className={styles.description}>{shortcut.description}</span>
             </div>
