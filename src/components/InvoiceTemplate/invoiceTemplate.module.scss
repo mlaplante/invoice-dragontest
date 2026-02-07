@@ -25,39 +25,56 @@
 
 .grid__wrapper {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 380px;
-  gap: 15px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
   padding: 10px;
 
-  @media screen and (max-width: 915px) {
-    grid-template-columns: 1fr 1fr 1fr;
+  @media screen and (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  @media screen and (max-width: 768px) {
-    display: flex;
-    flex-direction: column;
-    gap: unset;
-    background-color: unset;
+  @media screen and (max-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
   }
 
   .template {
     width: 100%;
-    height: 100%;
     text-align: center;
     margin: auto;
-    background-color: rgba(255, 255, 255, 0.8);
-    border: 2px solid transparent;
-    border-radius: 8px;
-    padding: 10px;
-    transition: all 0.3s ease;
+    background-color: #ffffff;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      border-color: #3b82f6;
+    }
 
     &.selected {
       border-color: #3b82f6;
       background-color: rgba(59, 130, 246, 0.05);
-      box-shadow:
-        0 4px 6px -1px rgba(59, 130, 246, 0.1),
-        0 2px 4px -1px rgba(59, 130, 246, 0.06);
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+
+      &::after {
+        content: '✓ Selected';
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        background: #3b82f6;
+        color: white;
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 10px;
+        font-weight: 700;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+      }
 
       .templateImg {
         border-color: #3b82f6;
@@ -67,11 +84,12 @@
 
   .imgContainer {
     width: 100%;
-    height: 300px;
+    aspect-ratio: 3/4;
+    height: auto;
     position: relative;
     overflow: hidden;
-    border-radius: 4px;
-    background-color: #f3f4f6; // Fallback background
+    border-radius: 6px;
+    background-color: #f3f4f6;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -97,19 +115,21 @@
     height: 100%;
     object-fit: cover;
     transition: all 0.5s ease-in-out;
-    border: 2px solid #e5e7eb;
-    cursor: pointer;
-
-    &:hover {
-      border-color: #3b82f6;
-    }
+    border: 1px solid #e5e7eb;
   }
 
   .templateName {
     margin-top: 12px;
-    font-size: 16px;
-    font-weight: 600;
-    color: #374151;
+    font-size: 14px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 4px;
+  }
+
+  .templateDesc {
+    font-size: 12px;
+    color: #6b7280;
+    margin: 0;
   }
 }
 

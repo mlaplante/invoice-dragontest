@@ -17,19 +17,66 @@
 .logoSection {
   display: flex;
   align-items: center;
+  gap: 20px;
 }
 
-.pageLogo {
-  cursor: pointer;
+.breadcrumbs {
   display: flex;
   align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #6b7280;
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+
+  a {
+    color: #3b82f6;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .separator {
+    color: #9ca3af;
+  }
+
+  .current {
+    color: #374151;
+    font-weight: 600;
+  }
 }
 
 .aside {
   display: flex;
   align-items: center;
+  gap: 16px;
+}
+
+.help {
+  display: flex;
+  align-items: center;
+}
+
+.helpBtn {
+  background: none;
+  border: none;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: #3b82f6;
+  }
 }
 
 .lang {
-  margin-left: 16px;
+  margin-left: 0;
 }

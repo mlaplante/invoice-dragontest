@@ -14,6 +14,7 @@ import Form from '../components/Form/Form'
 import Header from '@/components/Header/Header'
 import logoP from '../assets/images/placeholder-image.png'
 import Previewed from '../components/Preview/Preview'
+import Toast from '../components/Toast/Toast'
 
 import useTranslation from 'next-translate/useTranslation'
 import {
@@ -42,8 +43,13 @@ const Templates = () => {
   const [template, setTemplate] = useState(null)
   const [templateSelected, setTemplateSelected] = useState(false)
   const [total, setTotal] = useState(0)
+  const [toast, setToast] = useState(null)
 
   const isMobile = useMediaQuery({ query: `(max-width: 760px)` })
+
+  const showToast = (message, type = 'success') => {
+    setToast({ message, type })
+  }
 
   // Load saved company information and logo on mount
   useEffect(() => {
@@ -82,6 +88,7 @@ const Templates = () => {
         setLogo(reader.result)
         setLogoUpdated(true)
         saveLogo(reader.result) // Save logo to localStorage
+        showToast(t('logo_saved') || 'Logo saved successfully')
       }
     }
     reader.readAsDataURL(e.target.files[0])
@@ -109,14 +116,25 @@ const Templates = () => {
 
       if (hasData) {
         saveCompanyInfo(companyInfo)
+        // Only show toast if it's an automatic save after initial load
+        if (templateSelected) {
+          showToast(t('info_saved') || 'Company info saved automatically')
+        }
       }
-    }, 500) // Debounce for 500ms
+    }, 1000) // Debounce for 1000ms
 
     return () => clearTimeout(timeoutId)
   }, [formData])
 
   const handleToggle = () => {
-    setShowPreview(!showPreview)
+    if (!showPreview) {
+      showToast(t('generating_preview') || 'Generating PDF preview...', 'loading')
+      setTimeout(() => {
+        setShowPreview(true)
+      }, 1000)
+    } else {
+      setShowPreview(false)
+    }
   }
 
   // Table Functions
@@ -271,34 +289,28 @@ const Templates = () => {
                 </div>
                 <div className={styles.action__section}>
                   <div className={styles.actions}>
-                    {t('actions')}
-                    <br />
-                    <br />
+                    {!isMobile && <h3 className={styles.action__title}>{t('actions')}</h3>}
                     <button className={styles.action__btn} onClick={handleToggle}>
                       {showPreview ? `${t('back_to_edit')}` : `${t('preview_invoice')}`}
                     </button>
-                    <br />
-                    <br />
-                    <div>
-                      <PDFDownloadLink
-                        document={pdf}
-                        fileName={`${formData.clientName}_${formData.formName}.pdf`}
-                      >
-                        {({ blob, url, loading, error }) => (
-                          <button className={styles.action__btn} disabled={!showPreview}>
-                            {t('download_pdf')}
-                          </button>
-                        )}
-                      </PDFDownloadLink>
-                    </div>
-                    <br />
-                    <br />
-                    <CurrencySelector
-                      currencyCode={currencyCode}
-                      currencySymbol={currencySymbol}
-                      onCurrencyModify={handleCurrencyModify}
-                    />
-                    <br />
+                    <PDFDownloadLink
+                      document={pdf}
+                      fileName={`${formData.clientName}_${formData.formName}.pdf`}
+                      style={{ width: '100%', flex: isMobile ? 1 : 'unset' }}
+                    >
+                      {({ blob, url, loading, error }) => (
+                        <button className={styles.action__btn} disabled={!showPreview}>
+                          {t('download_pdf')}
+                        </button>
+                      )}
+                    </PDFDownloadLink>
+                    {!isMobile && (
+                      <CurrencySelector
+                        currencyCode={currencyCode}
+                        currencySymbol={currencySymbol}
+                        onCurrencyModify={handleCurrencyModify}
+                      />
+                    )}
                     <MoreMenu onClearData={handleClearSavedData} />
                   </div>
                 </div>
@@ -306,6 +318,9 @@ const Templates = () => {
             )}
           </div>
         </div>
+        {toast && (
+          <Toast message={toast.message} type={toast.type} onClose={() => setToast(null)} />
+        )}
       </main>
     </>
   )

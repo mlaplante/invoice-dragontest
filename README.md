@@ -124,17 +124,17 @@ invoice-dragontest/
 
 ## 🛠️ Tech Stack
 
-| Purpose | Technology | Version |
-|---------|-----------|---------|
-| Framework | Next.js | 13.4.12 |
-| UI Library | React | 18.2.0 |
-| PDF Generation | @react-pdf/renderer | 3.1.9 |
-| Internationalization | next-translate | 2.5.2 |
-| Styling | SCSS/SASS | 1.60.0 |
-| Responsive Design | react-responsive | 9.0.2 |
-| Code Quality | ESLint | 9.39.2 |
-| Code Formatting | Prettier | 3.8.1 |
-| Language | JavaScript/JSX | - |
+| Purpose              | Technology          | Version |
+| -------------------- | ------------------- | ------- |
+| Framework            | Next.js             | 13.4.12 |
+| UI Library           | React               | 18.2.0  |
+| PDF Generation       | @react-pdf/renderer | 3.1.9   |
+| Internationalization | next-translate      | 2.5.2   |
+| Styling              | SCSS/SASS           | 1.60.0  |
+| Responsive Design    | react-responsive    | 9.0.2   |
+| Code Quality         | ESLint              | 9.39.2  |
+| Code Formatting      | Prettier            | 3.8.1   |
+| Language             | JavaScript/JSX      | -       |
 
 ---
 
@@ -202,6 +202,7 @@ See [**CLAUDE.md**](./CLAUDE.md) for detailed development guidelines.
 ### Running Tests (Future)
 
 Once tests are added:
+
 ```bash
 npm test                # Run all tests
 npm run test:watch     # Watch mode
@@ -257,6 +258,7 @@ No environment variables required. Invoice Dragon works out-of-the-box.
 ## 🔒 Privacy & Security
 
 ✅ **Your data stays on your device.** Invoice Dragon:
+
 - Runs entirely in your browser
 - Never sends data to external servers (except for analytics)
 - Uses localStorage only for your convenience
@@ -271,6 +273,7 @@ No environment variables required. Invoice Dragon works out-of-the-box.
 Invoice Dragon is released under the **MIT License**. See [LICENSE](LICENSE) for details.
 
 You are free to:
+
 - Use commercially
 - Modify the source code
 - Distribute copies
@@ -283,10 +286,12 @@ Just include the original copyright notice.
 ## 📞 Support
 
 ### For Users
+
 - Visit [laplantedevinvoices.netlify.app](https://laplantedevinvoices.netlify.app)
 - Check the in-app help or contact page
 
 ### For Developers
+
 - Review [CLAUDE.md](./CLAUDE.md) for development questions
 - Open an issue on [GitHub Issues](https://github.com/mlaplante/invoice-dragontest/issues)
 - Contribute via Pull Requests

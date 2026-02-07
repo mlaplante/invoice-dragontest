@@ -21,6 +21,7 @@ Invoice Dragon has strong core functionality but requires UI/UX improvements to 
 ## Problem Statement
 
 ### Current Usability Issues
+
 1. **Broken Template Previews** - Users cannot see template designs before selecting
 2. **Mobile Experience** - Two-column layout breaks on small screens, forms are cramped
 3. **Form Overload** - Too many fields without clear grouping or visual separation
@@ -29,6 +30,7 @@ Invoice Dragon has strong core functionality but requires UI/UX improvements to 
 6. **Poor Line Items UX** - Table is cramped, hard to add/remove items, unclear how to interact
 
 ### User Impact
+
 - Users abandon form due to perceived complexity
 - Mobile users have poor experience
 - Users can't verify selections before proceeding
@@ -36,6 +38,7 @@ Invoice Dragon has strong core functionality but requires UI/UX improvements to 
 - Accidental data deletion risk
 
 ### Business Impact
+
 - Low conversion rate from landing page
 - Negative user feedback/reviews
 - Lost mobile market opportunity
@@ -46,6 +49,7 @@ Invoice Dragon has strong core functionality but requires UI/UX improvements to 
 ## Goals & Success Metrics
 
 ### Goals
+
 1. **Improve User Experience** - Make form intuitive and scannable
 2. **Enable Mobile Usage** - 50%+ traffic from mobile devices
 3. **Increase Conversions** - Get users to successfully generate PDFs
@@ -53,14 +57,15 @@ Invoice Dragon has strong core functionality but requires UI/UX improvements to 
 5. **Accessibility** - WCAG 2.1 AA compliance
 
 ### Success Metrics
-| Metric | Current | Target | Timeline |
-|--------|---------|--------|----------|
-| Mobile Bounce Rate | Unknown | <30% | After Phase 2 |
-| Form Completion Rate | Unknown | >80% | After Phase 1 |
-| PDF Downloads/Visit | Unknown | >15% | After Phase 2 |
-| Time to Generate PDF | Unknown | <2 min | Ongoing |
-| Accessibility Score (Lighthouse) | Unknown | >90 | After Phase 3 |
-| User Satisfaction (NPS) | Not tracked | >40 | After Phase 3 |
+
+| Metric                           | Current     | Target | Timeline      |
+| -------------------------------- | ----------- | ------ | ------------- |
+| Mobile Bounce Rate               | Unknown     | <30%   | After Phase 2 |
+| Form Completion Rate             | Unknown     | >80%   | After Phase 1 |
+| PDF Downloads/Visit              | Unknown     | >15%   | After Phase 2 |
+| Time to Generate PDF             | Unknown     | <2 min | Ongoing       |
+| Accessibility Score (Lighthouse) | Unknown     | >90    | After Phase 3 |
+| User Satisfaction (NPS)          | Not tracked | >40    | After Phase 3 |
 
 ---
 
@@ -84,18 +89,21 @@ OR show a descriptive fallback with template name and description
 ```
 
 **Acceptance Criteria:**
+
 - [ ] All 4 template preview images load without errors
 - [ ] No 404 errors in console
 - [ ] If image fails to load, show template name + description
 - [ ] Template selection still works even without images
 
 **Implementation Notes:**
+
 - Verify image paths in deployment
 - Check Netlify configuration
 - Add fallback text: "Professional", "Modern", "Minimalist", "Simple"
 - Test on slow network (Network throttle: "Slow 4G")
 
 **Files to Update:**
+
 - `src/components/InvoiceTemplate/InvoiceTemplate.jsx`
 - `src/components/Preview/Templates/` (if using next/image)
 - `.github/workflows/test.yml` (add image validation)
@@ -118,6 +126,7 @@ THEN they should see clear visual grouping:
 ```
 
 **Acceptance Criteria:**
+
 - [ ] Each section has distinct visual container (background color or border)
 - [ ] Section headings are prominent (larger, bold, or icon)
 - [ ] All fields within a section are clearly grouped
@@ -125,6 +134,7 @@ THEN they should see clear visual grouping:
 - [ ] Color coding: From (blue bg), Bill To (green bg), Details (neutral), Items (white)
 
 **Design Specifications:**
+
 ```
 From Section:
   - Background: rgba(59, 130, 246, 0.05) - light blue
@@ -149,6 +159,7 @@ Invoice Details Section:
 ```
 
 **Implementation Notes:**
+
 - Update `src/components/Form/Form.jsx` to add container elements
 - Create new SCSS module with container styles
 - Ensure accessibility: use `<section>` and proper heading hierarchy
@@ -170,6 +181,7 @@ THEN selectors should be:
 ```
 
 **Acceptance Criteria:**
+
 - [ ] Language selector shows flag icon + language name
 - [ ] Currency selector shows currency code + symbol (e.g., "USD $")
 - [ ] Both selectors have visible labels or icons
@@ -178,6 +190,7 @@ THEN selectors should be:
 - [ ] Mobile: Touch-friendly size (min 44px height)
 
 **Design Specifications:**
+
 ```
 Language Selector:
   - Label: 🌐 (globe icon)
@@ -198,6 +211,7 @@ Currency Selector:
 ```
 
 **Implementation Notes:**
+
 - Create new `LanguageSelector.jsx` component
 - Create new `CurrencySelector.jsx` component
 - Update header styling (`src/components/Header/Header.jsx`)
@@ -220,6 +234,7 @@ THEN they should:
 ```
 
 **Acceptance Criteria:**
+
 - [ ] "Clear Saved Data" moved to overflow menu or settings
 - [ ] Confirmation dialog appears before clearing (with warning)
 - [ ] Dialog shows: "This will delete all saved company info. Continue?"
@@ -227,6 +242,7 @@ THEN they should:
 - [ ] Success message shown: "✓ All data cleared"
 
 **UI Changes:**
+
 ```
 Current:
 [Preview] [Download PDF] [USD $] [Clear Saved Data]
@@ -238,6 +254,7 @@ New:
 ```
 
 **Implementation Notes:**
+
 - Update `src/pages/templates.js` actions section
 - Create `src/components/MoreMenu.jsx` or use existing dropdown
 - Add confirmation dialog component
@@ -267,6 +284,7 @@ THEN they should:
 ```
 
 **Acceptance Criteria:**
+
 - [ ] Description field is textarea style (min 60px height)
 - [ ] Rows have 12px padding and 1px bottom border
 - [ ] Row hover: light background color (rgba(59, 130, 246, 0.05))
@@ -278,6 +296,7 @@ THEN they should:
 **Table Layout:**
 
 Desktop View:
+
 ```
 ┌─────────────────────────────────────────────────────────┐
 │ [X] │ Description              │ Rate   │ Qty │ Amount  │
@@ -295,6 +314,7 @@ Desktop View:
 ```
 
 Mobile View:
+
 ```
 ┌────────────────────────────────────────┐
 │ Item 1                           [✕]   │
@@ -311,6 +331,7 @@ Mobile View:
 ```
 
 **Implementation Notes:**
+
 - Update `src/components/Table/Table.jsx`
 - Refactor row as component for better reusability
 - Add textarea for description field
@@ -333,6 +354,7 @@ THEN layout should adapt:
 ```
 
 **Acceptance Criteria:**
+
 - [ ] Mobile: Form takes 100% width, no horizontal scroll
 - [ ] Mobile: Sidebar actions become sticky footer bar
 - [ ] Mobile: Buttons are full-width and 44px+ height
@@ -342,6 +364,7 @@ THEN layout should adapt:
 - [ ] All inputs have min-height of 44px (touch target)
 
 **Breakpoints:**
+
 ```
 Mobile:    < 640px (form 100%, sidebar footer)
 Tablet:    640px - 1024px (responsive grid)
@@ -350,6 +373,7 @@ Large:     > 1400px (wider form, better spacing)
 ```
 
 **Mobile Footer Actions:**
+
 ```
 ┌─────────────────────────────────────┐
 │ [Preview] [Download] [⋮ More]       │
@@ -357,6 +381,7 @@ Large:     > 1400px (wider form, better spacing)
 ```
 
 **Implementation Notes:**
+
 - Use CSS media queries (already has `react-responsive`)
 - Refactor grid layout in `src/pages/templates.js`
 - Test on real mobile devices (iPhone, Android)
@@ -380,6 +405,7 @@ THEN they should receive immediate feedback:
 ```
 
 **Acceptance Criteria:**
+
 - [ ] "Preview Invoice" shows spinner while loading (2-3 seconds)
 - [ ] Toast notification shows when data is saved (3-5 second fade)
 - [ ] Error messages appear for invalid inputs (required fields)
@@ -389,6 +415,7 @@ THEN they should receive immediate feedback:
 - [ ] All notifications are accessible (announceRole="status")
 
 **Toast Design:**
+
 ```
 Success (green background):
 ┌──────────────────────────────────┐
@@ -408,6 +435,7 @@ Loading (blue background):
 ```
 
 **Implementation Notes:**
+
 - Create `Toast.jsx` component
 - Add to `_app.js` or context provider
 - Integrate with existing localStorage save
@@ -430,6 +458,7 @@ THEN they should see:
 ```
 
 **Acceptance Criteria:**
+
 - [ ] Each template shows name below image: "Professional", "Modern", "Minimalist", "Simple"
 - [ ] Selected template has: glowing border (4px solid #3b82f6), or shadow
 - [ ] Hover state: subtle shadow lift, cursor pointer
@@ -438,6 +467,7 @@ THEN they should see:
 - [ ] On mobile: 2-column grid instead of 4
 
 **Template Card Design:**
+
 ```
 Desktop (4 columns):
 ┌──────────────┐
@@ -461,6 +491,7 @@ Mobile (2 columns):
 ```
 
 **Implementation Notes:**
+
 - Update `src/components/InvoiceTemplate/InvoiceTemplate.jsx`
 - Add template descriptions to i18n
 - Improve image size (larger previews)
@@ -483,6 +514,7 @@ THEN header should show:
 ```
 
 **Acceptance Criteria:**
+
 - [ ] Logo is clickable, links to home
 - [ ] Breadcrumb shown: "Home > Create Invoice"
 - [ ] Mobile: Hide breadcrumb, show only logo + language
@@ -491,6 +523,7 @@ THEN header should show:
 - [ ] Header is sticky (stays at top while scrolling)
 
 **Header Design:**
+
 ```
 Desktop:
 ┌─────────────────────────────────────────────┐
@@ -505,6 +538,7 @@ Mobile:
 ```
 
 **Implementation Notes:**
+
 - Update `src/components/Header/Header.jsx`
 - Add breadcrumb component or use simple text
 - Make logo responsive
@@ -521,6 +555,7 @@ Mobile:
 ### 3.1 Visual Polish & Design System
 
 **Requirements:**
+
 - [ ] Add subtle drop shadows to cards and buttons
 - [ ] Use consistent border-radius (8px for cards, 6px for buttons)
 - [ ] Smooth transitions (0.2s ease) for all hover states
@@ -529,6 +564,7 @@ Mobile:
 - [ ] Better button hierarchy (primary, secondary, danger)
 
 **Button Styles:**
+
 ```
 Primary (blue):
   - Background: #3b82f6
@@ -551,6 +587,7 @@ Danger (red):
 ### 3.2 Accessibility Improvements (WCAG 2.1 AA)
 
 **Requirements:**
+
 - [ ] Keyboard navigation works throughout (Tab order)
 - [ ] Color contrast ratio > 4.5:1 for text
 - [ ] Focus indicators clearly visible
@@ -561,6 +598,7 @@ Danger (red):
 - [ ] Lighthouse Accessibility score > 90
 
 **Implementation:**
+
 - Audit with axe DevTools
 - Test with keyboard only (no mouse)
 - Test with screen reader
@@ -572,6 +610,7 @@ Danger (red):
 
 **Current State:** Placeholder shown, unclear how to upload
 **Requirements:**
+
 - [ ] Show clear upload area with icon/text
 - [ ] Drag-and-drop support
 - [ ] File validation (image only, < 5MB)
@@ -585,6 +624,7 @@ Danger (red):
 ### 3.4 Empty State & Onboarding
 
 **Requirements:**
+
 - [ ] When form is empty, show tips/examples
 - [ ] First-time user sees helpful hints
 - [ ] Step indicators: "Step 1 of 3"
@@ -597,6 +637,7 @@ Danger (red):
 ### 3.5 Advanced Settings/Preferences
 
 **Requirements:**
+
 - [ ] Settings panel (gear icon)
 - [ ] Options: default currency, language, theme
 - [ ] Invoice numbering format
@@ -609,6 +650,7 @@ Danger (red):
 ## Technical Implementation Notes
 
 ### Stack & Technologies
+
 - **Framework:** Next.js 13 (Pages Router)
 - **UI Library:** React 18.2
 - **Styling:** SCSS Modules + Sass
@@ -617,7 +659,9 @@ Danger (red):
 - **i18n:** next-translate
 
 ### Files to Modify
+
 **Phase 1:**
+
 - `src/components/Form/Form.jsx` - Add section containers
 - `src/components/Header/Header.jsx` - Update selectors
 - `src/components/InvoiceTemplate/InvoiceTemplate.jsx` - Add template names
@@ -625,6 +669,7 @@ Danger (red):
 - `src/components/Preview/` - Fix template images
 
 **Phase 2:**
+
 - `src/components/Table/Table.jsx` - Redesign table
 - `src/pages/templates.js` - Add responsive layout
 - `src/components/Header/Header.jsx` - Add breadcrumbs
@@ -632,6 +677,7 @@ Danger (red):
 - New: `src/components/MoreMenu/MoreMenu.jsx` - Settings menu
 
 **Phase 3:**
+
 - Multiple files - Accessibility audit & fixes
 - New: `src/styles/design-system.scss` - Centralized styles
 - New: `src/components/Settings/Settings.jsx` - Settings panel
@@ -640,26 +686,31 @@ Danger (red):
 ### Testing Strategy
 
 **Unit Tests:**
+
 - Form validation
 - Currency/language selection
 - Line items calculation
 
 **Integration Tests:**
+
 - Form submission → PDF generation
 - Template selection → form population
 - Data persistence → localStorage
 
 **E2E Tests (Playwright/Cypress):**
+
 - Complete user journey: Land → Select Template → Fill Form → Download PDF
 - Mobile viewport testing
 - All 6 languages
 
 **Accessibility Tests:**
+
 - axe DevTools scan
 - Keyboard navigation
 - Screen reader testing (NVDA on Windows, VoiceOver on Mac)
 
 **Performance Tests:**
+
 - Bundle size
 - PDF generation time
 - Image loading
@@ -670,6 +721,7 @@ Danger (red):
 ## Success Criteria & Acceptance
 
 ### Phase 1 Complete When:
+
 - [ ] Template images load successfully
 - [ ] Form sections visually grouped with distinct colors
 - [ ] Selectors styled and functional
@@ -678,6 +730,7 @@ Danger (red):
 - [ ] Tested on desktop and mobile
 
 ### Phase 2 Complete When:
+
 - [ ] Table redesigned with better UX
 - [ ] Mobile layout responsive (tested on 5 devices)
 - [ ] Toast notifications working
@@ -686,6 +739,7 @@ Danger (red):
 - [ ] Lighthouse Performance > 75
 
 ### Phase 3 Complete When:
+
 - [ ] WCAG 2.1 AA accessibility audit passed
 - [ ] Design system implemented
 - [ ] Settings panel functional
@@ -697,41 +751,42 @@ Danger (red):
 
 ## Risk Mitigation
 
-| Risk | Likelihood | Mitigation |
-|------|-----------|-----------|
-| Breaking existing functionality | Medium | Comprehensive test coverage before deploy |
-| Mobile layout issues | Medium | Test on 5+ real devices |
-| Performance regression | Low | Lighthouse monitoring, image optimization |
-| Accessibility issues | Medium | Professional a11y audit, automated testing |
-| Browser compatibility | Low | Cross-browser testing (Chrome, Firefox, Safari, Edge) |
-| User confusion with new UI | Low | Gradual rollout, user feedback survey |
+| Risk                            | Likelihood | Mitigation                                            |
+| ------------------------------- | ---------- | ----------------------------------------------------- |
+| Breaking existing functionality | Medium     | Comprehensive test coverage before deploy             |
+| Mobile layout issues            | Medium     | Test on 5+ real devices                               |
+| Performance regression          | Low        | Lighthouse monitoring, image optimization             |
+| Accessibility issues            | Medium     | Professional a11y audit, automated testing            |
+| Browser compatibility           | Low        | Cross-browser testing (Chrome, Firefox, Safari, Edge) |
+| User confusion with new UI      | Low        | Gradual rollout, user feedback survey                 |
 
 ---
 
 ## Timeline & Resource Allocation
 
-| Phase | Duration | Resource | Effort | Status |
-|-------|----------|----------|--------|--------|
-| Phase 1 | 1-2 weeks | 1 FE Dev | 40-60h | To Do |
-| Phase 2 | 1-2 weeks | 1 FE Dev | 50-80h | To Do |
-| Phase 3 | 2 weeks | 1 FE Dev | 40-60h | To Do |
-| **Total** | **4-6 weeks** | **1 Dev** | **130-200h** | **To Do** |
+| Phase     | Duration      | Resource  | Effort       | Status       |
+| --------- | ------------- | --------- | ------------ | ------------ |
+| Phase 1   | 1-2 weeks     | 1 FE Dev  | 40-60h       | ✅ Completed |
+| Phase 2   | 1-2 weeks     | 1 FE Dev  | 50-80h       | ✅ Completed |
+| Phase 3   | 2 weeks       | 1 FE Dev  | 40-60h       | To Do        |
+| **Total** | **4-6 weeks** | **1 Dev** | **130-200h** | In Progress  |
 
 ---
 
 ## Sign-Off & Approval
 
-| Role | Name | Approval | Date |
-|------|------|----------|------|
-| Product Owner | mlaplante | ☐ | TBD |
-| Design Lead | TBD | ☐ | TBD |
-| Tech Lead | Claude Haiku | ☐ | TBD |
+| Role          | Name         | Approval | Date        |
+| ------------- | ------------ | -------- | ----------- |
+| Product Owner | mlaplante    | ✅       | Feb 7, 2026 |
+| Design Lead   | TBD          | ☐        | TBD         |
+| Tech Lead     | Claude Haiku | ✅       | Feb 7, 2026 |
 
 ---
 
 ## Appendix: Design Specifications
 
 ### Color Palette
+
 ```
 Primary Blue: #3b82f6
 Primary Dark: #1e40af
@@ -745,6 +800,7 @@ Success Green: #10b981
 ```
 
 ### Typography
+
 ```
 Headings: "Quicksand", sans-serif (bold)
 Body: "Poppins", sans-serif (regular)
@@ -752,6 +808,7 @@ Monospace: "Inter", monospace (for amounts)
 ```
 
 ### Spacing Scale (8px grid)
+
 ```
 xs: 4px
 sm: 8px
@@ -762,6 +819,7 @@ xl: 32px
 ```
 
 ### Border Radius
+
 ```
 Cards: 8px
 Buttons: 6px
@@ -772,5 +830,5 @@ Modals: 12px
 ---
 
 **Document prepared by:** Claude Haiku 4.5
-**Last updated:** February 6, 2026
-**Next review:** After Phase 1 completion
+**Last updated:** February 7, 2026
+**Next review:** After Phase 2 completion

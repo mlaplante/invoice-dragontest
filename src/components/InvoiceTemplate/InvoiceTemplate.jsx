@@ -53,6 +53,7 @@ const InvoiceTemplate = ({ template, changeTemplate }) => {
               )}
             </div>
             <p className={styles.templateName}>{t('template_option_1')}</p>
+            <p className={styles.templateDesc}>{t('template_desc_1')}</p>
           </label>
         </div>
 
@@ -84,6 +85,7 @@ const InvoiceTemplate = ({ template, changeTemplate }) => {
               )}
             </div>
             <p className={styles.templateName}>{t('template_option_2')}</p>
+            <p className={styles.templateDesc}>{t('template_desc_2')}</p>
           </label>
         </div>
 
@@ -115,6 +117,7 @@ const InvoiceTemplate = ({ template, changeTemplate }) => {
               )}
             </div>
             <p className={styles.templateName}>{t('template_option_3')}</p>
+            <p className={styles.templateDesc}>{t('template_desc_3')}</p>
           </label>
         </div>
         {/* option 4 */}
@@ -145,6 +148,7 @@ const InvoiceTemplate = ({ template, changeTemplate }) => {
               )}
             </div>
             <p className={styles.templateName}>{t('template_option_4')}</p>
+            <p className={styles.templateDesc}>{t('template_desc_4')}</p>
           </label>
         </div>
       </div>
