@@ -13,6 +13,7 @@ import styles from '@/styles/Home.module.scss'
 import Form from '../components/Form/Form'
 import Header from '@/components/Header/Header'
 import Toast from '../components/Toast/Toast'
+import ConfirmDialog from '../components/ConfirmDialog/ConfirmDialog'
 import dynamic from 'next/dynamic'
 
 const Previewed = dynamic(() => import('../components/Preview/Preview'), {
@@ -28,6 +29,8 @@ import {
   loadLogo,
   clearLogo,
 } from '../utils/storage'
+import { numberWithCommas } from '../utils/formatting'
+import { validateRequiredFields, validateLineItems } from '../utils/validation'
 
 // Company information fields that should be persisted
 const COMPANY_FIELDS = ['businessName', 'email', 'address', 'city', 'zipcode', 'phone', 'website']
@@ -46,6 +49,7 @@ const Templates = () => {
   const [templateSelected, setTemplateSelected] = useState(false)
   const [total, setTotal] = useState(0)
   const [toast, setToast] = useState(null)
+  const [showClearDialog, setShowClearDialog] = useState(false)
 
   const isMobile = useMediaQuery({ query: `(max-width: 760px)` })
 
@@ -193,6 +197,22 @@ const Templates = () => {
 
   const handleToggle = () => {
     if (!showPreview) {
+      // Validate required fields
+      const requiredFields = ['businessName', 'clientName']
+      const missingFields = validateRequiredFields(formData, requiredFields)
+
+      // Validate line items
+      const lineItemsValidation = validateLineItems(rows)
+
+      if (missingFields.length > 0 || !lineItemsValidation.valid) {
+        const errors = [
+          ...missingFields.map((field) => `${field} is required`),
+          ...lineItemsValidation.errors,
+        ]
+        showToast(errors.join(' • '), 'error')
+        return
+      }
+
       showToast(t('generating_preview') || 'Generating PDF preview...', 'loading')
       setTimeout(() => {
         setShowPreview(true)
@@ -234,31 +254,29 @@ const Templates = () => {
   }
 
   const handleClearSavedData = () => {
-    if (
-      confirm(
-        t('clear_saved_data_confirm') ||
-          'Are you sure you want to clear your saved company information and logo?'
-      )
-    ) {
-      clearCompanyInfo()
-      clearLogo()
-      // Reset company fields in formData to empty strings
-      setFormData((prevData) => {
-        const newData = { ...prevData }
-        COMPANY_FIELDS.forEach((field) => {
-          newData[field] = ''
-        })
-        return newData
-      })
-      // Reset logo
-      setLogo(null)
-      setLogoUpdated(false)
-      showToast(t('all_data_cleared') || '✓ All data cleared')
-    }
+    setShowClearDialog(true)
   }
 
-  function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+  const handleConfirmClear = () => {
+    setShowClearDialog(false)
+    clearCompanyInfo()
+    clearLogo()
+    // Reset company fields in formData to empty strings
+    setFormData((prevData) => {
+      const newData = { ...prevData }
+      COMPANY_FIELDS.forEach((field) => {
+        newData[field] = ''
+      })
+      return newData
+    })
+    // Reset logo
+    setLogo(null)
+    setLogoUpdated(false)
+    showToast(t('all_data_cleared') || '✓ All data cleared')
+  }
+
+  const handleCancelClear = () => {
+    setShowClearDialog(false)
   }
 
   const calculateTotal = useCallback(() => {
@@ -391,6 +409,19 @@ const Templates = () => {
         {toast && (
           <Toast message={toast.message} type={toast.type} onClose={() => setToast(null)} />
         )}
+        <ConfirmDialog
+          isOpen={showClearDialog}
+          title={t('clear_saved_data') || 'Clear Saved Data'}
+          message={
+            t('clear_saved_data_confirm') ||
+            'Are you sure you want to clear your saved company information and logo?'
+          }
+          confirmText="Clear"
+          cancelText="Cancel"
+          isDangerous={true}
+          onConfirm={handleConfirmClear}
+          onCancel={handleCancelClear}
+        />
       </main>
     </>
   )

@@ -5,6 +5,7 @@ import Template1 from './Templates/Template1'
 import Template2 from './Templates/Template2'
 import Template3 from './Templates/Template3'
 import Template4 from './Templates/Template4'
+import { numberWithCommas } from '@/utils/formatting'
 
 const PDF = ({
   template,
@@ -180,10 +181,6 @@ const PDFView = ({
   }, [])
 
   const [totalAmount, setTotalAmount] = useState(null)
-
-  function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-  }
 
   const handleTotalCalculation = useCallback(() => {
     let sum = 0
