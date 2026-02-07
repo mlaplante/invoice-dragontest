@@ -1,4 +1,9 @@
-import { saveSettings, loadSettings, getDefaultSettings } from '@/utils/settingsStorage'
+import {
+  saveSettings,
+  loadSettings,
+  getDefaultSettings,
+  clearSettings,
+} from '@/utils/settingsStorage'
 
 // Mock localStorage
 const localStorageMock = (() => {
@@ -68,5 +73,12 @@ describe('Settings Storage', () => {
 
     const loaded = loadSettings()
     expect(loaded.currency).toBe('USD') // Falls back to defaults
+  })
+
+  test('clears settings from localStorage', () => {
+    saveSettings({ currency: 'EUR' })
+    clearSettings()
+    const loaded = loadSettings()
+    expect(loaded.currency).toBe('USD') // Should fall back to defaults
   })
 })

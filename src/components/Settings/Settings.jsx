@@ -101,7 +101,7 @@ export default function Settings({ isOpen, onClose, onSettingsChange }) {
                   id="defaultNotes"
                   value={settings.defaultNotes || ''}
                   onChange={(e) => handleSettingChange('defaultNotes', e.target.value)}
-                  placeholder="e.g., Payment due within 30 days"
+                  placeholder={t('default_notes_placeholder')}
                   rows={3}
                 />
               </div>

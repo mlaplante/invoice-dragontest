@@ -3,7 +3,7 @@ import styles from './moreMenu.module.scss'
 import useTranslation from 'next-translate/useTranslation'
 import Settings from './Settings/Settings'
 
-const MoreMenu = ({ onClearData, onLoadExampleData }) => {
+const MoreMenu = ({ onClearData, onLoadExampleData, onSettingsChange }) => {
   const [isActive, setIsActive] = useState(false)
   const [showSettings, setShowSettings] = useState(false)
   const menuRef = useRef(null)
@@ -62,7 +62,11 @@ const MoreMenu = ({ onClearData, onLoadExampleData }) => {
         </div>
       )}
 
-      <Settings isOpen={showSettings} onClose={() => setShowSettings(false)} />
+      <Settings
+        isOpen={showSettings}
+        onClose={() => setShowSettings(false)}
+        onSettingsChange={onSettingsChange}
+      />
     </div>
   )
 }

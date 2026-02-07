@@ -283,6 +283,16 @@ const Templates = () => {
     setShowClearDialog(false)
   }
 
+  const handleSettingsChange = (updatedSettings) => {
+    // Handle any real-time updates from settings changes if needed
+    if (updatedSettings.defaultNotes !== undefined) {
+      setFormData((prev) => ({
+        ...prev,
+        notes: prev.notes || updatedSettings.defaultNotes,
+      }))
+    }
+  }
+
   const calculateTotal = useCallback(() => {
     let sum = 0
     rows.forEach((row) => {
@@ -428,6 +438,7 @@ const Templates = () => {
                     <MoreMenu
                       onClearData={handleClearSavedData}
                       onLoadExampleData={handleLoadExampleData}
+                      onSettingsChange={handleSettingsChange}
                     />
                   </div>
                 </div>
