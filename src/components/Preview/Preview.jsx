@@ -226,11 +226,7 @@ const PDFView = ({
     />
   )
 
-  return (
-    <>
-      <PDFViewer className={styles.full}>{pdf}</PDFViewer>
-    </>
-  )
+  return <>{client && <PDFViewer className={styles.full}>{pdf}</PDFViewer>}</>
 }
 
 export default PDFView

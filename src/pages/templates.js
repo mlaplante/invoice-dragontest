@@ -13,8 +13,12 @@ import styles from '@/styles/Home.module.scss'
 import Form from '../components/Form/Form'
 import Header from '@/components/Header/Header'
 import logoP from '../assets/images/placeholder-image.png'
-import Previewed from '../components/Preview/Preview'
 import Toast from '../components/Toast/Toast'
+import dynamic from 'next/dynamic'
+
+const Previewed = dynamic(() => import('../components/Preview/Preview'), {
+  ssr: false,
+})
 
 import useTranslation from 'next-translate/useTranslation'
 import {
