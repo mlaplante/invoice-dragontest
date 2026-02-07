@@ -7,7 +7,8 @@ import { useMediaQuery } from 'react-responsive'
 import { PDFDownloadLink } from '@react-pdf/renderer'
 import { PDF } from '../components/Preview/Preview'
 import InvoiceTemplate from '../components/InvoiceTemplate/InvoiceTemplate'
-import Dropdown from '../components/Dropdown/Dropdown'
+import CurrencySelector from '../components/Dropdown/CurrencySelector'
+import MoreMenu from '../components/MoreMenu'
 import styles from '@/styles/Home.module.scss'
 import Form from '../components/Form/Form'
 import Header from '@/components/Header/Header'
@@ -292,16 +293,13 @@ const Templates = () => {
                     </div>
                     <br />
                     <br />
-                    <Dropdown
+                    <CurrencySelector
                       currencyCode={currencyCode}
                       currencySymbol={currencySymbol}
                       onCurrencyModify={handleCurrencyModify}
                     />
                     <br />
-                    <br />
-                    <button className={styles.action__btn} onClick={handleClearSavedData}>
-                      {t('clear_saved_data') || 'Clear Saved Data'}
-                    </button>
+                    <MoreMenu onClearData={handleClearSavedData} />
                   </div>
                 </div>
               </div>

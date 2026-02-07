@@ -2,17 +2,27 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 40px;
-  font-size: 24px;
-  color: #ffffff;
+  padding: 16px 40px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 
   @media screen and (max-width: 768px) {
-    padding: 20px 20px;
+    padding: 12px 20px;
   }
+}
+
+.logoSection {
+  display: flex;
+  align-items: center;
 }
 
 .pageLogo {
   cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
 .aside {
@@ -21,6 +31,5 @@
 }
 
 .lang {
-  margin-right: 13px;
-  margin-bottom: 11px;
+  margin-left: 16px;
 }

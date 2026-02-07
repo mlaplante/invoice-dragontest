@@ -119,10 +119,10 @@ const Form = ({
           </div>
         </div>
         <div className={styles.invoice__details}>
-          <div>
-            <h3>{t('from')}</h3>
-            <br />
-            <br />
+          <div className={`${styles.section} ${styles.section__from}`}>
+            <h3>
+              <span>📧</span> {t('from')}
+            </h3>
             <div className={styles.form__field}>
               <label htmlFor="businessName" className={styles.label}>
                 {t('name')}
@@ -221,10 +221,10 @@ const Form = ({
             </div>
           </div>
 
-          <div>
-            <h3>{t('bill_to')}</h3>
-            <br />
-            <br />
+          <div className={`${styles.section} ${styles.section__billto}`}>
+            <h3>
+              <span>👤</span> {t('bill_to')}
+            </h3>
             <div className={styles.form__field}>
               <label htmlFor="clientName" className={styles.label}>
                 {t('name')}
@@ -307,59 +307,69 @@ const Form = ({
             </div>
           </div>
         </div>
-        <hr className={styles.divider} />
-        <div className={styles.row__group}>
-          <div className={styles.group}>
-            <div className={styles.form__field}>
-              <label htmlFor="InvoiceNo" className={styles.label}>
-                {t('invoice_no')}
-              </label>
-              <input
-                className={styles.input__default}
-                type="text"
-                name="InvoiceNo"
-                id="InvoiceNo"
-                placeholder="IN001"
-                onChange={handleChange}
-                value={prefill.InvoiceNo || ''}
-              />
-            </div>
-            <div className={styles.form__field}>
-              <label htmlFor="date" className={styles.label}>
-                {t('due_date')}
-              </label>
-              <input
-                className={styles.input__default}
-                type="date"
-                name="date"
-                id="date"
-                onChange={handleChange}
-                value={prefill.date || ''}
-              />
+
+        <div className={`${styles.section} ${styles.section__details}`}>
+          <h3>
+            <span>📋</span> {t('invoice_details')}
+          </h3>
+          <div className={styles.row__group}>
+            <div className={styles.group}>
+              <div className={styles.form__field}>
+                <label htmlFor="InvoiceNo" className={styles.label}>
+                  {t('invoice_no')}
+                </label>
+                <input
+                  className={styles.input__default}
+                  type="text"
+                  name="InvoiceNo"
+                  id="InvoiceNo"
+                  placeholder="IN001"
+                  onChange={handleChange}
+                  value={prefill.InvoiceNo || ''}
+                />
+              </div>
+              <div className={styles.form__field}>
+                <label htmlFor="date" className={styles.label}>
+                  {t('due_date')}
+                </label>
+                <input
+                  className={styles.input__default}
+                  type="date"
+                  name="date"
+                  id="date"
+                  onChange={handleChange}
+                  value={prefill.date || ''}
+                />
+              </div>
             </div>
           </div>
         </div>
 
         {/* invoice list table */}
-        <Table
-          rows={rows}
-          prefill={prefill}
-          onAddInvoiceRow={addRow}
-          onRemoveInvoiceRow={removeRow}
-          currencySymbol={currencySymbol}
-          onModifyTable={updateTable}
-        />
-        <section className={styles.total__section}>
-          <div>
-            <span>{t('total')}</span>
-            <span className={styles.total}>
-              {currencySymbol}
-              {total.toFixed(2)}
-            </span>
-          </div>
-        </section>
-        <div>
-          <p>{t('notes')}</p>
+        <div className={styles.section__items}>
+          <Table
+            rows={rows}
+            prefill={prefill}
+            onAddInvoiceRow={addRow}
+            onRemoveInvoiceRow={removeRow}
+            currencySymbol={currencySymbol}
+            onModifyTable={updateTable}
+          />
+          <section className={styles.total__section}>
+            <div>
+              <span>{t('total')}</span>
+              <span className={styles.total}>
+                {currencySymbol}
+                {total.toFixed(2)}
+              </span>
+            </div>
+          </section>
+        </div>
+
+        <div className={styles.section__notes}>
+          <p>
+            <strong>{t('notes')}</strong>
+          </p>
           <textarea
             name="notes"
             id="notes"
