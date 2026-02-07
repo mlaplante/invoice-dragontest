@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import useTranslation from 'next-translate/useTranslation'
 import { saveSettings, loadSettings, clearSettings } from '@/utils/settingsStorage'
 import { saveCompanyInfo, loadCompanyInfo, clearCompanyInfo, clearLogo } from '@/utils/storage'
@@ -8,14 +8,19 @@ export default function Settings({ isOpen, onClose, onSettingsChange }) {
   const { t } = useTranslation('common')
   const [activeTab, setActiveTab] = useState('general')
   const [settings, setSettings] = useState({})
-  const [exportData, setExportData] = useState(null)
+
+  useEffect(() => {
+    const loaded = loadSettings()
+    setSettings(loaded)
+    onSettingsChange?.(loaded)
+  }, [onSettingsChange])
 
   useEffect(() => {
     if (isOpen) {
       const loaded = loadSettings()
       setSettings(loaded)
     }
-  }, [isOpen])
+  }, [isOpen, onSettingsChange])
 
   const handleSettingChange = (key, value) => {
     const updated = { ...settings, [key]: value }
@@ -24,7 +29,7 @@ export default function Settings({ isOpen, onClose, onSettingsChange }) {
     onSettingsChange?.(updated)
   }
 
-  const handleExportData = () => {
+  const handleExportData = useCallback(() => {
     const allData = {
       settings,
       companyInfo: loadCompanyInfo(),
@@ -42,9 +47,9 @@ export default function Settings({ isOpen, onClose, onSettingsChange }) {
     link.click()
     document.body.removeChild(link)
     URL.revokeObjectURL(url)
-  }
+  }, [settings])
 
-  const handleClearAllData = () => {
+  const handleClearAllData = useCallback(() => {
     if (window.confirm(t('clear_all_confirm') || 'This will delete all your data. Are you sure?')) {
       clearSettings()
       clearCompanyInfo()
@@ -52,7 +57,7 @@ export default function Settings({ isOpen, onClose, onSettingsChange }) {
       setSettings({})
       onClose()
     }
-  }
+  }, [t, onClose])
 
   if (!isOpen) return null
 
@@ -85,10 +90,13 @@ export default function Settings({ isOpen, onClose, onSettingsChange }) {
           {activeTab === 'general' && (
             <div className={styles.tabPane}>
               <div className={styles.setting}>
-                <label>{t('auto_increment_invoices') || 'Auto-increment invoice numbers'}</label>
+                <label htmlFor="autoIncrement">
+                  {t('auto_increment_invoices') || 'Auto-increment invoice numbers'}
+                </label>
                 <input
+                  id="autoIncrement"
                   type="checkbox"
-                  checked={settings.autoIncrement}
+                  checked={settings.autoIncrement || false}
                   onChange={(e) => handleSettingChange('autoIncrement', e.target.checked)}
                 />
               </div>
