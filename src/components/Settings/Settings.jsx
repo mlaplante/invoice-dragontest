@@ -12,15 +12,14 @@ export default function Settings({ isOpen, onClose, onSettingsChange }) {
   useEffect(() => {
     const loaded = loadSettings()
     setSettings(loaded)
-    onSettingsChange?.(loaded)
-  }, [onSettingsChange])
+  }, [])
 
   useEffect(() => {
     if (isOpen) {
       const loaded = loadSettings()
       setSettings(loaded)
     }
-  }, [isOpen, onSettingsChange])
+  }, [isOpen])
 
   const handleSettingChange = (key, value) => {
     const updated = { ...settings, [key]: value }
