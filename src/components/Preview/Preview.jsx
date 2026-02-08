@@ -1,6 +1,6 @@
 import styles from './preview.module.scss'
 import { Document, PDFViewer } from '@react-pdf/renderer'
-import { useEffect, useState, useCallback } from 'react'
+import { useCallback, useState, useEffect } from 'react'
 import Template1 from './Templates/Template1'
 import Template2 from './Templates/Template2'
 import Template3 from './Templates/Template3'
@@ -180,19 +180,13 @@ const PDFView = ({
     setClient(true)
   }, [])
 
-  const [totalAmount, setTotalAmount] = useState(null)
-
-  const handleTotalCalculation = useCallback(() => {
+  const calculateTotalAmount = useCallback(() => {
     let sum = 0
     rows.forEach((row) => {
-      sum += parseFloat(row.amount)
+      sum += parseFloat(row.amount) || 0
     })
-    setTotalAmount(numberWithCommas(sum.toFixed(2)))
+    return numberWithCommas(sum.toFixed(2))
   }, [rows])
-
-  useEffect(() => {
-    handleTotalCalculation()
-  }, [handleTotalCalculation])
 
   const pdf = (
     <PDF
@@ -219,7 +213,7 @@ const PDFView = ({
       website={website}
       notes={notes}
       currencySymbol={currencySymbol}
-      totalAmount={totalAmount}
+      totalAmount={calculateTotalAmount()}
     />
   )
 
