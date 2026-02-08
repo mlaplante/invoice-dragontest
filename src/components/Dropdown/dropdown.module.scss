@@ -94,6 +94,12 @@
       color: #1e40af;
     }
   }
+
+  .highlighted {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: #3b82f6;
+    font-weight: 500;
+  }
 }
 
 .selected__currency {
