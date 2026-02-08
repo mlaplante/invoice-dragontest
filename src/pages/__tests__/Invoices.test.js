@@ -25,31 +25,55 @@ jest.mock('@/utils/storage', () => ({
 }))
 
 // Mock components
-jest.mock('@/components/Header/Header', () => () => <div data-testid="header" />)
-jest.mock('@/components/Footer/Footer', () => () => <div data-testid="footer" />)
-jest.mock(
-  '@/components/ConfirmDialog/ConfirmDialog',
-  () =>
-    ({ isOpen, onConfirm, onCancel, title }) =>
-      isOpen ? (
-        <div data-testid="confirm-dialog" data-title={title}>
-          <button onClick={onConfirm}>Confirm</button>
-          <button onClick={onCancel}>Cancel</button>
-        </div>
-      ) : null
-)
+jest.mock('@/components/Header/Header', () => {
+  const Header = () => <div data-testid="header" />
+  Header.displayName = 'Header'
+  return Header
+})
+jest.mock('@/components/Footer/Footer', () => {
+  const Footer = () => <div data-testid="footer" />
+  Footer.displayName = 'Footer'
+  return Footer
+})
+jest.mock('@/components/ConfirmDialog/ConfirmDialog', () => {
+  const ConfirmDialog = ({ isOpen, onConfirm, onCancel, title }) =>
+    isOpen ? (
+      <div data-testid="confirm-dialog" data-title={title}>
+        <button onClick={onConfirm}>Confirm</button>
+        <button onClick={onCancel}>Cancel</button>
+      </div>
+    ) : null
+  ConfirmDialog.displayName = 'ConfirmDialog'
+  return ConfirmDialog
+})
 
 // Mock react-pdf components
-jest.mock('@react-pdf/renderer', () => ({
-  PDFViewer: ({ children }) => <div data-testid="pdf-viewer">{children}</div>,
-  Document: ({ children }) => <div data-testid="pdf-document">{children}</div>,
-  Page: ({ children }) => <div data-testid="pdf-page">{children}</div>,
-  Text: ({ children }) => <div data-testid="pdf-text">{children}</div>,
-  View: ({ children }) => <div data-testid="pdf-view">{children}</div>,
-  StyleSheet: { create: (s) => s },
-  Font: { register: jest.fn() },
-  Image: () => <div data-testid="pdf-image" />,
-}))
+jest.mock('@react-pdf/renderer', () => {
+  const PDFViewer = ({ children }) => <div data-testid="pdf-viewer">{children}</div>
+  const Document = ({ children }) => <div data-testid="pdf-document">{children}</div>
+  const Page = ({ children }) => <div data-testid="pdf-page">{children}</div>
+  const Text = ({ children }) => <div data-testid="pdf-text">{children}</div>
+  const View = ({ children }) => <div data-testid="pdf-view">{children}</div>
+  const Image = () => <div data-testid="pdf-image" />
+
+  PDFViewer.displayName = 'PDFViewer'
+  Document.displayName = 'Document'
+  Page.displayName = 'Page'
+  Text.displayName = 'Text'
+  View.displayName = 'View'
+  Image.displayName = 'Image'
+
+  return {
+    PDFViewer,
+    Document,
+    Page,
+    Text,
+    View,
+    StyleSheet: { create: (s) => s },
+    Font: { register: jest.fn() },
+    Image,
+  }
+})
 
 describe('Invoices Page', () => {
   const mockRouter = { push: jest.fn() }

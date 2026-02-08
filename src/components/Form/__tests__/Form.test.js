@@ -12,13 +12,21 @@ jest.mock('next-translate/useTranslation', () => ({
 }))
 
 // Mock next/image
-jest.mock('next/image', () => ({
-  __esModule: true,
-  default: ({ src, alt, ...props }) => <img {...props} src={src} alt={alt || ''} />,
-}))
+jest.mock('next/image', () => {
+  const MockImage = ({ src, alt, ...props }) => <img {...props} src={src} alt={alt || ''} />
+  MockImage.displayName = 'MockImage'
+  return {
+    __esModule: true,
+    default: MockImage,
+  }
+})
 
 // Mock Table
-jest.mock('../../Table/Table', () => () => <div data-testid="table" />)
+jest.mock('../../Table/Table', () => {
+  const Table = () => <div data-testid="table" />
+  Table.displayName = 'Table'
+  return Table
+})
 
 describe('Form Component', () => {
   const mockProps = {

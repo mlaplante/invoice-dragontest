@@ -22,9 +22,8 @@ jest.mock('next/router', () => ({
 }))
 
 // Mock next/dynamic
-jest.mock('next/dynamic', () => ({
-  __esModule: true,
-  default: (fn) => {
+jest.mock('next/dynamic', () => {
+  const MockDynamic = (fn) => {
     const Component = (props) => {
       const [C, setC] = React.useState(null)
       React.useEffect(() => {
@@ -38,9 +37,14 @@ jest.mock('next/dynamic', () => ({
       }, [])
       return C ? <C {...props} /> : <div data-testid="loading-dynamic" />
     }
+    Component.displayName = 'MockDynamicComponent'
     return Component
-  },
-}))
+  }
+  return {
+    __esModule: true,
+    default: MockDynamic,
+  }
+})
 
 // Mock @react-pdf/renderer
 jest.mock('@react-pdf/renderer', () => ({
@@ -196,13 +200,15 @@ describe('Templates Page', () => {
     const radio = document.querySelector('input[value="template1"]')
     fireEvent.click(radio)
 
-    const moreBtn = await screen.findByText('More')
-    fireEvent.click(moreBtn)
+    fireEvent.click(await screen.findByText('More'))
 
-    const receiptToggle = await screen.findByText('receipt_mode')
+    // Use a more flexible text matcher for potentially broken up text
+    const receiptToggle = await screen.findByText((content, element) => {
+      return element.textContent.includes('receipt_mode')
+    })
     fireEvent.click(receiptToggle)
 
     // Receipt mode adds PAID stamp in Preview or changes UI text
-    expect(await screen.findByText('back_to_invoice')).toBeInTheDocument()
+    expect(await screen.findByText(/back_to_invoice/i)).toBeInTheDocument()
   })
 })

@@ -7,8 +7,16 @@ import Terms from '../terms'
 import Contact from '../contact'
 
 // Mock components
-jest.mock('@/components/Header/Header', () => () => <div data-testid="header" />)
-jest.mock('@/components/Footer/Footer', () => () => <div data-testid="footer" />)
+jest.mock('@/components/Header/Header', () => {
+  const Header = () => <div data-testid="header" />
+  Header.displayName = 'Header'
+  return Header
+})
+jest.mock('@/components/Footer/Footer', () => {
+  const Footer = () => <div data-testid="footer" />
+  Footer.displayName = 'Footer'
+  return Footer
+})
 
 // Mock next-translate
 jest.mock('next-translate/useTranslation', () => ({

@@ -13,12 +13,11 @@ jest.mock('next-translate/useTranslation', () => ({
 }))
 
 // Mock Settings component
-jest.mock(
-  '../Settings/Settings',
-  () =>
-    ({ isOpen }) =>
-      isOpen ? <div data-testid="settings-modal" /> : null
-)
+jest.mock('../Settings/Settings', () => {
+  const Settings = ({ isOpen }) => (isOpen ? <div data-testid="settings-modal" /> : null)
+  Settings.displayName = 'Settings'
+  return Settings
+})
 
 describe('MoreMenu Component', () => {
   const mockProps = {

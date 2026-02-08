@@ -4,16 +4,36 @@ import '@testing-library/jest-dom'
 import Home from '../index'
 
 // Mock components
-jest.mock('../../components/Header/Header', () => () => <div data-testid="header" />)
-jest.mock('../../components/Footer/Footer', () => () => <div data-testid="footer" />)
-jest.mock('../../components/Home/HomePage', () => () => <div data-testid="home-page" />)
-jest.mock('../../components/FeaturesCards/FeaturesCards', () => () => (
-  <div data-testid="features" />
-))
-jest.mock('../../components/HowItWorks/HowItWorks', () => () => <div data-testid="how-it-works" />)
-jest.mock('../../components/StructuredData/StructuredData', () => () => (
-  <div data-testid="structured-data" />
-))
+jest.mock('../../components/Header/Header', () => {
+  const Header = () => <div data-testid="header" />
+  Header.displayName = 'Header'
+  return Header
+})
+jest.mock('../../components/Footer/Footer', () => {
+  const Footer = () => <div data-testid="footer" />
+  Footer.displayName = 'Footer'
+  return Footer
+})
+jest.mock('../../components/Home/HomePage', () => {
+  const HomePage = () => <div data-testid="home-page" />
+  HomePage.displayName = 'HomePage'
+  return HomePage
+})
+jest.mock('../../components/FeaturesCards/FeaturesCards', () => {
+  const FeaturesCards = () => <div data-testid="features" />
+  FeaturesCards.displayName = 'FeaturesCards'
+  return FeaturesCards
+})
+jest.mock('../../components/HowItWorks/HowItWorks', () => {
+  const HowItWorks = () => <div data-testid="how-it-works" />
+  HowItWorks.displayName = 'HowItWorks'
+  return HowItWorks
+})
+jest.mock('../../components/StructuredData/StructuredData', () => {
+  const StructuredData = () => <div data-testid="structured-data" />
+  StructuredData.displayName = 'StructuredData'
+  return StructuredData
+})
 
 // Mock next-translate
 jest.mock('next-translate/useTranslation', () => ({
