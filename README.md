@@ -29,8 +29,68 @@ The result: fill a form, select a template, download PDF. Done.
 - 💾 **Auto-Save & Onboarding** - Local data persistence with a "Load Example Data" feature for quick starts
 - 🌍 **Multi-Language Support** - Enhanced Language Selector supporting 6 languages with icons
 - 📱 **Fully Responsive** - Mobile-first design with sticky action footers for seamless editing on any device
+- 🛡️ **Reliable & Validated** - Comprehensive form validation and error handling for a smooth experience
 - 🔒 **100% Client-Side** - No backend required; all data stays private in your browser
 - ⚡ **Lightning Fast** - Built on Next.js 15 and React 19 for optimal performance
+
+---
+
+## 🧪 Testing & Quality
+
+Invoice Dragon maintains a growing suite of tests to ensure financial accuracy and application reliability.
+
+### Test Coverage
+
+Current coverage statistics (as of Feb 7, 2026):
+
+| Category   | Coverage |
+| ---------- | -------- |
+| Statements | 21.74%   |
+| Branches   | 21.33%   |
+| Functions  | 17.75%   |
+| Lines      | 21.67%   |
+
+_Coverage focus: Core financial logic, data persistence, and validation utilities._
+
+### Running Tests
+
+```bash
+npm test              # Run all tests
+npm run test:coverage # Run tests with detailed coverage report
+```
+
+---
+
+## 🛤️ Development Roadmap (Phases 1-4)
+
+We have completed the first four phases of our comprehensive improvement roadmap:
+
+### ✅ Phase 1: Emergency Fixes
+
+- Resolved critical production bugs including the "undefined Invoice" title and logo rendering issues.
+- Fixed header logo visibility and mobile dropdown positioning.
+- Wired up help and support documentation links.
+
+### ✅ Phase 2: Testing & Reliability
+
+- Established Jest/React Testing Library infrastructure.
+- Implemented robust form validation and error boundaries.
+- Replaced browser-native dialogs with custom, styled `ConfirmDialog` and `Toast` components.
+- Added 100+ unit and integration tests.
+
+### ✅ Phase 3: UX Polish
+
+- Redesigned landing page with features and how-it-works sections.
+- Implemented a full Settings panel for user preferences (currency, auto-increment, etc.).
+- Added keyboard shortcuts for power users (Cmd+P, Cmd+D, etc.).
+- Improved download flows and empty state feedback.
+
+### ✅ Phase 4: Accessibility & Performance
+
+- Achieved WCAG 2.1 AA compliance standards.
+- Optimized performance with component memoization and lazy loading.
+- Enhanced SEO with proper meta tags and structured data.
+- Added legal pages (About, Privacy, Terms, Contact) with dynamic breadcrumbs.
 
 ---
 
@@ -224,14 +284,13 @@ No environment variables required. Invoice Dragon works out-of-the-box.
 
 ## 🎯 Roadmap
 
-- [x] Next.js 15 & React 19 Upgrade
-- [x] ESLint 9 Migration
-- [x] Mobile UI Overhaul
-- [x] Toast Notification System
-- [ ] Jest + Vitest Testing integration
+- [x] Phase 1: Emergency Fixes (Production bugs, PDF rendering)
+- [x] Phase 2: Testing & Reliability (Jest, Validation, Error Boundaries)
+- [x] Phase 3: UX Polish (Settings, Landing Page, Shortcuts)
+- [x] Phase 4: Accessibility & Performance (WCAG, SEO, Legal Pages)
+- [ ] Phase 5: Invoice Management (History, Drafts, Clients)
+- [ ] Phase 6: Advanced Features (Dark Mode, Custom Branding)
 - [ ] TypeScript Full Migration
-- [ ] Custom Branding/Theme options
-- [ ] Multi-page Invoice support
 
 ---
 

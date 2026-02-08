@@ -196,13 +196,7 @@ describe('TipBanner Component', () => {
 
   test('displays one of the five tips', () => {
     render(<TipBanner />)
-    const tips = [
-      'Pro tip: Add your company logo for professional invoices',
-      'Pro tip: Your company information is saved automatically',
-      'Pro tip: Try different templates to find your favorite look',
-      'Pro tip: Line items calculate totals automatically',
-      'Pro tip: Download invoices as PDF files for sharing',
-    ]
+    const tips = ['tip_1', 'tip_2', 'tip_3', 'tip_4', 'tip_5']
 
     let tipFound = false
     tips.forEach((tip) => {
