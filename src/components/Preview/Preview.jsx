@@ -1,6 +1,6 @@
 import styles from './preview.module.scss'
 import { Document, PDFViewer } from '@react-pdf/renderer'
-import { useCallback, useState, useEffect } from 'react'
+import { useCallback, useState, useEffect, useMemo } from 'react'
 import Template1 from './Templates/Template1'
 import Template2 from './Templates/Template2'
 import Template3 from './Templates/Template3'
@@ -188,33 +188,61 @@ const PDFView = ({
     return numberWithCommas(sum.toFixed(2))
   }, [rows])
 
-  const pdf = (
-    <PDF
-      template={template}
-      rows={rows}
-      email={email}
-      businessName={businessName}
-      formName={formName}
-      logo={logo}
-      logoUpdated={logoUpdated}
-      address={address}
-      city={city}
-      zipcode={zipcode}
-      phone={phone}
-      owner={owner}
-      clientName={clientName}
-      clientEmail={clientEmail}
-      clientAddress={clientAddress}
-      clientCity={clientCity}
-      clientZipcode={clientZipcode}
-      clientPhone={clientPhone}
-      date={date}
-      InvoiceNo={InvoiceNo}
-      website={website}
-      notes={notes}
-      currencySymbol={currencySymbol}
-      totalAmount={calculateTotalAmount()}
-    />
+  const pdf = useMemo(
+    () => (
+      <PDF
+        template={template}
+        rows={rows}
+        email={email}
+        businessName={businessName}
+        formName={formName}
+        logo={logo}
+        logoUpdated={logoUpdated}
+        address={address}
+        city={city}
+        zipcode={zipcode}
+        phone={phone}
+        owner={owner}
+        clientName={clientName}
+        clientEmail={clientEmail}
+        clientAddress={clientAddress}
+        clientCity={clientCity}
+        clientZipcode={clientZipcode}
+        clientPhone={clientPhone}
+        date={date}
+        InvoiceNo={InvoiceNo}
+        website={website}
+        notes={notes}
+        currencySymbol={currencySymbol}
+        totalAmount={calculateTotalAmount()}
+      />
+    ),
+    [
+      template,
+      rows,
+      email,
+      businessName,
+      formName,
+      logo,
+      logoUpdated,
+      address,
+      city,
+      zipcode,
+      phone,
+      owner,
+      clientName,
+      clientEmail,
+      clientAddress,
+      clientCity,
+      clientZipcode,
+      clientPhone,
+      date,
+      InvoiceNo,
+      website,
+      notes,
+      currencySymbol,
+      calculateTotalAmount,
+    ]
   )
 
   return <>{client && <PDFViewer className={styles.full}>{pdf}</PDFViewer>}</>
