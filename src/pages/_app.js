@@ -15,6 +15,7 @@
  * - Screen reader: all content announced
  */
 
+import '@/styles/focus.scss'
 import '@/styles/globals.css'
 import { Quicksand } from 'next/font/google'
 import ErrorBoundary from '@/components/ErrorBoundary'
