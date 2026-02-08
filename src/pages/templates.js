@@ -386,7 +386,7 @@ const Templates = () => {
     }
   }, [showPreview, formData, rows, showToast])
 
-  const handleDownloadCompleted = () => {
+  const handleDownloadCompleted = useCallback(() => {
     saveInvoice({
       id: invoiceId || `inv_${Date.now()}`,
       status: 'completed',
@@ -407,7 +407,7 @@ const Templates = () => {
         phone: formData.clientPhone,
       })
     }
-  }
+  }, [invoiceId, formData, rows, template, currencySymbol, total])
 
   const handleDownloadShortcut = useCallback(() => {
     const downloadValidation = validateBeforeDownload(formData, rows)

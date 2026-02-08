@@ -7,8 +7,10 @@ import FeaturesCards from '../components/FeaturesCards/FeaturesCards'
 import HowItWorks from '../components/HowItWorks/HowItWorks'
 import Footer from '../components/Footer/Footer'
 import StructuredData from '../components/StructuredData/StructuredData'
+import useTranslation from 'next-translate/useTranslation'
 
 export default function Home() {
+  const { t } = useTranslation('common')
   return (
     <>
       <StructuredData />
