@@ -417,7 +417,7 @@ const Templates = () => {
       <main>
         <div className={styles.template__wrapper}>
           <div className={styles.header}>
-            <Header />
+            <Header currentPage={t('create_invoice') || 'Create Invoice'} />
           </div>
           <div className={styles.container}>
             <InvoiceTemplate template={template} changeTemplate={handleTemplateChange} />

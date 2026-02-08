@@ -7,7 +7,7 @@ import LanguageSelector from '../Language/LanguageSelector'
 import KeyboardShortcutsModal from '../KeyboardShortcutsModal/KeyboardShortcutsModal'
 import useTranslation from 'next-translate/useTranslation'
 
-const Header = () => {
+const Header = ({ currentPage }) => {
   const { t } = useTranslation('common')
   const [showShortcuts, setShowShortcuts] = useState(false)
 
@@ -20,8 +20,12 @@ const Header = () => {
           </Link>
           <div className={styles.breadcrumbs}>
             <Link href="/">{t('home') || 'Home'}</Link>
-            <span className={styles.separator}>›</span>
-            <span className={styles.current}>{t('create_invoice') || 'Create Invoice'}</span>
+            {currentPage && (
+              <>
+                <span className={styles.separator}>›</span>
+                <span className={styles.current}>{currentPage}</span>
+              </>
+            )}
           </div>
         </div>
         <div className={styles.aside}>

@@ -5,6 +5,9 @@
   "pages": {
     "*": ["common"],
     "/": ["home", "example"],
-    "/about": ["about"]
+    "/about": ["common"],
+    "/privacy": ["common"],
+    "/terms": ["common"],
+    "/contact": ["common"]
   }
 }

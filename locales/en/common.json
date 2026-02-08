@@ -138,5 +138,17 @@
   "tip_3": "Pro tip: Try different templates to find your favorite look",
   "tip_4": "Pro tip: Line items calculate totals automatically",
   "tip_5": "Pro tip: Download invoices as PDF files for sharing",
-  "remove_item": "Remove item"
+  "remove_item": "Remove item",
+  "about_title": "About Invoice Dragon",
+  "about_content_1": "Invoice Dragon is a fast and convenient solution for effortlessly creating Invoices and Receipts. Our goal is to provide a simple, no-nonsense tool for freelancers and small businesses.",
+  "about_content_2": "We believe that professional invoicing should be accessible to everyone without the need for complex software or expensive subscriptions.",
+  "privacy_title": "Privacy Policy",
+  "privacy_content_1": "Your privacy is our top priority. Unlike other invoicing tools, Invoice Dragon is designed to be completely private.",
+  "privacy_content_2": "All the data you enter, including your company details, client information, and logos, stays right on your device in your browser's local storage. We do not store your invoice data on our servers.",
+  "terms_title": "Terms of Service",
+  "terms_content_1": "Invoice Dragon is provided 'as is' without any warranties. We are not responsible for any errors in the invoices generated or any consequences resulting from their use.",
+  "terms_content_2": "You are free to use this tool for both personal and commercial purposes. No attribution is required, though it is always appreciated.",
+  "contact_title": "Contact Us",
+  "contact_content_1": "Have questions or suggestions? We'd love to hear from you!",
+  "contact_content_2": "You can reach out to us through our GitHub repository where you can report issues or contribute to the project."
 }
