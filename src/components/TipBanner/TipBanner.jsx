@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useTranslation } from 'next-translate'
+import useTranslation from 'next-translate/useTranslation'
 import styles from './tipBanner.module.scss'
 
 export default function TipBanner() {
