@@ -251,7 +251,11 @@ const Table = ({
       )}
       {isMobile && (
         <div className={styles.mobile__section}>
-          <>{tableRows}</>
+          <table className={styles.table}>
+            <tbody>
+              <>{tableRows}</>
+            </tbody>
+          </table>
           <button type="button" onClick={handleClick} className={styles.btn__add}>
             <svg
               aria-hidden="true"
