@@ -159,7 +159,7 @@ const Form = ({
                 type="text"
                 name="businessName"
                 id="businessName"
-                placeholder={t('placeholder_business_name')}
+                placeholder={`${t('business_name_placeholder')}`}
                 onChange={handleChange}
                 value={prefill.businessName || ''}
               />
@@ -174,7 +174,7 @@ const Form = ({
                 type="email"
                 name="email"
                 id="email"
-                placeholder={t('placeholder_business_email')}
+                placeholder={t('business_email_placeholder')}
                 onChange={handleChange}
                 value={prefill.email || ''}
               />
@@ -189,7 +189,7 @@ const Form = ({
                 type="text"
                 name="address"
                 id="address"
-                placeholder={t('placeholder_street')}
+                placeholder={t('street_placeholder')}
                 onChange={handleChange}
                 value={prefill.address || ''}
               />
@@ -201,7 +201,7 @@ const Form = ({
                 type="text"
                 name="city"
                 id="city"
-                placeholder={t('placeholder_city')}
+                placeholder={t('city_state_country_placeholder')}
                 onChange={handleChange}
                 value={prefill.city || ''}
               />
@@ -213,7 +213,7 @@ const Form = ({
                 type="text"
                 name="zipcode"
                 id="zipcode"
-                placeholder={t('placeholder_zipcode')}
+                placeholder={t('postal_code_placeholder')}
                 onChange={handleChange}
                 value={prefill.zipcode || ''}
               />
@@ -227,7 +227,7 @@ const Form = ({
                 type="tel"
                 name="phone"
                 id="phone"
-                placeholder={t('placeholder_phone')}
+                placeholder={t('phone_placeholder')}
                 onChange={handleChange}
                 value={prefill.phone || ''}
               />
@@ -241,7 +241,7 @@ const Form = ({
                 type="text"
                 name="website"
                 id="website"
-                placeholder={t('placeholder_website')}
+                placeholder={t('website_placeholder')}
                 onChange={handleChange}
                 value={prefill.website || ''}
               />
@@ -261,7 +261,7 @@ const Form = ({
                 type="text"
                 name="clientName"
                 id="clientName"
-                placeholder={t('placeholder_client_name')}
+                placeholder={`${t('business_name_placeholder')}`}
                 onChange={handleChange}
                 value={prefill.clientName || ''}
               />
@@ -275,7 +275,7 @@ const Form = ({
                 type="email"
                 name="clientEmail"
                 id="clientEmail"
-                placeholder={t('placeholder_client_email')}
+                placeholder={`${t('client_email_placeholder')}`}
                 onChange={handleChange}
                 value={prefill.clientEmail || ''}
               />
@@ -289,7 +289,7 @@ const Form = ({
                 type="text"
                 name="clientAddress"
                 id="clientAddress"
-                placeholder={t('placeholder_client_address')}
+                placeholder={t('street_placeholder')}
                 onChange={handleChange}
                 value={prefill.clientAddress || ''}
               />
@@ -301,7 +301,7 @@ const Form = ({
                 type="text"
                 name="clientCity"
                 id="clientCity"
-                placeholder={t('placeholder_client_city')}
+                placeholder={t('city_state_country_placeholder')}
                 onChange={handleChange}
                 value={prefill.clientCity || ''}
               />
@@ -313,7 +313,7 @@ const Form = ({
                 type="text"
                 name="clientZipcode"
                 id="clientZipcode"
-                placeholder={t('placeholder_client_zipcode')}
+                placeholder={t('postal_code_placeholder')}
                 onChange={handleChange}
                 value={prefill.clientZipcode || ''}
               />
@@ -327,7 +327,7 @@ const Form = ({
                 type="tel"
                 name="clientPhone"
                 id="clientPhone"
-                placeholder={t('placeholder_client_phone')}
+                placeholder={`${t('phone_placeholder')}`}
                 onChange={handleChange}
                 value={prefill.clientPhone || ''}
               />
@@ -350,7 +350,7 @@ const Form = ({
                   type="text"
                   name="InvoiceNo"
                   id="InvoiceNo"
-                  placeholder={t('placeholder_invoice_no')}
+                  placeholder="IN001"
                   onChange={handleChange}
                   value={prefill.InvoiceNo || ''}
                 />
@@ -364,7 +364,6 @@ const Form = ({
                   type="date"
                   name="date"
                   id="date"
-                  placeholder={t('placeholder_invoice_date')}
                   onChange={handleChange}
                   value={prefill.date || ''}
                 />
