@@ -17,6 +17,7 @@ import Toast from '../components/Toast/Toast'
 import ConfirmDialog from '../components/ConfirmDialog/ConfirmDialog'
 import KeyboardShortcutsModal from '../components/KeyboardShortcutsModal/KeyboardShortcutsModal'
 import dynamic from 'next/dynamic'
+import TipBanner from '../components/TipBanner/TipBanner'
 
 const Previewed = dynamic(() => import('../components/Preview/Preview'), {
   ssr: false,
@@ -421,20 +422,23 @@ const Templates = () => {
               <div className={styles.template__section}>
                 <div className={styles.main__section}>
                   {!showPreview && (
-                    <Form
-                      prefill={formData}
-                      rows={rows}
-                      logo={logo}
-                      updateLogo={handleLogoUpdate}
-                      logoUpdated={logoUpdated}
-                      currencySymbol={currencySymbol}
-                      onFormMod={handleFormChange}
-                      onPreviewToggle={handleToggle}
-                      onRowAdd={handleRowAdd}
-                      onRowRemove={handleRowRemove}
-                      onTableUpdate={handleTableUpdate}
-                      onRemoveLogo={handleRemoveLogo}
-                    />
+                    <>
+                      <TipBanner />
+                      <Form
+                        prefill={formData}
+                        rows={rows}
+                        logo={logo}
+                        updateLogo={handleLogoUpdate}
+                        logoUpdated={logoUpdated}
+                        currencySymbol={currencySymbol}
+                        onFormMod={handleFormChange}
+                        onPreviewToggle={handleToggle}
+                        onRowAdd={handleRowAdd}
+                        onRowRemove={handleRowRemove}
+                        onTableUpdate={handleTableUpdate}
+                        onRemoveLogo={handleRemoveLogo}
+                      />
+                    </>
                   )}
 
                   {showPreview && (

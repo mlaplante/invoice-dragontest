@@ -58,7 +58,7 @@ const Table = ({
                 type="text"
                 name="description"
                 id={`description__${item.id}`}
-                placeholder={t('item_description')}
+                placeholder={t('placeholder_line_item_description')}
                 onChange={(e) => handleChange(e, item)}
                 value={item.description || ''}
               />
@@ -78,7 +78,7 @@ const Table = ({
                 name="rate"
                 id={`rate__${item.id}`}
                 ref={(el) => (rateRef.current[index] = el)}
-                placeholder="0.00"
+                placeholder={t('placeholder_line_item_rate')}
                 onChange={(e) => handleChange(e, item, index)}
                 value={item.rate || ''}
               />
@@ -134,7 +134,7 @@ const Table = ({
                     className={styles.input__default}
                     type="text"
                     name="description"
-                    placeholder={t('item_description')}
+                    placeholder={t('placeholder_line_item_description')}
                     onChange={(e) => handleChange(e, item)}
                     value={item.description || ''}
                   />
@@ -157,7 +157,7 @@ const Table = ({
                       type="number"
                       name="rate"
                       ref={(el) => (rateRef.current[index] = el)}
-                      placeholder="0.00"
+                      placeholder={t('placeholder_line_item_rate')}
                       onChange={(e) => handleChange(e, item, index)}
                       value={item.rate || ''}
                     />
@@ -212,6 +212,7 @@ const Table = ({
 
   return (
     <div className={styles.table__wrapper}>
+      {rows.length === 0 && <p className={styles.emptyMessage}>{t('empty_state_no_line_items')}</p>}
       {!isMobile && (
         <table className={styles.table}>
           <thead>
