@@ -23,7 +23,13 @@ function Template1({
   city,
   zipcode,
   website,
+  branding,
+  formType,
 }) {
+  const primaryColor = branding?.primaryColor || '#000000'
+  const secondaryColor = branding?.secondaryColor || '#4C3D3D'
+  const fontFamily = branding?.fontFamily || 'Garet'
+
   Font.register({
     family: 'League',
     src: '/assets/LeagueSpartan-Bold.ttf',
@@ -53,8 +59,25 @@ function Template1({
       backgroundColor: '#FCFBF8',
       padding: 40,
       paddingTop: 30,
-      color: '#4C3D3D',
-      fontFamily: 'Garet',
+      color: secondaryColor,
+      fontFamily:
+        fontFamily === 'Helvetica' || fontFamily === 'Courier' || fontFamily === 'Times-Roman'
+          ? fontFamily
+          : 'Garet',
+      position: 'relative',
+    },
+    paid_stamp: {
+      position: 'absolute',
+      top: 150,
+      right: 150,
+      border: '4px solid #ef4444',
+      padding: '10 20',
+      color: '#ef4444',
+      fontSize: 40,
+      fontWeight: 'bold',
+      opacity: 0.4,
+      transform: 'rotate(-15deg)',
+      zIndex: 100,
     },
     invoice_group: {
       flexGrow: 1,
@@ -66,7 +89,7 @@ function Template1({
       alignItems: 'center',
       padding: 10,
       flexGrow: 1,
-      borderBottom: '0.5px solid #000000',
+      borderBottom: `0.5px solid ${primaryColor}`,
     },
     logo_wrapper: {
       marginTop: 30,
@@ -80,11 +103,13 @@ function Template1({
     bizName1: {
       fontSize: '40px',
       fontFamily: 'League',
+      color: primaryColor,
     },
     bizName: {
       fontSize: '20px',
       fontFamily: 'League',
       marginBottom: 5,
+      color: primaryColor,
     },
     invoice_body: {
       marginBottom: 20,
@@ -105,6 +130,7 @@ function Template1({
       marginTop: '20px',
       marginBottom: '20px',
       fontFamily: 'Garet-Heavy',
+      color: primaryColor,
     },
     table_header: {
       fontSize: '12px',
@@ -124,10 +150,11 @@ function Template1({
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
-      borderTop: '0.5px solid #000000',
-      borderBottom: '0.5px solid #000000',
+      borderTop: `0.5px solid ${primaryColor}`,
+      borderBottom: `0.5px solid ${primaryColor}`,
       paddingTop: 10,
       paddingBottom: 10,
+      color: primaryColor,
     },
     total_amount: {
       fontSize: '24px',
@@ -147,7 +174,7 @@ function Template1({
       marginTop: 10,
       marginBottom: 30,
       fontSize: '10px',
-      color: '#4C3D3D',
+      color: secondaryColor,
     },
     footer: {
       flexGrow: 1,
@@ -163,6 +190,11 @@ function Template1({
 
   return (
     <Page size="A4" style={styles.body}>
+      {formType === 'receipt' && (
+        <View style={styles.paid_stamp}>
+          <Text>PAID</Text>
+        </View>
+      )}
       <View style={{ display: 'flex', justifyContent: 'center' }}>
         <View style={styles.section}>
           <View style={styles.header_details}>

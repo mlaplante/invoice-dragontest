@@ -17,6 +17,7 @@ import ConfirmDialog from '../components/ConfirmDialog/ConfirmDialog'
 import KeyboardShortcutsModal from '../components/KeyboardShortcutsModal/KeyboardShortcutsModal'
 import dynamic from 'next/dynamic'
 import { Suspense } from 'react'
+import { loadSettings } from '../utils/settingsStorage'
 
 const Previewed = dynamic(() => import('../components/Preview/Preview'), {
   ssr: false,
@@ -54,7 +55,7 @@ const Templates = () => {
   const { t } = useTranslation('common')
 
   const [showPreview, setShowPreview] = useState(false)
-  const [formData, setFormData] = useState({ formName: 'Invoice' })
+  const [formData, setFormData] = useState({ formName: 'Invoice', formType: 'invoice' })
   const [rows, setRows] = useState(Array(1).fill({ id: 0, quantity: 1, amount: '0.00' }))
   const [logo, setLogo] = useState(null)
   const [logoUpdated, setLogoUpdated] = useState(false)
@@ -68,6 +69,12 @@ const Templates = () => {
   const [showShortcuts, setShowShortcuts] = useState(false)
   const [invoiceId, setInvoiceId] = useState(null)
   const [clients, setClients] = useState([])
+  const [branding, setBranding] = useState({
+    primaryColor: '#3b82f6',
+    secondaryColor: '#1e40af',
+    accentColor: '#eff6ff',
+    fontFamily: 'Helvetica',
+  })
 
   const isMobile = useMediaQuery({ query: `(max-width: 760px)` })
 
@@ -78,6 +85,10 @@ const Templates = () => {
   // Load saved company information, logo, or invoice for editing on mount
   useEffect(() => {
     setClients(loadClients())
+    const initialSettings = loadSettings()
+    if (initialSettings.branding) {
+      setBranding(initialSettings.branding)
+    }
     const editingInvoiceStr = localStorage.getItem('invoiceDragon_editing')
     if (editingInvoiceStr) {
       const editingInvoice = JSON.parse(editingInvoiceStr)
@@ -350,6 +361,9 @@ const Templates = () => {
 
   const handleSettingsChange = (updatedSettings) => {
     // Handle any real-time updates from settings changes if needed
+    if (updatedSettings.branding) {
+      setBranding(updatedSettings.branding)
+    }
     if (updatedSettings.defaultNotes !== undefined) {
       setFormData((prev) => ({
         ...prev,
@@ -480,6 +494,8 @@ const Templates = () => {
       notes={formData.notes}
       currencySymbol={currencySymbol}
       totalAmount={numberWithCommas(total.toFixed(2))}
+      branding={branding}
+      formType={formData.formType}
     />
   )
 
@@ -533,6 +549,8 @@ const Templates = () => {
                       template={template}
                       currencySymbol={currencySymbol}
                       onPreviewToggle={handleToggle}
+                      branding={branding}
+                      formType={formData.formType}
                     />
                   )}
                 </div>

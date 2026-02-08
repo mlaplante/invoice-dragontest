@@ -8,6 +8,12 @@ export function getDefaultSettings() {
     autoIncrementFormat: 'INV-YYYY-###', // INV-2026-001
     defaultNotes: '',
     theme: 'light', // For future dark mode support
+    branding: {
+      primaryColor: '#3b82f6',
+      secondaryColor: '#1e40af',
+      accentColor: '#eff6ff',
+      fontFamily: 'Helvetica', // PDF fonts: Helvetica, Courier, Times-Roman
+    },
   }
 }
 

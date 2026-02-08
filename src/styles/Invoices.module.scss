@@ -2,7 +2,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #f9fafb;
+  background-color: var(--bg-color);
 }
 
 .main {
@@ -11,6 +11,7 @@
   max-width: 1000px;
   margin: 0 auto;
   width: 100%;
+  color: var(--text-color);
 }
 
 .header {
@@ -29,7 +30,7 @@
 .title {
   font-size: 28px;
   font-weight: 700;
-  color: #111827;
+  color: var(--text-color);
 }
 
 .createBtn {
@@ -55,22 +56,24 @@
 .emptyState {
   text-align: center;
   padding: 80px 20px;
-  background: white;
+  background: var(--card-bg);
   border-radius: 12px;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
 
   p {
-    color: #6b7280;
+    color: var(--text-secondary);
     margin-bottom: 24px;
     font-size: 18px;
   }
 }
 
 .card {
-  background: white;
+  background: var(--card-bg);
   border-radius: 12px;
   padding: 20px;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -80,7 +83,7 @@
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow);
   }
 }
 
@@ -92,7 +95,7 @@
 
 .invoiceNo {
   font-weight: 700;
-  color: #111827;
+  color: var(--text-color);
   font-size: 18px;
 }
 
@@ -112,17 +115,27 @@
     background-color: #d1fae5;
     color: #065f46;
   }
+
+  [data-theme='dark'] &.draft {
+    background-color: #451a03;
+    color: #fbbf24;
+  }
+
+  [data-theme='dark'] &.completed {
+    background-color: #064e3b;
+    color: #34d399;
+  }
 }
 
 .cardBody {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  color: #4b5563;
+  color: var(--text-secondary);
   font-size: 14px;
 
   strong {
-    color: #111827;
+    color: var(--text-color);
   }
 }
 
@@ -131,7 +144,7 @@
   gap: 12px;
   margin-top: auto;
   padding-top: 16px;
-  border-top: 1px solid #f3f4f6;
+  border-top: 1px solid var(--border-color);
 }
 
 .actionBtn {
@@ -158,6 +171,22 @@
     color: #be123c;
     &:hover {
       background-color: #ffe4e6;
+    }
+  }
+
+  [data-theme='dark'] &.edit {
+    background-color: #1e3a8a;
+    color: #93c5fd;
+    &:hover {
+      background-color: #1e40af;
+    }
+  }
+
+  [data-theme='dark'] &.delete {
+    background-color: #7f1d1d;
+    color: #fca5a5;
+    &:hover {
+      background-color: #991b1b;
     }
   }
 }

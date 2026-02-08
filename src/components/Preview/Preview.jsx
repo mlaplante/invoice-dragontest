@@ -32,6 +32,8 @@ const PDF = ({
   website,
   notes,
   totalAmount,
+  branding,
+  formType,
 }) => {
   return (
     <Document
@@ -64,6 +66,8 @@ const PDF = ({
           city={city}
           zipcode={zipcode}
           website={website}
+          branding={branding}
+          formType={formType}
         />
       )}
       {template === 'template2' && (
@@ -90,6 +94,8 @@ const PDF = ({
           city={city}
           zipcode={zipcode}
           website={website}
+          branding={branding}
+          formType={formType}
         />
       )}
       {template === 'template3' && (
@@ -117,6 +123,8 @@ const PDF = ({
           email={email}
           phone={phone}
           website={website}
+          branding={branding}
+          formType={formType}
         />
       )}
       {template === 'template4' && (
@@ -143,6 +151,8 @@ const PDF = ({
           phone={phone}
           email={email}
           website={website}
+          branding={branding}
+          formType={formType}
         />
       )}
     </Document>
@@ -173,6 +183,8 @@ const PDFView = ({
   InvoiceNo,
   website,
   notes,
+  branding,
+  formType,
 }) => {
   const [client, setClient] = useState(false)
 
@@ -215,6 +227,8 @@ const PDFView = ({
         notes={notes}
         currencySymbol={currencySymbol}
         totalAmount={calculateTotalAmount()}
+        branding={branding}
+        formType={formType}
       />
     ),
     [
@@ -242,6 +256,8 @@ const PDFView = ({
       notes,
       currencySymbol,
       calculateTotalAmount,
+      branding,
+      formType,
     ]
   )
 

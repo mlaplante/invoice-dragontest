@@ -19,10 +19,19 @@ import '@/styles/focus.scss'
 import '@/styles/globals.css'
 import { Quicksand } from 'next/font/google'
 import ErrorBoundary from '@/components/ErrorBoundary'
+import { useEffect } from 'react'
+import { loadSettings } from '@/utils/settingsStorage'
 
 const quicksand = Quicksand({ subsets: ['latin'] })
 
 export default function App({ Component, pageProps }) {
+  useEffect(() => {
+    const settings = loadSettings()
+    if (settings.theme) {
+      document.documentElement.setAttribute('data-theme', settings.theme)
+    }
+  }, [])
+
   return (
     <main className={quicksand.className}>
       <ErrorBoundary>

@@ -30,6 +30,11 @@ The result: fill a form, select a template, download PDF. Done.
 - 🌍 **Multi-Language Support** - Enhanced Language Selector supporting 6 languages with icons
 - 📱 **Fully Responsive** - Mobile-first design with sticky action footers for seamless editing on any device
 - 🛡️ **Reliable & Validated** - Comprehensive form validation and error handling for a smooth experience
+- 📂 **Invoice History** - Save, view, and edit past invoices directly in your browser
+- 👥 **Client Management** - Save client details for quick re-use on future invoices
+- 🌓 **Dark Mode** - Full support for light and dark themes with persistent user preference
+- 🎨 **Custom Branding** - Personalize invoices with your own brand colors and fonts
+- 📦 **Data Backup** - Export and import your entire application state via JSON
 - 🔒 **100% Client-Side** - No backend required; all data stays private in your browser
 - ⚡ **Lightning Fast** - Built on Next.js 15 and React 19 for optimal performance
 
@@ -52,45 +57,44 @@ Current coverage statistics (as of Feb 7, 2026):
 
 _Coverage focus: Core financial logic, data persistence, and validation utilities._
 
-### Running Tests
-
-```bash
-npm test              # Run all tests
-npm run test:coverage # Run tests with detailed coverage report
-```
-
 ---
 
-## 🛤️ Development Roadmap (Phases 1-4)
+## 🛤️ Development Roadmap (Phases 1-6)
 
-We have completed the first four phases of our comprehensive improvement roadmap:
+We have successfully completed our comprehensive improvement roadmap:
 
 ### ✅ Phase 1: Emergency Fixes
 
-- Resolved critical production bugs including the "undefined Invoice" title and logo rendering issues.
-- Fixed header logo visibility and mobile dropdown positioning.
-- Wired up help and support documentation links.
+- Resolved critical production bugs including PDF rendering and logo issues.
+- Fixed header logo visibility and mobile responsiveness.
 
 ### ✅ Phase 2: Testing & Reliability
 
-- Established Jest/React Testing Library infrastructure.
-- Implemented robust form validation and error boundaries.
-- Replaced browser-native dialogs with custom, styled `ConfirmDialog` and `Toast` components.
-- Added 100+ unit and integration tests.
+- Established robust testing infrastructure with Jest and React Testing Library.
+- Implemented error boundaries and comprehensive form validation.
 
 ### ✅ Phase 3: UX Polish
 
-- Redesigned landing page with features and how-it-works sections.
-- Implemented a full Settings panel for user preferences (currency, auto-increment, etc.).
-- Added keyboard shortcuts for power users (Cmd+P, Cmd+D, etc.).
-- Improved download flows and empty state feedback.
+- Redesigned landing page and added a full Settings panel.
+- Implemented power-user keyboard shortcuts.
 
 ### ✅ Phase 4: Accessibility & Performance
 
 - Achieved WCAG 2.1 AA compliance standards.
-- Optimized performance with component memoization and lazy loading.
-- Enhanced SEO with proper meta tags and structured data.
-- Added legal pages (About, Privacy, Terms, Contact) with dynamic breadcrumbs.
+- Optimized performance and enhanced SEO with structured data.
+
+### ✅ Phase 5: Invoice Management
+
+- Implemented persistent Invoice History and automatic Draft saving.
+- Added Client Management system for rapid invoice creation.
+- Integrated automatic sequential invoice numbering.
+
+### ✅ Phase 6: Advanced Features
+
+- Implemented full Dark Mode support with theme switching.
+- Added Custom Branding (colors/fonts) for PDF generation.
+- Added comprehensive Data Export & Import (JSON backup).
+- Implemented Receipt Mode with dynamic "PAID" stamps.
 
 ---
 
@@ -288,8 +292,8 @@ No environment variables required. Invoice Dragon works out-of-the-box.
 - [x] Phase 2: Testing & Reliability (Jest, Validation, Error Boundaries)
 - [x] Phase 3: UX Polish (Settings, Landing Page, Shortcuts)
 - [x] Phase 4: Accessibility & Performance (WCAG, SEO, Legal Pages)
-- [ ] Phase 5: Invoice Management (History, Drafts, Clients)
-- [ ] Phase 6: Advanced Features (Dark Mode, Custom Branding)
+- [x] Phase 5: Invoice Management (History, Drafts, Clients)
+- [x] Phase 6: Advanced Features (Dark Mode, Custom Branding, Backup)
 - [ ] TypeScript Full Migration
 
 ---

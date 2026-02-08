@@ -3,8 +3,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 16px 40px;
-  background-color: #ffffff;
-  border-bottom: 1px solid #e5e7eb;
+  background-color: var(--card-bg);
+  border-bottom: 1px solid var(--border-color);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -45,7 +45,7 @@
   gap: 8px;
   font-size: 14px;
   font-weight: 500;
-  color: #6b7280;
+  color: var(--text-secondary);
 
   @media screen and (max-width: 768px) {
     display: none;
@@ -60,11 +60,12 @@
   }
 
   .separator {
-    color: #9ca3af;
+    color: var(--text-secondary);
+    opacity: 0.6;
   }
 
   .current {
-    color: #374151;
+    color: var(--text-color);
     font-weight: 600;
   }
 }
@@ -83,7 +84,7 @@
 .helpBtn {
   background: none;
   border: none;
-  color: #6b7280;
+  color: var(--text-secondary);
   cursor: pointer;
   padding: 4px;
   display: flex;

@@ -74,6 +74,11 @@ const Form = ({
     }
   }
 
+  const handleFormTypeChange = (type) => {
+    onFormMod('formType', type)
+    onFormMod('formName', type === 'invoice' ? t('invoice') : t('receipt'))
+  }
+
   const { t } = useTranslation('common')
 
   const calculateDisplayTotal = () => {
@@ -87,6 +92,22 @@ const Form = ({
   return (
     <div>
       <form className={styles.form}>
+        <div className={styles.formTypeToggle}>
+          <button
+            type="button"
+            className={`${styles.typeBtn} ${prefill.formType === 'invoice' ? styles.active : ''}`}
+            onClick={() => handleFormTypeChange('invoice')}
+          >
+            {t('invoice')}
+          </button>
+          <button
+            type="button"
+            className={`${styles.typeBtn} ${prefill.formType === 'receipt' ? styles.active : ''}`}
+            onClick={() => handleFormTypeChange('receipt')}
+          >
+            {t('receipt')}
+          </button>
+        </div>
         <div className={styles.header}>
           <input
             className={`${styles.invoice__title} ${styles.input__default}`}
