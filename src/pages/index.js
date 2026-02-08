@@ -3,12 +3,14 @@ import Head from 'next/head'
 import styles from '@/styles/Home.module.scss'
 import HomePage from '../components/Home/HomePage'
 import Header from '../components/Header/Header'
+import FeaturesCards from '../components/FeaturesCards/FeaturesCards'
+import HowItWorks from '../components/HowItWorks/HowItWorks'
+import Footer from '../components/Footer/Footer'
 
 export default function Home() {
   return (
     <>
       <Head>
-        <title>Invoice Dragon</title>
         <title>Invoice Dragon - Create PDF Invoices and Receipts for Free</title>
         <meta
           property="og:title"
@@ -36,6 +38,9 @@ export default function Home() {
       <main className={styles.main}>
         <Header />
         <HomePage />
+        <FeaturesCards />
+        <HowItWorks />
+        <Footer />
       </main>
     </>
   )

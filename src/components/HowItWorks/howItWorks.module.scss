@@ -1,0 +1,114 @@
+.section {
+  padding: 60px 20px;
+  background: #ffffff;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 48px;
+    color: #222;
+
+    @media (max-width: 768px) {
+      font-size: 24px;
+      margin-bottom: 32px;
+    }
+  }
+
+  .stepsContainer {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 24px;
+    }
+  }
+
+  .step {
+    flex: 1;
+    min-width: 200px;
+    max-width: 250px;
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media (max-width: 768px) {
+      max-width: none;
+      width: 100%;
+    }
+  }
+
+  .stepContent {
+    width: 100%;
+  }
+
+  .number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1e87f0 0%, #0d5ed4 100%);
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 auto 16px;
+    box-shadow: 0 4px 12px rgba(30, 135, 240, 0.3);
+
+    @media (max-width: 768px) {
+      width: 45px;
+      height: 45px;
+      font-size: 20px;
+    }
+  }
+
+  .stepTitle {
+    font-size: 18px;
+    font-weight: 600;
+    color: #222;
+    margin: 0 0 8px 0;
+
+    @media (max-width: 768px) {
+      font-size: 16px;
+    }
+  }
+
+  .stepDescription {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #666;
+    margin: 0;
+
+    @media (max-width: 768px) {
+      font-size: 13px;
+    }
+  }
+
+  .arrow {
+    font-size: 28px;
+    color: #ccc;
+    margin-top: 24px;
+    font-weight: 300;
+
+    @media (max-width: 768px) {
+      font-size: 24px;
+      margin-top: 0;
+      position: absolute;
+      bottom: -32px;
+      left: 50%;
+      transform: translateX(-50%) rotate(90deg);
+    }
+  }
+}
