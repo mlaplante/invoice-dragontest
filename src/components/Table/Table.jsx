@@ -31,7 +31,7 @@ const Table = ({
             <td className={styles.item__row__actions}>
               <button
                 type="button"
-                title="Remove Item"
+                aria-label={`${t('remove_item')} ${index + 1}`}
                 className={styles.btn__remove}
                 onClick={() => handleRemove(item.id)}
               >
@@ -109,6 +109,7 @@ const Table = ({
                 </span>
                 <button
                   type="button"
+                  aria-label={`${t('remove_item')} ${index + 1}`}
                   className={styles.btn__remove}
                   onClick={() => handleRemove(item.id)}
                 >

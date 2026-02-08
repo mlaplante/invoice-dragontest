@@ -106,7 +106,7 @@ const Form = ({
                     type="button"
                     className={styles.removeLogoBtn}
                     onClick={handleRemoveLogo}
-                    title="Remove Logo"
+                    aria-label={t('logo')}
                   >
                     ×
                   </button>
