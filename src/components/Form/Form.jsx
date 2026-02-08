@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import styles from './form.module.scss'
 import Table from '../Table/Table'
 import Image from 'next/image'
@@ -18,7 +18,6 @@ const Form = ({
   onRowRemove,
   onRemoveLogo,
 }) => {
-  const [total, setTotal] = useState(0)
   const imageRef = useRef(null)
 
   const handleChange = (e) => {
@@ -59,19 +58,15 @@ const Form = ({
     }
   }
 
-  const calculateTotal = useCallback(() => {
+  const { t } = useTranslation('common')
+
+  const calculateDisplayTotal = () => {
     let sum = 0
     rows.forEach((row) => {
-      sum += parseFloat(row.amount)
+      sum += parseFloat(row.amount) || 0
     })
-    return sum
-  }, [rows])
-
-  useEffect(() => {
-    setTotal(calculateTotal())
-  }, [calculateTotal])
-
-  const { t } = useTranslation('common')
+    return sum.toFixed(2)
+  }
 
   return (
     <div>
@@ -159,7 +154,7 @@ const Form = ({
                 type="text"
                 name="businessName"
                 id="businessName"
-                placeholder={`${t('business_name_placeholder')}`}
+                placeholder={t('placeholder_business_name')}
                 onChange={handleChange}
                 value={prefill.businessName || ''}
               />
@@ -174,7 +169,7 @@ const Form = ({
                 type="email"
                 name="email"
                 id="email"
-                placeholder={t('business_email_placeholder')}
+                placeholder={t('placeholder_business_email')}
                 onChange={handleChange}
                 value={prefill.email || ''}
               />
@@ -189,7 +184,7 @@ const Form = ({
                 type="text"
                 name="address"
                 id="address"
-                placeholder={t('street_placeholder')}
+                placeholder={t('placeholder_street')}
                 onChange={handleChange}
                 value={prefill.address || ''}
               />
@@ -201,7 +196,7 @@ const Form = ({
                 type="text"
                 name="city"
                 id="city"
-                placeholder={t('city_state_country_placeholder')}
+                placeholder={t('placeholder_city')}
                 onChange={handleChange}
                 value={prefill.city || ''}
               />
@@ -213,7 +208,7 @@ const Form = ({
                 type="text"
                 name="zipcode"
                 id="zipcode"
-                placeholder={t('postal_code_placeholder')}
+                placeholder={t('placeholder_zipcode')}
                 onChange={handleChange}
                 value={prefill.zipcode || ''}
               />
@@ -227,7 +222,7 @@ const Form = ({
                 type="tel"
                 name="phone"
                 id="phone"
-                placeholder={t('phone_placeholder')}
+                placeholder={t('placeholder_phone')}
                 onChange={handleChange}
                 value={prefill.phone || ''}
               />
@@ -241,7 +236,7 @@ const Form = ({
                 type="text"
                 name="website"
                 id="website"
-                placeholder={t('website_placeholder')}
+                placeholder={t('placeholder_website')}
                 onChange={handleChange}
                 value={prefill.website || ''}
               />
@@ -261,7 +256,7 @@ const Form = ({
                 type="text"
                 name="clientName"
                 id="clientName"
-                placeholder={`${t('business_name_placeholder')}`}
+                placeholder={t('placeholder_client_name')}
                 onChange={handleChange}
                 value={prefill.clientName || ''}
               />
@@ -275,7 +270,7 @@ const Form = ({
                 type="email"
                 name="clientEmail"
                 id="clientEmail"
-                placeholder={`${t('client_email_placeholder')}`}
+                placeholder={t('placeholder_client_email')}
                 onChange={handleChange}
                 value={prefill.clientEmail || ''}
               />
@@ -289,7 +284,7 @@ const Form = ({
                 type="text"
                 name="clientAddress"
                 id="clientAddress"
-                placeholder={t('street_placeholder')}
+                placeholder={t('placeholder_client_address')}
                 onChange={handleChange}
                 value={prefill.clientAddress || ''}
               />
@@ -301,7 +296,7 @@ const Form = ({
                 type="text"
                 name="clientCity"
                 id="clientCity"
-                placeholder={t('city_state_country_placeholder')}
+                placeholder={t('placeholder_client_city')}
                 onChange={handleChange}
                 value={prefill.clientCity || ''}
               />
@@ -313,7 +308,7 @@ const Form = ({
                 type="text"
                 name="clientZipcode"
                 id="clientZipcode"
-                placeholder={t('postal_code_placeholder')}
+                placeholder={t('placeholder_client_zipcode')}
                 onChange={handleChange}
                 value={prefill.clientZipcode || ''}
               />
@@ -327,7 +322,7 @@ const Form = ({
                 type="tel"
                 name="clientPhone"
                 id="clientPhone"
-                placeholder={`${t('phone_placeholder')}`}
+                placeholder={t('placeholder_client_phone')}
                 onChange={handleChange}
                 value={prefill.clientPhone || ''}
               />
@@ -350,7 +345,7 @@ const Form = ({
                   type="text"
                   name="InvoiceNo"
                   id="InvoiceNo"
-                  placeholder="IN001"
+                  placeholder={t('placeholder_invoice_no')}
                   onChange={handleChange}
                   value={prefill.InvoiceNo || ''}
                 />
@@ -364,6 +359,7 @@ const Form = ({
                   type="date"
                   name="date"
                   id="date"
+                  placeholder={t('placeholder_invoice_date')}
                   onChange={handleChange}
                   value={prefill.date || ''}
                 />
@@ -387,7 +383,7 @@ const Form = ({
               <span>{t('total')}</span>
               <span className={styles.total}>
                 {currencySymbol}
-                {total.toFixed(2)}
+                {calculateDisplayTotal()}
               </span>
             </div>
           </section>

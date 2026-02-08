@@ -194,13 +194,13 @@ const Templates = () => {
         saveCompanyInfo(companyInfo)
         // Only show toast if it's an automatic save after initial load
         if (templateSelected) {
-          showToast(t('info_saved') || 'Company info saved automatically')
+          showToast('Company info saved automatically')
         }
       }
     }, 1000) // Debounce for 1000ms
 
     return () => clearTimeout(timeoutId)
-  }, [formData, templateSelected, showToast, t])
+  }, [formData, templateSelected, showToast])
 
   const handleToggle = () => {
     if (!showPreview) {
@@ -359,9 +359,9 @@ const Templates = () => {
   const calculateTotal = useCallback(() => {
     let sum = 0
     rows.forEach((row) => {
-      sum += parseFloat(row.amount)
+      sum += parseFloat(row.amount) || 0
     })
-    setTotal(numberWithCommas(sum.toFixed(2)))
+    setTotal(sum)
   }, [rows])
 
   useEffect(() => {
@@ -393,7 +393,7 @@ const Templates = () => {
       website={formData.website}
       notes={formData.notes}
       currencySymbol={currencySymbol}
-      totalAmount={total}
+      totalAmount={numberWithCommas(total.toFixed(2))}
     />
   )
 
