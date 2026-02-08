@@ -1,0 +1,51 @@
+/**
+ * Global focus styles for keyboard navigation
+ * Ensures visible focus indicators on all interactive elements
+ */
+
+// Default focus indicator: 3px solid blue outline
+:focus {
+  outline: 3px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+// For elements that already have custom focus (like buttons), use this
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+// Keyboard focus indicator (visible only on Tab/keyboard navigation)
+:focus-visible {
+  outline: 3px solid #3b82f6;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+// Button focus
+button:focus-visible {
+  outline: 3px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+// Input focus
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid #3b82f6;
+  outline-offset: 2px;
+  border-color: #3b82f6;
+}
+
+// Link focus
+a:focus-visible {
+  outline: 3px solid #3b82f6;
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+// Radio and checkbox focus
+input[type='radio']:focus-visible,
+input[type='checkbox']:focus-visible {
+  outline: 3px solid #3b82f6;
+  outline-offset: 2px;
+}

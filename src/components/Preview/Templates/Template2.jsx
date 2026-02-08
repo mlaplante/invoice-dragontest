@@ -1,6 +1,7 @@
+import React from 'react'
 import { Page, Text, Image, View, StyleSheet, Font } from '@react-pdf/renderer'
 
-const Template2 = ({
+function Template2({
   totalAmount,
   rows,
   logo,
@@ -22,7 +23,7 @@ const Template2 = ({
   phone,
   email,
   website,
-}) => {
+}) {
   Font.register({
     family: 'Inter-Regular',
     src: '/assets/Inter-Regular.ttf',
@@ -327,4 +328,4 @@ const Template2 = ({
   )
 }
 
-export default Template2
+export default React.memo(Template2)

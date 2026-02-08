@@ -6,10 +6,12 @@ import Header from '../components/Header/Header'
 import FeaturesCards from '../components/FeaturesCards/FeaturesCards'
 import HowItWorks from '../components/HowItWorks/HowItWorks'
 import Footer from '../components/Footer/Footer'
+import StructuredData from '../components/StructuredData/StructuredData'
 
 export default function Home() {
   return (
     <>
+      <StructuredData />
       <Head>
         <title>Invoice Dragon - Create PDF Invoices and Receipts for Free</title>
         <meta

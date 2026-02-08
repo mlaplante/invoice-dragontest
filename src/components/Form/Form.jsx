@@ -106,7 +106,7 @@ const Form = ({
                     type="button"
                     className={styles.removeLogoBtn}
                     onClick={handleRemoveLogo}
-                    title="Remove Logo"
+                    aria-label={t('logo')}
                   >
                     ×
                   </button>
@@ -190,7 +190,9 @@ const Form = ({
               />
             </div>
             <div className={styles.form__field}>
-              <label htmlFor="city" className={styles.label}></label>
+              <label htmlFor="city" className={styles.label}>
+                {t('city_state_country_placeholder')}
+              </label>
               <input
                 className={styles.input__default}
                 type="text"
@@ -202,7 +204,9 @@ const Form = ({
               />
             </div>
             <div className={styles.form__field}>
-              <label htmlFor="zipcode" className={styles.label}></label>
+              <label htmlFor="zipcode" className={styles.label}>
+                {t('postal_code_placeholder')}
+              </label>
               <input
                 className={styles.input__default}
                 type="text"
@@ -290,7 +294,9 @@ const Form = ({
               />
             </div>
             <div className={styles.form__field}>
-              <label htmlFor="clientCity" className={styles.label}></label>
+              <label htmlFor="clientCity" className={styles.label}>
+                {t('city_state_country_placeholder')}
+              </label>
               <input
                 className={styles.input__default}
                 type="text"
@@ -302,7 +308,9 @@ const Form = ({
               />
             </div>
             <div className={styles.form__field}>
-              <label htmlFor="clientZipcode" className={styles.label}></label>
+              <label htmlFor="clientZipcode" className={styles.label}>
+                {t('postal_code_placeholder')}
+              </label>
               <input
                 className={styles.input__default}
                 type="text"
@@ -390,9 +398,9 @@ const Form = ({
         </div>
 
         <div className={styles.section__notes}>
-          <p>
+          <label htmlFor="notes" className={styles.label}>
             <strong>{t('notes')}</strong>
-          </p>
+          </label>
           <textarea
             name="notes"
             id="notes"

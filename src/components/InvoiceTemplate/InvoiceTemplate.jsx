@@ -1,9 +1,10 @@
 import styles from './invoiceTemplate.module.scss'
 import Image from 'next/image'
+import React from 'react'
 
 import useTranslation from 'next-translate/useTranslation'
 
-const InvoiceTemplate = ({ template, changeTemplate }) => {
+function InvoiceTemplate({ template, changeTemplate }) {
   const { t } = useTranslation('common')
 
   const handleChange = (e) => {
@@ -130,4 +131,4 @@ const InvoiceTemplate = ({ template, changeTemplate }) => {
   )
 }
 
-export default InvoiceTemplate
+export default React.memo(InvoiceTemplate)
