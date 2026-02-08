@@ -43,6 +43,7 @@ const LanguageSelector = () => {
         onClick={() => setIsActive(!isActive)}
         aria-haspopup="listbox"
         aria-expanded={isActive}
+        aria-label="Select Language"
       >
         <span className={styles.globe}>🌐</span>
         <span className={styles.current}>
