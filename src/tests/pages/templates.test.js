@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen, fireEvent, waitFor, act } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import Templates from '../templates'
+import Templates from '../../pages/templates'
 import * as storage from '@/utils/storage'
 import * as settingsStorage from '@/utils/settingsStorage'
 
@@ -200,15 +200,11 @@ describe('Templates Page', () => {
     const radio = document.querySelector('input[value="template1"]')
     fireEvent.click(radio)
 
-    fireEvent.click(await screen.findByText('More'))
+    // Find and click the receipt toggle button in the Form
+    const receiptBtn = await screen.findByText('receipt')
+    fireEvent.click(receiptBtn)
 
-    // Use a more flexible text matcher for potentially broken up text
-    const receiptToggle = await screen.findByText((content, element) => {
-      return element.textContent.includes('receipt_mode')
-    })
-    fireEvent.click(receiptToggle)
-
-    // Receipt mode adds PAID stamp in Preview or changes UI text
-    expect(await screen.findByText(/back_to_invoice/i)).toBeInTheDocument()
+    // It should change the form type and update UI
+    expect(await screen.findByDisplayValue('receipt')).toBeInTheDocument()
   })
 })

@@ -1,10 +1,10 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import About from '../about'
-import Privacy from '../privacy'
-import Terms from '../terms'
-import Contact from '../contact'
+import About from '../../pages/about'
+import Privacy from '../../pages/privacy'
+import Terms from '../../pages/terms'
+import Contact from '../../pages/contact'
 
 // Mock components
 jest.mock('@/components/Header/Header', () => {
