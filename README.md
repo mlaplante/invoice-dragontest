@@ -50,10 +50,10 @@ Current coverage statistics (as of Feb 7, 2026):
 
 | Category   | Coverage |
 | ---------- | -------- |
-| Statements | 21.74%   |
-| Branches   | 21.33%   |
-| Functions  | 17.75%   |
-| Lines      | 21.67%   |
+| Statements | 83.75%   |
+| Branches   | 70.57%   |
+| Functions  | 78.07%   |
+| Lines      | 84.09%   |
 
 _Coverage focus: Core financial logic, data persistence, and validation utilities._
 
