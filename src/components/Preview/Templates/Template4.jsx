@@ -1,6 +1,7 @@
+import React from 'react'
 import { Page, Text, Image, View, StyleSheet, Font } from '@react-pdf/renderer'
 
-const Template4 = ({
+function Template4({
   totalAmount,
   rows,
   phone,
@@ -278,4 +279,4 @@ const Template4 = ({
   )
 }
 
-export default Template4
+export default React.memo(Template4)

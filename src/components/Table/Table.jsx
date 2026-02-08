@@ -4,14 +4,14 @@ import styles from '../Form/form.module.scss'
 import { useMediaQuery } from 'react-responsive'
 import useTranslation from 'next-translate/useTranslation'
 
-const Table = ({
+function Table({
   rows,
   currencySymbol,
   onModifyTable,
   onAddInvoiceRow,
   onRemoveInvoiceRow,
   onFormSubmit,
-}) => {
+}) {
   const isMobile = useMediaQuery({ query: `(max-width: 760px)` })
   const rateRef = useRef([])
   const quantityRef = useRef([])
@@ -280,4 +280,4 @@ const Table = ({
   )
 }
 
-export default Table
+export default React.memo(Table)
