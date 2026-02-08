@@ -9,7 +9,6 @@ import { useKeyboardShortcuts } from '../hooks/useKeyboardShortcuts'
 import { PDF } from '../components/Preview/Preview'
 import InvoiceTemplate from '../components/InvoiceTemplate/InvoiceTemplate'
 import CurrencySelector from '../components/Dropdown/CurrencySelector'
-import MoreMenu from '../components/MoreMenu'
 import styles from '@/styles/Home.module.scss'
 import Form from '../components/Form/Form'
 import Header from '@/components/Header/Header'
@@ -17,9 +16,14 @@ import Toast from '../components/Toast/Toast'
 import ConfirmDialog from '../components/ConfirmDialog/ConfirmDialog'
 import KeyboardShortcutsModal from '../components/KeyboardShortcutsModal/KeyboardShortcutsModal'
 import dynamic from 'next/dynamic'
+import { Suspense } from 'react'
 
 const Previewed = dynamic(() => import('../components/Preview/Preview'), {
   ssr: false,
+})
+
+const MoreMenu = dynamic(() => import('../components/MoreMenu'), {
+  suspense: false,
 })
 
 import useTranslation from 'next-translate/useTranslation'
