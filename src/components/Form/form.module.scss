@@ -1,3 +1,20 @@
+.clientSelector {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  background-color: white;
+  font-size: 13px;
+  color: #374151;
+  outline: none;
+  cursor: pointer;
+  max-width: 200px;
+
+  &:focus {
+    border-color: #3b82f6;
+    ring: 2px solid #3b82f6;
+  }
+}
+
 .form {
   background-color: #ffffff;
   padding: 40px;

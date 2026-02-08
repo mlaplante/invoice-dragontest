@@ -8,6 +8,7 @@
     "/about": ["common"],
     "/privacy": ["common"],
     "/terms": ["common"],
-    "/contact": ["common"]
+    "/contact": ["common"],
+    "/invoices": ["common"]
   }
 }

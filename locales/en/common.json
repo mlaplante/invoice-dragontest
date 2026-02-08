@@ -150,5 +150,16 @@
   "terms_content_2": "You are free to use this tool for both personal and commercial purposes. No attribution is required, though it is always appreciated.",
   "contact_title": "Contact Us",
   "contact_content_1": "Have questions or suggestions? We'd love to hear from you!",
-  "contact_content_2": "You can reach out to us through our GitHub repository where you can report issues or contribute to the project."
+  "contact_content_2": "You can reach out to us through our GitHub repository where you can report issues or contribute to the project.",
+  "my_invoices": "My Invoices",
+  "no_invoices_found": "No invoices found. Start by creating a new one!",
+  "create_new_invoice": "Create New Invoice",
+  "date_created": "Date Created",
+  "client": "Client",
+  "status": "Status",
+  "draft": "Draft",
+  "completed": "Completed",
+  "edit_invoice": "Edit Invoice",
+  "delete_invoice": "Delete Invoice",
+  "delete_invoice_confirm": "Are you sure you want to delete this invoice? This action cannot be undone."
 }

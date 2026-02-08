@@ -17,6 +17,7 @@ const Form = ({
   onRowAdd,
   onRowRemove,
   onRemoveLogo,
+  clients = [],
 }) => {
   const imageRef = useRef(null)
 
@@ -25,6 +26,21 @@ const Form = ({
     const name = e.target.name
     const value = e.target.value
     onFormMod(name, value)
+  }
+
+  const handleClientSelect = (e) => {
+    const clientId = e.target.value
+    if (!clientId) return
+
+    const client = clients.find((c) => c.id === clientId)
+    if (client) {
+      onFormMod('clientName', client.name)
+      onFormMod('clientEmail', client.email)
+      onFormMod('clientAddress', client.address)
+      onFormMod('clientCity', client.city)
+      onFormMod('clientZipcode', client.zipcode)
+      onFormMod('clientPhone', client.phone)
+    }
   }
 
   // Table Functions
@@ -248,9 +264,28 @@ const Form = ({
           </div>
 
           <div className={`${styles.section} ${styles.section__billto}`}>
-            <h3>
-              <span>👤</span> {t('bill_to')}
-            </h3>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <h3>
+                <span>👤</span> {t('bill_to')}
+              </h3>
+              {clients.length > 0 && (
+                <select
+                  onChange={handleClientSelect}
+                  className={styles.clientSelector}
+                  aria-label="Select existing client"
+                  defaultValue=""
+                >
+                  <option value="" disabled>
+                    {t('select_client') || 'Select Client'}
+                  </option>
+                  {clients.map((c) => (
+                    <option key={c.id} value={c.id}>
+                      {c.name}
+                    </option>
+                  ))}
+                </select>
+              )}
+            </div>
             <div className={styles.form__field}>
               <label htmlFor="clientName" className={styles.label}>
                 {t('name')}

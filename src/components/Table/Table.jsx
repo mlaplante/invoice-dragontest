@@ -58,6 +58,7 @@ function Table({
                 type="text"
                 name="description"
                 id={`description__${item.id}`}
+                aria-label={t('description')}
                 placeholder={t('placeholder_line_item_description')}
                 onChange={(e) => handleChange(e, item)}
                 value={item.description || ''}
@@ -65,6 +66,7 @@ function Table({
               <textarea
                 name="details"
                 id={`details__${item.id}`}
+                aria-label={t('additional_details')}
                 placeholder={t('additional_details')}
                 className={`${styles.input__default} ${styles.details}`}
                 onChange={(e) => handleChange(e, item)}
@@ -77,6 +79,7 @@ function Table({
                 type="number"
                 name="rate"
                 id={`rate__${item.id}`}
+                aria-label={t('rate')}
                 ref={(el) => (rateRef.current[index] = el)}
                 placeholder={t('placeholder_line_item_rate')}
                 onChange={(e) => handleChange(e, item, index)}
@@ -89,6 +92,7 @@ function Table({
                 type="number"
                 name="quantity"
                 id={`quantity__${item.id}`}
+                aria-label={t('qty')}
                 ref={(el) => (quantityRef.current[index] = el)}
                 placeholder="0"
                 onChange={(e) => handleChange(e, item, index)}
@@ -130,20 +134,22 @@ function Table({
               </div>
               <div className={styles.mobile__body}>
                 <div className={styles.form__field}>
-                  <label>{t('item_description')}</label>
+                  <label htmlFor={`description_mobile__${item.id}`}>{t('item_description')}</label>
                   <input
                     className={styles.input__default}
                     type="text"
                     name="description"
+                    id={`description_mobile__${item.id}`}
                     placeholder={t('placeholder_line_item_description')}
                     onChange={(e) => handleChange(e, item)}
                     value={item.description || ''}
                   />
                 </div>
                 <div className={styles.form__field}>
-                  <label>{t('additional_details')}</label>
+                  <label htmlFor={`details_mobile__${item.id}`}>{t('additional_details')}</label>
                   <textarea
                     name="details"
+                    id={`details_mobile__${item.id}`}
                     placeholder={t('additional_details')}
                     className={`${styles.input__default} ${styles.details}`}
                     onChange={(e) => handleChange(e, item)}
@@ -152,11 +158,12 @@ function Table({
                 </div>
                 <div className={styles.mobile__grid}>
                   <div className={styles.form__field}>
-                    <label>{t('rate')}</label>
+                    <label htmlFor={`rate_mobile__${item.id}`}>{t('rate')}</label>
                     <input
                       className={styles.input__default}
                       type="number"
                       name="rate"
+                      id={`rate_mobile__${item.id}`}
                       ref={(el) => (rateRef.current[index] = el)}
                       placeholder={t('placeholder_line_item_rate')}
                       onChange={(e) => handleChange(e, item, index)}
@@ -164,11 +171,12 @@ function Table({
                     />
                   </div>
                   <div className={styles.form__field}>
-                    <label>{t('qty')}</label>
+                    <label htmlFor={`quantity_mobile__${item.id}`}>{t('qty')}</label>
                     <input
                       className={styles.input__default}
                       type="number"
                       name="quantity"
+                      id={`quantity_mobile__${item.id}`}
                       ref={(el) => (quantityRef.current[index] = el)}
                       placeholder="0"
                       onChange={(e) => handleChange(e, item, index)}

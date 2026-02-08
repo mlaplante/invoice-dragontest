@@ -1,0 +1,163 @@
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f9fafb;
+}
+
+.main {
+  flex: 1;
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.createBtn {
+  background: linear-gradient(to left top, #28a5f5, #1e87f0);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 80px 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+
+  p {
+    color: #6b7280;
+    margin-bottom: 24px;
+    font-size: 18px;
+  }
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.invoiceNo {
+  font-weight: 700;
+  color: #111827;
+  font-size: 18px;
+}
+
+.status {
+  padding: 4px 8px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+
+  &.draft {
+    background-color: #fef3c7;
+    color: #92400e;
+  }
+
+  &.completed {
+    background-color: #d1fae5;
+    color: #065f46;
+  }
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #4b5563;
+  font-size: 14px;
+
+  strong {
+    color: #111827;
+  }
+}
+
+.cardActions {
+  display: flex;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid #f3f4f6;
+}
+
+.actionBtn {
+  flex: 1;
+  padding: 8px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  text-align: center;
+  border: 1px solid transparent;
+
+  &.edit {
+    background-color: #eff6ff;
+    color: #1d4ed8;
+    &:hover {
+      background-color: #dbeafe;
+    }
+  }
+
+  &.delete {
+    background-color: #fff1f2;
+    color: #be123c;
+    &:hover {
+      background-color: #ffe4e6;
+    }
+  }
+}

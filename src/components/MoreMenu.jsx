@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import styles from './moreMenu.module.scss'
 import useTranslation from 'next-translate/useTranslation'
 import Settings from './Settings/Settings'
+import Link from 'next/link'
 
 const MoreMenu = ({ onClearData, onLoadExampleData, onSettingsChange }) => {
   const [isActive, setIsActive] = useState(false)
@@ -26,25 +27,25 @@ const MoreMenu = ({ onClearData, onLoadExampleData, onSettingsChange }) => {
   }
 
   const handleKeyDown = (e) => {
-    const menuItems = 3 // Load Example, Settings, Clear Data
+    const menuItems = 4 // Load Example, My Invoices, Settings, Clear Data
     switch (e.key) {
       case 'ArrowDown':
         e.preventDefault()
-        setHighlightedIndex((prev) =>
-          prev < menuItems - 1 ? prev + 1 : 0
-        )
+        setHighlightedIndex((prev) => (prev < menuItems - 1 ? prev + 1 : 0))
         break
       case 'ArrowUp':
         e.preventDefault()
-        setHighlightedIndex((prev) =>
-          prev > 0 ? prev - 1 : menuItems - 1
-        )
+        setHighlightedIndex((prev) => (prev > 0 ? prev - 1 : menuItems - 1))
         break
       case 'Enter':
         e.preventDefault()
         if (highlightedIndex === 0) handleExampleClick()
-        else if (highlightedIndex === 1) handleSettingsClick()
-        else if (highlightedIndex === 2) handleClearClick()
+        else if (highlightedIndex === 1) {
+          // Link navigation handled by Link component, but for keyboard:
+          const link = menuRef.current.querySelector('a[role="menuitem"]')
+          if (link) link.click()
+        } else if (highlightedIndex === 2) handleSettingsClick()
+        else if (highlightedIndex === 3) handleClearClick()
         break
       case 'Escape':
         e.preventDefault()
@@ -72,12 +73,7 @@ const MoreMenu = ({ onClearData, onLoadExampleData, onSettingsChange }) => {
   }, [])
 
   return (
-    <div
-      className={styles.container}
-      ref={menuRef}
-      onKeyDown={handleKeyDown}
-      role="menu"
-    >
+    <div className={styles.container} ref={menuRef} onKeyDown={handleKeyDown} role="menu">
       <button
         className={`${styles.menuBtn} ${isActive ? styles.active : ''}`}
         onClick={() => {
@@ -95,18 +91,28 @@ const MoreMenu = ({ onClearData, onLoadExampleData, onSettingsChange }) => {
       {isActive && (
         <div className={styles.dropdown} role="menu">
           <button
-            className={`${styles.menuItem} ${
-              highlightedIndex === 0 ? styles.highlighted : ''
-            }`}
+            className={`${styles.menuItem} ${highlightedIndex === 0 ? styles.highlighted : ''}`}
             onClick={handleExampleClick}
             role="menuitem"
           >
             <span className={styles.icon}>📝</span> {t('load_example_data') || 'Load Example Data'}
           </button>
+          <Link
+            href="/invoices"
+            className={`${styles.menuItem} ${highlightedIndex === 1 ? styles.highlighted : ''}`}
+            role="menuitem"
+            onClick={() => setIsActive(false)}
+            style={{
+              textDecoration: 'none',
+              color: 'inherit',
+              display: 'flex',
+              alignItems: 'center',
+            }}
+          >
+            <span className={styles.icon}>📂</span> {t('my_invoices') || 'My Invoices'}
+          </Link>
           <button
-            className={`${styles.menuItem} ${
-              highlightedIndex === 1 ? styles.highlighted : ''
-            }`}
+            className={`${styles.menuItem} ${highlightedIndex === 2 ? styles.highlighted : ''}`}
             onClick={handleSettingsClick}
             role="menuitem"
           >
@@ -115,7 +121,7 @@ const MoreMenu = ({ onClearData, onLoadExampleData, onSettingsChange }) => {
           <div className={styles.divider}></div>
           <button
             className={`${styles.menuItem} ${styles.danger} ${
-              highlightedIndex === 2 ? styles.highlighted : ''
+              highlightedIndex === 3 ? styles.highlighted : ''
             }`}
             onClick={handleClearClick}
             role="menuitem"

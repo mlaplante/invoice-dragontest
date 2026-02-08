@@ -89,3 +89,126 @@ export const clearLogo = () => {
     }
   }
 }
+
+const INVOICES_KEY = 'invoiceDragonInvoices'
+
+/**
+ * Save an invoice to history
+ * @param {Object} invoiceData - Full invoice data
+ */
+export const saveInvoice = (invoiceData) => {
+  if (typeof window !== 'undefined') {
+    try {
+      const invoices = loadInvoices()
+      const index = invoices.findIndex((inv) => inv.id === invoiceData.id)
+
+      if (index !== -1) {
+        invoices[index] = { ...invoiceData, updatedAt: new Date().toISOString() }
+      } else {
+        invoices.push({
+          ...invoiceData,
+          id: invoiceData.id || `inv_${Date.now()}`,
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString(),
+        })
+      }
+
+      localStorage.setItem(INVOICES_KEY, JSON.stringify(invoices))
+      return true
+    } catch (error) {
+      console.error('Error saving invoice:', error)
+      return false
+    }
+  }
+  return false
+}
+
+/**
+ * Load all invoices from history
+ * @returns {Array} Array of invoices
+ */
+export const loadInvoices = () => {
+  if (typeof window !== 'undefined') {
+    try {
+      const saved = localStorage.getItem(INVOICES_KEY)
+      return saved ? JSON.parse(saved) : []
+    } catch (error) {
+      console.error('Error loading invoices:', error)
+      return []
+    }
+  }
+  return []
+}
+
+/**
+ * Delete an invoice from history
+ * @param {string} id - Invoice ID
+ */
+export const deleteInvoice = (id) => {
+  if (typeof window !== 'undefined') {
+    try {
+      const invoices = loadInvoices()
+      const filtered = invoices.filter((inv) => inv.id !== id)
+      localStorage.setItem(INVOICES_KEY, JSON.stringify(filtered))
+      return true
+    } catch (error) {
+      console.error('Error deleting invoice:', error)
+      return false
+    }
+  }
+  return false
+}
+
+const CLIENTS_KEY = 'invoiceDragonClients'
+
+/**
+ * Save a client to history
+ * @param {Object} clientData - Client information
+ */
+export const saveClient = (clientData) => {
+  if (typeof window !== 'undefined') {
+    try {
+      const clients = loadClients()
+      const index = clients.findIndex((c) => c.name.toLowerCase() === clientData.name.toLowerCase())
+
+      if (index !== -1) {
+        clients[index] = {
+          ...clients[index],
+          ...clientData,
+          updatedAt: new Date().toISOString(),
+        }
+      } else {
+        clients.push({
+          ...clientData,
+          id: clientData.id || `client_${Date.now()}`,
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString(),
+        })
+      }
+
+      localStorage.setItem(CLIENTS_KEY, JSON.stringify(clients))
+      return true
+    } catch (error) {
+      console.error('Error saving client:', error)
+      return false
+    }
+  }
+  return false
+}
+
+/**
+ * Load all clients
+ * @returns {Array} Array of clients
+ */
+export const loadClients = () => {
+  if (typeof window !== 'undefined') {
+    try {
+      const saved = localStorage.getItem(CLIENTS_KEY)
+      return saved ? JSON.parse(saved) : []
+    } catch (error) {
+      console.error('Error loading clients:', error)
+      return []
+    }
+  }
+  return []
+}

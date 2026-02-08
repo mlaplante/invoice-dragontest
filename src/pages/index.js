@@ -13,21 +13,15 @@ export default function Home() {
     <>
       <StructuredData />
       <Head>
-        <title>Invoice Dragon - Create PDF Invoices and Receipts for Free</title>
-        <meta
-          property="og:title"
-          content="Invoice Dragon - Create PDF Invoices and Receipts for Free"
-        />
+        <title>{t('invoice_dragon_title')}</title>
+        <meta name="description" content={t('invoice_dragon_description')} />
+        <meta property="og:title" content={t('invoice_dragon_title')} />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="/assets/icon.png" />
-        <meta
-          property="og:description"
-          content="Create professional Invoices and Receipts effortlessly with Invoice Dragon and download as PDF for easy sharing and record-keeping. And it's all for free!"
-        />
-        <meta
-          name="description"
-          content="Create professional Invoices and Receipts effortlessly with Invoice Dragon and download as PDF for easy sharing and record-keeping. And it's all for free!"
-        />
+        <meta property="og:description" content={t('invoice_dragon_description')} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={t('invoice_dragon_title')} />
+        <meta name="twitter:description" content={t('invoice_dragon_description')} />
         <meta name="application-name" content="Invoice Dragon" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
