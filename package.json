@@ -26,6 +26,7 @@
     "typewriter-effect": "^2.22.0"
   },
   "devDependencies": {
+    "@axe-core/react": "^4.11.1",
     "@eslint/eslintrc": "^3.3.3",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^16.0.0",
