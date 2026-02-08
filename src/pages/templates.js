@@ -220,7 +220,7 @@ const Templates = () => {
         return
       }
 
-      showToast(t('generating_preview') || 'Generating PDF preview...', 'loading')
+      showToast('Generating PDF preview...', 'loading')
       setTimeout(() => {
         setShowPreview(true)
       }, 1000)
@@ -315,14 +315,14 @@ const Templates = () => {
         return
       }
 
-      showToast(t('generating_preview') || 'Generating PDF preview...', 'loading')
+      showToast('Generating PDF preview...', 'loading')
       setTimeout(() => {
         setShowPreview(true)
       }, 1000)
     } else {
       setShowPreview(false)
     }
-  }, [showPreview, formData, rows, showToast, t])
+  }, [showPreview, formData, rows, showToast])
 
   const handleDownloadShortcut = useCallback(() => {
     const downloadValidation = validateBeforeDownload(formData, rows)
