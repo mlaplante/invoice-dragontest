@@ -23,7 +23,7 @@ function Template4({
   city,
   zipcode,
   website,
-}) => {
+}) {
   Font.register({
     family: 'Garet',
     src: '/assets/Garet-Book.ttf',

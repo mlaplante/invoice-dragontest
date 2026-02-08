@@ -23,7 +23,7 @@ function Template2({
   phone,
   email,
   website,
-}) => {
+}) {
   Font.register({
     family: 'Inter-Regular',
     src: '/assets/Inter-Regular.ttf',

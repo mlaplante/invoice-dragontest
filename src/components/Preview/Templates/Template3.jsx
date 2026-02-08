@@ -24,7 +24,7 @@ function Template3({
   city,
   zipcode,
   website,
-}) => {
+}) {
   Font.register({
     family: 'Poppins-Bold',
     src: '/assets/Poppins-Bold.ttf',

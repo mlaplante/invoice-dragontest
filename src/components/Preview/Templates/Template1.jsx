@@ -23,7 +23,7 @@ function Template1({
   city,
   zipcode,
   website,
-}) => {
+}) {
   Font.register({
     family: 'League',
     src: '/assets/LeagueSpartan-Bold.ttf',
